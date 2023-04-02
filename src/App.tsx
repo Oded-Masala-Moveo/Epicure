@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import "./main.scss";
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>epicure app</h1>
+      <h2>epicure app</h2>
     </div>
   );
 };
