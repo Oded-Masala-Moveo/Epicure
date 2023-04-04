@@ -1,4 +1,21 @@
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+@import "./assets/styles/mixin/typography-mixin";
 * {
   padding: 0px;
   margin: 0px;
+}
+
+h1 {
+  @include mobile-title-h1();
+}
+h2 {
+  @include mobile-title-h2();
+}
+h3 {
+  @include mobile-title-h3();
+}
+p {
+  @include mobile-body-text();
 }
