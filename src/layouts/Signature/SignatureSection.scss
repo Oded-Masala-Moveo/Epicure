@@ -1,0 +1,39 @@
+@import "../../assets/styles/variable";
+.signature-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 32px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 48px;
+  background-color: $secondary-gray;
+
+  .icons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    .signature-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 33px;
+      // height: 35px;
+      // width: 136px;
+      .Spicy-icon {
+        width: 46.42px;
+        height: 35.98px;
+      }
+      .Vegetarian-icon {
+        width: 77.42px;
+        height: 60px;
+      }
+      .Vegan-icon {
+        width: 77.42px;
+        height: 60px;
+      }
+    }
+  }
+}
