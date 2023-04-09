@@ -1,89 +1,92 @@
 [
-    {
-        "id":1,
-        "name":"Yossi Shitrit",
-        "description":"Chef Yossi Shitrit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/untitled-1_3x_1_dfj7hp.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    },
-    {
-        "id":2,
-        "name":"Asaf Granit",
-        "description":"Chef Asaf Granit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/ntr_259359_pq1udn.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    },
-    {
-        "id":3,
-        "name":"Aviv Moshe",
-        "description":"Chef Aviv Moshe has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/762799301000100980653no_l3dugg.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    }
-    ,
-    {
-        "id":4,
-        "name":"Eyal Shani",
-        "description":"Chef Eyal Shani has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/DSC6992-P_1_ioqhpl.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    }
-    ,
-    {
-        "id":5,
-        "name":"Meir Adoni",
-        "description":"Chef Meir Adoni has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/meirAdoni_qfvnfw.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    }
-    ,
-    {
-        "id":6,
-        "name":"Omer Miller",
-        "description":"Chef Omer Miller has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/omerMiller_hd_autoOrient_i_hec3a2.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    }
-    ,
-    {
-        "id":7,
-        "name":"Shahaf Shabtay",
-        "description":"Chef Shahaf Shabtay has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/%D7%A9%D7%97%D7%A3-%D7%A9%D7%91%D7%AA%D7%90%D7%99_pux7nk.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    }
-    ,
-    {
-        "id":8,
-        "name":"Nitzan Raz",
-        "description":"Chef Nitzan Raz has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/Screen_Shot_2022-03-14_at_14.22_1_nreoe4.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    }
-    ,
-    {
-        "id":9,
-        "name":"Yuval Ben Neriah",
-        "description":"Chef Yuval Ben Neriah has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "image":"https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/1__9_1_oryrka.png",
-        "dateCreated":"",
-        "newChef":false,
-        "viewed":""
-    }
+  {
+    "id": 1,
+    "name": "Yossi Shitrit",
+    "description": "Chef Yossi Shitrit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/untitled-1_3x_1_dfj7hp.png",
+    "dateCreated": "",
+    "weekChef": true,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 2,
+    "name": "Asaf Granit",
+    "description": "Chef Asaf Granit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/ntr_259359_pq1udn.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 3,
+    "name": "Aviv Moshe",
+    "description": "Chef Aviv Moshe has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/762799301000100980653no_l3dugg.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 4,
+    "name": "Eyal Shani",
+    "description": "Chef Eyal Shani has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/DSC6992-P_1_ioqhpl.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 5,
+    "name": "Meir Adoni",
+    "description": "Chef Meir Adoni has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/meirAdoni_qfvnfw.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 6,
+    "name": "Omer Miller",
+    "description": "Chef Omer Miller has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/omerMiller_hd_autoOrient_i_hec3a2.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 7,
+    "name": "Shahaf Shabtay",
+    "description": "Chef Shahaf Shabtay has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/%D7%A9%D7%97%D7%A3-%D7%A9%D7%91%D7%AA%D7%90%D7%99_pux7nk.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 8,
+    "name": "Nitzan Raz",
+    "description": "Chef Nitzan Raz has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/Screen_Shot_2022-03-14_at_14.22_1_nreoe4.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  },
+  {
+    "id": 9,
+    "name": "Yuval Ben Neriah",
+    "description": "Chef Yuval Ben Neriah has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
+    "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/1__9_1_oryrka.png",
+    "dateCreated": "",
+    "weekChef": false,
+    "newChef": false,
+    "viewed": ""
+  }
 ]

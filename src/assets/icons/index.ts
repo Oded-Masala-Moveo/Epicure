@@ -9,6 +9,12 @@ import { ReactComponent as Shekel } from "./shekel.svg";
 import { ReactComponent as User } from "./user.svg";
 import { ReactComponent as X_dark } from "./x-dark.svg";
 import { ReactComponent as X_white } from "./x_white.svg";
+import { ReactComponent as VeganBig } from "./veganBig.svg";
+import { ReactComponent as VeganSmall } from "./veganSmall.svg";
+import { ReactComponent as VegetarianBig } from "./VegetarianBig.svg";
+import { ReactComponent as VegetarianSmall } from "./vegetarianSmall.svg";
+import { ReactComponent as SpicyBig } from "./spicyBig.svg";
+import { ReactComponent as SpicySmall } from "./spicySmall.svg";
 import { ReactComponent as Logo } from "./about-logo@3x 1.svg";
 
 export {
@@ -24,4 +30,10 @@ export {
   X_dark,
   X_white,
   Logo,
+  VeganBig,
+  VeganSmall,
+  VegetarianBig,
+  VegetarianSmall,
+  SpicyBig,
+  SpicySmall,
 };

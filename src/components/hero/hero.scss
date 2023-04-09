@@ -1,7 +1,61 @@
+@import "../../assets/styles/variable",
+  "../../assets/styles/mixin/typography-mixin";
+
 .hero-container {
   background-image: url("../../assets/images/hero-picture\ 1.png");
   background-size: cover;
-  background-position: center;
+  background-position: right;
   height: 273px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+
+  .search-container {
+    width: 91%;
+    height: 144px;
+    background-color: rgba(255, 255, 255, 0.88);
+    .Hero-title {
+      margin-bottom: 18px;
+
+      h1 {
+        margin-top: 18px;
+        padding: 0px 10px 0px 10px;
+        text-align: justify;
+        text-align-last: justify;
+      }
+    }
+  }
+  .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    // width: 93%;
+    // box-sizing: border-box;
+    border: 0.5px solid #000000;
+    border-radius: 4px;
+    // padding: 0px 10px 0px 10px;
+    margin: 0px 10px 20px 10px;
+
+    .search-button {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    input {
+      height: 30px;
+      width: 90%;
+      background: none;
+      border: none;
+      outline: none;
+
+      @include mobile-input-text();
+      font-size: 12px;
+      text-align: start;
+    }
+  }
 }

@@ -46,7 +46,6 @@ const Navbar: React.FC = () => {
       {isMenuOpen && <MenuNav setMenu={toggleMenu} />}
       {/* {isSearchOpen && <SearchNav setSearch={toggleSearch} />}
       {isBagOpen && !isMenuOpen && <BagNav setBag={toggleBag} />} */}
-      <Hero />
     </>
   );
 };
