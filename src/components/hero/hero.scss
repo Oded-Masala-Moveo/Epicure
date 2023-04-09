@@ -4,7 +4,7 @@
 .hero-container {
   background-image: url("../../assets/images/hero-picture\ 1.png");
   background-size: cover;
-  background-position: right;
+  background-position: center;
   height: 273px;
   width: 100%;
   display: flex;
@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   gap: 18px;
+  padding-top: 45px;
 
   .search-container {
     width: 91%;

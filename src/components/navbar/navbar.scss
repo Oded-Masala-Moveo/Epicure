@@ -1,28 +1,48 @@
 @import "../../assets/styles/mixin/display-mixin",
   "../../assets/styles/mixin/typography-mixin", "../../assets/styles/variable";
+
+@keyframes example {
+  0% {
+    background-color: #ffffff96;
+  }
+
+  100% {
+    background-color: #ffffff;
+  }
+}
 .menu-nav {
   height: 367px;
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: 100%;
+  height: 367px;
+  left: -1px;
+  top: 46px;
+  animation-name: example;
+  animation-duration: 0.5s;
+  width: -webkit-fill-available;
   background-color: #ffffff;
   list-style: none;
+  a {
+    text-decoration: none;
+  }
 
   .top-menu {
     height: 149px;
     display: flex;
     padding: 0px 20px 0px 20px;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 24px;
   }
   .bottom-menu {
-    border-top: 1px solid $primary-light;
+    border-top: 1px solid #f2f2f2;
     padding: 10px 20px 0px 20px;
     height: 202px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 40px;
   }
 }
 
@@ -49,9 +69,13 @@
 }
 
 .nav-bar {
-  padding: 0px 20px 0px 20px;
+  padding: 0px 10px 0px 10px;
+  position: fixed;
+  z-index: 999;
+
   background-color: white;
   height: 46px;
+  width: -webkit-fill-available;
   display: flex;
   align-items: center;
   justify-content: space-between;

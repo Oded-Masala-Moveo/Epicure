@@ -42,8 +42,9 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         ) : null}
+        <div>{isMenuOpen && <MenuNav setMenu={toggleMenu} />}</div>
       </div>
-      {isMenuOpen && <MenuNav setMenu={toggleMenu} />}
+
       {/* {isSearchOpen && <SearchNav setSearch={toggleSearch} />}
       {isBagOpen && !isMenuOpen && <BagNav setBag={toggleBag} />} */}
     </>
@@ -55,21 +56,21 @@ const MenuNav: React.FC<{ setMenu: () => void }> = ({ setMenu }) => {
     <div className="menu-nav">
       <div className="top-menu">
         <Link to="/restaurants">
-          <h2 onClick={setMenu}>Restaurants</h2>
+          <p onClick={setMenu}>Restaurants</p>
         </Link>
         <Link to="/chef">
-          <h2 onClick={setMenu}>Chef</h2>
+          <p onClick={setMenu}>Chef</p>
         </Link>
       </div>
       <div className="bottom-menu">
         <Link to="/contact">
-          <h2 onClick={setMenu}>Contact Us</h2>
+          <p onClick={setMenu}>Contact Us</p>
         </Link>
         <Link to="/term">
-          <h2 onClick={setMenu}>Term of use</h2>
+          <p onClick={setMenu}>Term of use</p>
         </Link>
         <Link to="/policy">
-          <h2 onClick={setMenu}> Privacy Policy</h2>
+          <p onClick={setMenu}> Privacy Policy</p>
         </Link>
       </div>
     </div>
