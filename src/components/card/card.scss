@@ -1,0 +1,64 @@
+@import "../../assets/styles/variable";
+
+.card-restaurant-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  background-color: $secondary-beige;
+  width: 245px;
+  height: 232.8px;
+  .card-image-container {
+    img {
+      height: 151.8px;
+      width: 245px;
+    }
+  }
+  .card-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 10px;
+  }
+}
+
+.card-dish-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  background-color: $secondary-beige;
+  width: 245px;
+  height: 388px;
+  .card-image-container {
+    img {
+      width: 245px;
+      height: 152px;
+    }
+  }
+  .card-text-container {
+    padding-left: 16px;
+    display: grid;
+    grid-template-columns: 1 100%;
+
+    gap: 16px;
+    .card-description {
+      height: 129px;
+      width: 209px;
+    }
+    .card-category {
+      grid-column: span 1;
+      height: 24px;
+      width: 30px;
+    }
+    .price-container {
+      grid-column: span 1;
+      .shekel-logo {
+        height: 6.670227527618408px;
+        width: 7.262381553649902px;
+        margin-right: 4px;
+      }
+    }
+  }
+}
