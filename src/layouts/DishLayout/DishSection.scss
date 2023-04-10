@@ -1,0 +1,17 @@
+.dish-container {
+  margin-bottom: 46px;
+  padding-left: 20px;
+  .popular-container {
+    margin: 48px 0px 16px 0px;
+  }
+  .link-to-restaurants {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    .arrow-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

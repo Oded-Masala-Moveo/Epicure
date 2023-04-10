@@ -1,0 +1,51 @@
+@import "../../assets/styles/variable";
+
+.card-dish-container {
+  padding: 0px;
+  background-color: $secondary-beige;
+  width: 245px;
+  height: 388px;
+  .card-image-container {
+    img {
+      width: 245px;
+      height: 152px;
+    }
+  }
+  .card-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 0px 0px 16px;
+
+    .card-description {
+      height: 129px;
+      width: 209px;
+      h3 {
+        padding-bottom: 8px;
+      }
+      p {
+        letter-spacing: 0.97px;
+      }
+    }
+    .card-category {
+      margin-top: 16px;
+      grid-column: span 1;
+      margin-bottom: 16px;
+      height: 24px;
+      width: 30px;
+    }
+    .price-container {
+      grid-column: span 1;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .shekel-logo {
+        height: 10px;
+        width: 10px;
+
+        margin-right: 4px;
+      }
+    }
+  }
+}
