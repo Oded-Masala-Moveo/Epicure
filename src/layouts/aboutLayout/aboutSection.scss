@@ -1,0 +1,54 @@
+@import "../../assets/styles/variable";
+
+.about-section {
+  background-color: $secondary-gray;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  .about-logo-container {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    .logo {
+      width: 102px;
+      height: 95px;
+    }
+  }
+  .payment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 180px;
+    height: 120px;
+    margin-bottom: 48px;
+    .paymentLogo {
+      width: 180px;
+      height: 52px;
+    }
+  }
+
+  .title-container {
+    margin-bottom: 16px;
+  }
+
+  .text-container {
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    :nth-child(1) {
+      text-align: left;
+      width: 331px;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 2.14px;
+    }
+    :nth-child(2) {
+      width: 306px;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 2.14px;
+    }
+  }
+}
