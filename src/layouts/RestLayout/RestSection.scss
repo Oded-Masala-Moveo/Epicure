@@ -1,0 +1,18 @@
+.restaurants-container {
+  padding-left: 20px;
+  .popular-container {
+    margin: 48px 0px 16px 0px;
+  }
+  .popular-container {
+  }
+  .link-to-restaurants {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    .arrow-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

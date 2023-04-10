@@ -15,20 +15,22 @@ const Carousel: React.FC<{ cards: CardsList; weekChef: boolean }> = ({
   return (
     <>
       <div className="carousel-container">
-        <Swiper
-          spaceBetween={24}
-          slidesPerView={width && width > 650 ? 3 : 1.5}
-          // centeredSlides={true}
-          autoplay={{ delay: 3000 }}
-        >
-          {cards &&
-            cards.length > 0 &&
-            cards.map((cardItem, index) => (
-              <SwiperSlide key={cardItem.name}>
-                <Card key={cardItem.name} card={cardItem} week={weekChef} />
-              </SwiperSlide>
-            ))}
-        </Swiper>
+        <div>
+          <Swiper
+            spaceBetween={24}
+            slidesPerView={width && width > 650 ? 3 : 1.5}
+            // centeredSlides={true}
+            autoplay={{ delay: 3000 }}
+          >
+            {cards &&
+              cards.length > 0 &&
+              cards.map((cardItem, index) => (
+                <SwiperSlide key={cardItem.name}>
+                  <Card key={cardItem.name} card={cardItem} week={weekChef} />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </div>
       </div>
     </>
   );

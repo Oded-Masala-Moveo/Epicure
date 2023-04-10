@@ -1,39 +1,54 @@
 @import "../../assets/styles/variable";
 
 .chef-container {
-  padding-left: 24px;
-  h2 {
-    margin-bottom: 50px;
-  }
-  .chef-header {
-    .chef-image {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 338px;
-      justify-content: center;
-      img {
+  .chef-detail {
+    display: grid;
+    justify-content: center;
+    .chef-title {
+      margin-bottom: 16px;
+      grid-column: 1 auto;
+    }
+    .chef-header {
+      height: 262px;
+      margin-bottom: 24px;
+
+      .chef-name {
+        background-color: $secondary-gray;
+        display: flex;
+        justify-content: center;
+        padding: 15px;
         width: 335px;
+        z-index: 20;
+        position: relative;
+        bottom: 50px;
+        background: rgba(255, 255, 255, 0.8);
       }
     }
-    .chef-name {
-      background-color: $secondary-gray;
-      display: flex;
-      justify-content: center;
-      padding: 15px;
+    .chef-description {
       width: 335px;
-      z-index: 20;
-      position: relative;
-      bottom: 50px;
-      background: rgba(255, 255, 255, 0.8);
+      text-align: justify;
+      line-height: 28px;
+      letter-spacing: 1.97px;
+    }
+    .chef-week-title {
+      margin-top: 32px;
+      margin-bottom: 16px;
+      grid-column: 1 auto;
     }
   }
+  .carousel {
+    padding-left: 20px;
+  }
+  .link-to-restaurants {
+    padding-left: 20px;
 
-  .chef-description {
-    width: 335px;
-    text-align: justify;
-    line-height: 28px;
-    height: 252px;
-    letter-spacing: 1.25px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    .arrow-icon {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
