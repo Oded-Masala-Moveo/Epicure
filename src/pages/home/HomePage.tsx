@@ -1,30 +1,24 @@
 import React from "react";
 import {
+  AboutSection,
   ChefOfTehWeekSection,
   DishSection,
+  Footer,
   RestSection,
   SignatureSection,
 } from "../../layouts";
-import { Hero, Carousel, Card } from "../../components";
-import { Arrow, SpicyBig, VeganBig, VegetarianBig } from "../../assets/icons";
+import { Hero } from "../../components";
 import "./homePage.scss";
-import { getRestaurants, getDishes, getChefs } from "../../services";
 const HomePage: React.FC = () => {
-  const restData = getRestaurants();
-  const dishData = getDishes();
-  const chefData = getChefs();
-  const chefOfTheWeek = (chefId: number) => {
-    return restData.filter((rest) => rest.chefId === chefId);
-  };
   return (
     <>
-      <div>
-        <Hero />
-        <RestSection />
-        <DishSection />
-        <SignatureSection />
-        <ChefOfTehWeekSection />
-      </div>
+      <Hero />
+      <RestSection />
+      <DishSection />
+      <SignatureSection />
+      <ChefOfTehWeekSection />
+      <AboutSection />
+      <Footer />
     </>
   );
 };
