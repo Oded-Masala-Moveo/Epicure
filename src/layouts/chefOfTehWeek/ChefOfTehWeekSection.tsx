@@ -14,8 +14,8 @@ const ChefOfTehWeekSection: React.FC = () => {
       {chefData &&
         chefData
           .filter((chef) => chef.weekChef === true)
-          .map((chef) => (
-            <>
+          .map((chef, index) => (
+            <div key={`${chef.id} ${index}`}>
               <div className="chef-detail">
                 <div className="chef-title">
                   <h2>Chef of the week:</h2>
@@ -42,7 +42,7 @@ const ChefOfTehWeekSection: React.FC = () => {
                 <h3>All restaurants</h3>
                 <Arrow className="arrow-icon" />
               </div>
-            </>
+            </div>
           ))}
     </section>
   );

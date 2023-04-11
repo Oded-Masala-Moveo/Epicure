@@ -8,17 +8,18 @@ import {
   SignatureSection,
 } from "../../layouts";
 import { Hero } from "../../components";
-import "./homePage.scss";
 const HomePage: React.FC = () => {
   return (
     <>
-      <Hero />
-      <RestSection />
-      <DishSection />
-      <SignatureSection />
-      <ChefOfTehWeekSection />
-      <AboutSection />
-      <Footer />
+      <div>
+        <Hero />
+        <RestSection />
+        <DishSection />
+        <SignatureSection />
+        <ChefOfTehWeekSection />
+        <AboutSection />
+        <Footer />
+      </div>
     </>
   );
 };
