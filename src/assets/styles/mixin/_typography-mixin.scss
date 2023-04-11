@@ -69,8 +69,6 @@
 /* DESKTOP DEVICES */
 @mixin desk-title-h1() {
   @include font-style();
-  width: 402px;
-  height: 80px;
   font-weight: 200;
   font-size: 32px;
   line-height: 40px;

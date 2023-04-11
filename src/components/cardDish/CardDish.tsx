@@ -19,19 +19,19 @@ const CardDish: React.FC<{ card: Dish }> = ({ card }) => {
             {card.description && <p>{card.description}</p>}
           </div>
           {card.category &&
-            card.category.map((cardCategory) => (
-              <div className="card-category">
+            card.category.map((cardCategory, index) => (
+              <div key={index} className="card-category">
                 {cardCategory == Category.Spicy && <SpicySmall />}
                 {cardCategory == Category.Vegetarian && <VegetarianSmall />}
                 {cardCategory == Category.Vegan && <VeganSmall />}
               </div>
             ))}
-          <h3 className="price-container">
+          <div className="price-container">
             <h3>
               <Shekel className="shekel-logo" />
             </h3>
             {card.price}
-          </h3>
+          </div>
         </div>
       </div>
     </>
