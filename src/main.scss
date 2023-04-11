@@ -42,3 +42,10 @@ p {
     @include desk-body-text();
   }
 }
+
+input {
+  @include mobile-input-text();
+  @include desktop() {
+    @include desk-input-text();
+  }
+}

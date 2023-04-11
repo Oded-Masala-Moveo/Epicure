@@ -10,7 +10,7 @@ const DesktopNavbar: React.FC = () => {
         <div>
           <Link to="/" className="navbar-logo">
             <Logo className="logo" />
-            <h1>EPICURE</h1>
+            <h2>EPICURE</h2>
           </Link>
         </div>
         <div>
