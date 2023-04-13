@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { useEventListener, useIsomorphicLayoutEffect } from "usehooks-ts";
 
 interface WindowSize {
@@ -30,5 +29,6 @@ function useWindowSize(): WindowSize {
 
   return windowSize;
 }
-
+export const tablet = 768;
+export const desktop = 1024;
 export default useWindowSize;
