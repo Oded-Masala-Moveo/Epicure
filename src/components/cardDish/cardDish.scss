@@ -1,14 +1,23 @@
-@import "../../assets/styles/variable";
+@import "../../assets/styles/variable",
+  "../../assets/styles/mixin/media-queries";
 
 .card-dish-container {
   padding: 0px;
   background-color: $secondary-beige;
   width: 245px;
   height: 388px;
+  @include desktop() {
+    width: 380px;
+    height: 654px;
+  }
   .card-image-container {
     img {
       width: 245px;
       height: 152px;
+      @include desktop() {
+        width: 380px;
+        height: 306px;
+      }
     }
   }
   .card-text-container {
@@ -16,10 +25,21 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 16px 0px 0px 16px;
-
+    @include desktop() {
+      width: 380px;
+      height: 348px;
+      padding: 0px;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 24px 0px 8px;
+    }
     .card-description {
       height: 129px;
       width: 209px;
+      @include desktop() {
+        width: 295px;
+        height: 123px;
+      }
       h3 {
         padding-bottom: 8px;
       }
@@ -33,6 +53,9 @@
       margin-bottom: 16px;
       height: 24px;
       width: 30px;
+      @include desktop() {
+        order: 2;
+      }
     }
     .price-container {
       grid-column: span 1;

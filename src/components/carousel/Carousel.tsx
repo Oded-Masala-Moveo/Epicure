@@ -6,7 +6,7 @@ import { Card } from "../../components";
 import useWindowSize from "../../hooks/useWindowSize";
 import { CardsList } from "../../models/index.model";
 
-const Carousel: React.FC<{ cards: CardsList; weekChef: boolean }> = ({
+const Carousel: React.FC<{ cards: CardsList; weekChef?: boolean }> = ({
   cards,
   weekChef,
 }) => {
@@ -25,7 +25,7 @@ const Carousel: React.FC<{ cards: CardsList; weekChef: boolean }> = ({
             {cards &&
               cards.length > 0 &&
               cards.map((cardItem, index) => (
-                <SwiperSlide key={cardItem.name}>
+                <SwiperSlide key={`${cardItem.name} ${cardItem.id} ${index}`}>
                   <Card key={cardItem.name} card={cardItem} week={weekChef} />
                 </SwiperSlide>
               ))}

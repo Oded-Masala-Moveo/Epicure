@@ -1,5 +1,6 @@
-@import "../../assets/styles/mixin/display-mixin",
-  "../../assets/styles/mixin/typography-mixin", "../../assets/styles/variable";
+@import "../../../assets/styles/mixin/display-mixin",
+  "../../../assets/styles/mixin/typography-mixin",
+  "../../../assets/styles/variable";
 
 @keyframes example {
   0% {
@@ -68,7 +69,7 @@
   }
 }
 
-.nav-bar {
+.mobile-nav-bar {
   padding: 0px 10px 0px 10px;
   position: fixed;
   z-index: 999;

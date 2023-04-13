@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { Hero } from "../../components";
-import { Logo, Hamburger, Search, User, Bag, X_dark } from "../../assets/icons";
-import "./navbar.scss";
+import {
+  Logo,
+  Hamburger,
+  Search,
+  User,
+  Bag,
+  X_dark,
+} from "../../../assets/icons";
+import "./MobileNavbar.scss";
 import { Link } from "react-router-dom";
-
-const Navbar: React.FC = () => {
+const MobileNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBagOpen, setIsBagOpen] = useState(false);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -20,7 +24,7 @@ const Navbar: React.FC = () => {
   };
   return (
     <>
-      <div className="nav-bar">
+      <div className="mobile-nav-bar">
         <div onClick={toggleMenu} className="right-navbar">
           {isMenuOpen ? (
             <X_dark className="hamburger-icon" />
@@ -44,9 +48,6 @@ const Navbar: React.FC = () => {
         ) : null}
         <div>{isMenuOpen && <MenuNav setMenu={toggleMenu} />}</div>
       </div>
-
-      {/* {isSearchOpen && <SearchNav setSearch={toggleSearch} />}
-      {isBagOpen && !isMenuOpen && <BagNav setBag={toggleBag} />} */}
     </>
   );
 };
@@ -101,4 +102,5 @@ const BagNav: React.FC = () => {
     </>
   );
 };
-export default Navbar;
+
+export default MobileNavbar;

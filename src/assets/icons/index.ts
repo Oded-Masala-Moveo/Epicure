@@ -16,6 +16,8 @@ import { ReactComponent as VegetarianSmall } from "./vegetarianSmall.svg";
 import { ReactComponent as SpicyBig } from "./spicyBig.svg";
 import { ReactComponent as SpicySmall } from "./spicySmall.svg";
 import { ReactComponent as Logo } from "./about-logo@3x 1.svg";
+import { ReactComponent as FullStar } from "./Star 1.svg";
+import { ReactComponent as EmptyStar } from "./Star 5.svg";
 
 export {
   Hamburger,
@@ -36,4 +38,6 @@ export {
   VegetarianSmall,
   SpicyBig,
   SpicySmall,
+  FullStar,
+  EmptyStar,
 };

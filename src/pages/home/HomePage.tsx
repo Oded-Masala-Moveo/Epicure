@@ -1,21 +1,14 @@
 import React from "react";
 import {
+  AboutSection,
   ChefOfTehWeekSection,
   DishSection,
+  Footer,
   RestSection,
   SignatureSection,
 } from "../../layouts";
-import { Hero, Carousel, Card } from "../../components";
-import { Arrow, SpicyBig, VeganBig, VegetarianBig } from "../../assets/icons";
-import "./homePage.scss";
-import { getRestaurants, getDishes, getChefs } from "../../services";
+import { Hero } from "../../components";
 const HomePage: React.FC = () => {
-  const restData = getRestaurants();
-  const dishData = getDishes();
-  const chefData = getChefs();
-  const chefOfTheWeek = (chefId: number) => {
-    return restData.filter((rest) => rest.chefId === chefId);
-  };
   return (
     <>
       <div>
@@ -24,6 +17,8 @@ const HomePage: React.FC = () => {
         <DishSection />
         <SignatureSection />
         <ChefOfTehWeekSection />
+        <AboutSection />
+        <Footer />
       </div>
     </>
   );

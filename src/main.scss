@@ -1,7 +1,8 @@
 // @tailwind base;
 // @tailwind components;
 // @tailwind utilities;
-@import "./assets/styles/mixin/typography-mixin";
+@import "./assets/styles/mixin/typography-mixin",
+  "./assets/styles/mixin/media-queries";
 * {
   margin: 0;
   padding: 0;
@@ -9,20 +10,42 @@
 }
 
 html {
-  height: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
 }
 body {
-  min-height: 100%;
+}
+a {
+  text-decoration: none;
 }
 h1 {
   @include mobile-title-h1();
+  @include desktop() {
+    @include desk-title-h1();
+  }
 }
 h2 {
   @include mobile-title-h2();
+  @include desktop() {
+    @include desk-title-h2();
+  }
 }
 h3 {
   @include mobile-title-h3();
+  @include desktop() {
+    @include desk-title-h3();
+  }
 }
 p {
   @include mobile-body-text();
+  @include desktop() {
+    @include desk-body-text();
+  }
+}
+
+input {
+  @include mobile-input-text();
+  @include desktop() {
+    @include desk-input-text();
+  }
 }

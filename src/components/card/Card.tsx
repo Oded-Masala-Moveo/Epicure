@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./card.scss";
 import { CardItem } from "../../models/index.model";
 
 import CardDish from "../cardDish/CardDish";
-export const Card: React.FC<{ card: CardItem; week: boolean }> = ({
+import { EmptyStar, FullStar } from "../../assets/icons";
+export const Card: React.FC<{ card: CardItem; week?: boolean }> = ({
   card,
   week,
 }) => {
+  const displayStars = (rate: number) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < rate) {
+        stars.push(
+          <div key={`full-star ${i}`} className="star">
+            <FullStar />
+          </div>
+        );
+      } else {
+        stars.push(
+          <div key={`empty-start ${i}`} className="star">
+            <EmptyStar />
+          </div>
+        );
+      }
+    }
+    return stars;
+  };
+  useEffect(() => {
+    console.log(card);
+  }, []);
   if ("name" in card && "chef" in card)
     return (
       <>
@@ -18,6 +41,9 @@ export const Card: React.FC<{ card: CardItem; week: boolean }> = ({
             <h3>{card.name}</h3>
             {week ? null : <p>{card.chef}</p>}
           </div>
+          {week ? null : (
+            <div className="star-rating">{displayStars(card.rate)}</div>
+          )}
         </div>
       </>
     );
@@ -25,12 +51,13 @@ export const Card: React.FC<{ card: CardItem; week: boolean }> = ({
     return (
       <>
         <div className="card-chef-container">
-          <div className="card-image-container">
-            <img src={card.image} alt={card.name} />
-          </div>
-          <div className="card-text-container">
-            <h2>{card.name}</h2>
-            {card.description && <p>{card.description}</p>}
+          <div className="chef-header">
+            <div className="chef-image">
+              <img src={card.image} alt={card.name} />
+              <div className="chef-name">
+                <h3>{card.name}</h3>
+              </div>
+            </div>
           </div>
         </div>
       </>
