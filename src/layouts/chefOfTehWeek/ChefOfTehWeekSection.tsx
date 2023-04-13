@@ -20,21 +20,21 @@ const ChefOfTehWeekSection: React.FC = () => {
                 <div className="chef-title">
                   <h2>Chef of the week:</h2>
                 </div>
-                {/* <div className="chef-header">
-                  <div className="chef-image">
-                    <img src={chef.image} alt={chef.name} />
-                    <div className="chef-name">
-                      <h3>{chef.name}</h3>
-                    </div>
+                <div className="chef-box">
+                  <Card week={true} card={chef} />
+                  <div className="chef-description">
+                    <p>{chef.description}</p>
                   </div>
-                </div> */}
-                <Card card={chef} />
-                <div className="chef-description">
-                  <p>{chef.description}</p>
                 </div>
                 <div className="chef-week-title">
-                  <h2>Chef of the week:</h2>
+                  <h2 className="mobile-title">Chef of the week:</h2>
+                  <h1 className="desktop-title">{`${chef.fName}'s Restaurants`}</h1>
                 </div>
+              </div>
+              <div className="desktop-cards">
+                {chefOfTheWeek(chef.id).map((rest, index) => (
+                  <Card week={true} card={rest} />
+                ))}
               </div>
               <div className="carousel">
                 {<Carousel cards={chefOfTheWeek(chef.id)} weekChef={true} />}

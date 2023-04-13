@@ -25,49 +25,87 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 16px 0px 0px 16px;
+
     @include desktop() {
       width: 380px;
       height: 348px;
       padding: 0px;
-      justify-content: flex-start;
       align-items: center;
-      padding: 24px 0px 8px;
+      justify-content: space-between;
+      padding: 0px;
+      padding-top: 24px;
     }
-    .card-description {
-      height: 129px;
-      width: 209px;
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       @include desktop() {
-        width: 295px;
-        height: 123px;
+        align-items: center;
+        gap: 9px;
       }
-      h3 {
-        padding-bottom: 8px;
+      .card-title {
+        @include desktop() {
+          order: 1;
+          h3 {
+          }
+        }
       }
-      p {
-        letter-spacing: 0.97px;
+      .card-description {
+        width: 209px;
+        height: 100px;
+        @include desktop() {
+          text-align: center;
+          order: 3;
+          width: 295px;
+        }
+      }
+      .card-category {
+        margin-top: 16px;
+        grid-column: span 1;
+        margin-bottom: 16px;
+
+        width: 30px;
+        height: 24px;
+        @include desktop() {
+          order: 2;
+          width: 40px;
+          height: 31px;
+          margin: 0px;
+        }
       }
     }
-    .card-category {
-      margin-top: 16px;
-      grid-column: span 1;
-      margin-bottom: 16px;
-      height: 24px;
-      width: 30px;
-      @include desktop() {
-        order: 2;
-      }
-    }
+
     .price-container {
       grid-column: span 1;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
+      gap: 5px;
       justify-content: flex-start;
+      @include desktop() {
+        margin-bottom: 7px;
+        align-items: center;
+        p {
+          text-align: end;
+        }
+      }
+      .price-line {
+        display: none;
+        @include desktop() {
+          display: block;
+          border: 0.5px solid $primary-light;
+          width: 112px;
+          height: 0px;
+        }
+      }
       .shekel-logo {
         height: 10px;
         width: 10px;
 
-        margin-right: 4px;
+        @include desktop() {
+          width: 18px;
+          height: 21px;
+        }
       }
     }
   }
