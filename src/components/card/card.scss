@@ -1,4 +1,5 @@
-@import "../../assets/styles/variable";
+@import "../../assets/styles/variable",
+  "../../assets/styles/mixin/media-queries";
 
 .card-restaurant-container {
   display: flex;
@@ -8,10 +9,30 @@
   background-color: $secondary-beige;
   width: 245px;
   height: 232.8px;
+  @include desktop() {
+    align-items: center;
+    width: 379px;
+    height: 405px;
+  }
+  .star-rating {
+    display: none;
+    @include desktop() {
+      display: flex;
+      margin-top: 8px;
+    }
+    .star {
+      width: 40px;
+      height: 40px;
+    }
+  }
   .card-image-container {
     img {
       height: 151.8px;
       width: 245px;
+      @include desktop() {
+        width: 379px;
+        height: 236px;
+      }
     }
   }
   .card-text-container {
@@ -21,5 +42,29 @@
     padding-left: 16px;
     padding-top: 10px;
     gap: 8px;
+    @include desktop() {
+      padding-left: 0px;
+      padding-top: 18px;
+      align-items: center;
+    }
+  }
+}
+
+.card-chef-container {
+  .chef-header {
+    height: 262px;
+    margin-bottom: 24px;
+
+    .chef-name {
+      background-color: $secondary-gray;
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+      width: 335px;
+      z-index: 20;
+      position: relative;
+      bottom: 50px;
+      background: rgba(255, 255, 255, 0.8);
+    }
   }
 }

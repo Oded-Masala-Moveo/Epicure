@@ -1,6 +1,12 @@
 .dish-container {
   margin-bottom: 46px;
   padding-left: 20px;
+  .deskyop-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
   .popular-container {
     margin: 48px 0px 16px 0px;
   }

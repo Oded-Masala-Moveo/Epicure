@@ -22,8 +22,8 @@ export interface Dish {
   price: number;
   quantity: number;
   image: string;
-  side: Array<string>;
-  changesOptions: Array<string>;
+  side: string[];
+  changesOptions: string[];
   category?: Category[];
   mealTime: MealTime[];
   subcategory: string;

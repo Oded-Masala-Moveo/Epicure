@@ -6,7 +6,7 @@ import { Card } from "../../components";
 import useWindowSize from "../../hooks/useWindowSize";
 import { CardsList } from "../../models/index.model";
 
-const Carousel: React.FC<{ cards: CardsList; weekChef: boolean }> = ({
+const Carousel: React.FC<{ cards: CardsList; weekChef?: boolean }> = ({
   cards,
   weekChef,
 }) => {
