@@ -6,7 +6,9 @@ export type CardItem = Dish | Restaurant | Chef;
 
 export interface Chef {
   id: number;
-  name: string;
+  fName: string;
+  lName: string;
+  fullName: string;
   description: string;
   image: string;
   dateCreated: string;
@@ -24,8 +26,8 @@ export interface Dish {
   image: string;
   side: string[];
   changesOptions: string[];
-  category?: Category[];
-  mealTime: MealTime[];
+  category?: string[];
+  mealTime: string[];
   subcategory: string;
   createdAt: string;
   updatedAt: string;

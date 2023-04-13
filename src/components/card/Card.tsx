@@ -4,10 +4,11 @@ import { CardItem } from "../../models/index.model";
 
 import CardDish from "../cardDish/CardDish";
 import { EmptyStar, FullStar } from "../../assets/icons";
-export const Card: React.FC<{ card: CardItem; week?: boolean }> = ({
-  card,
-  week,
-}) => {
+export const Card: React.FC<{
+  card: CardItem;
+  week?: boolean;
+  hidePrice?: boolean;
+}> = ({ card, week, hidePrice }) => {
   const displayStars = (rate: number) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -27,42 +28,48 @@ export const Card: React.FC<{ card: CardItem; week?: boolean }> = ({
     }
     return stars;
   };
-  useEffect(() => {
-    console.log(card);
-  }, []);
+
   if ("name" in card && "chef" in card)
     return (
       <>
-        <div className="card-restaurant-container">
+        <div
+          className={
+            week
+              ? "card-restaurant-container card-chef-week"
+              : "card-restaurant-container"
+          }
+        >
           <div className="card-image-container">
             <img src={card.image} alt={`${card.name} ${card.id}`} />
           </div>
           <div className="card-text-container">
             <h3>{card.name}</h3>
-            {week ? null : <p>{card.chef}</p>}
+            {!week && <p>{card.chef}</p>}
           </div>
-          {week ? null : (
+          {!week && (
             <div className="star-rating">{displayStars(card.rate)}</div>
           )}
         </div>
       </>
     );
-  if ("name" in card && "newChef" in card)
+  if ("fullName" in card && "newChef" in card)
     return (
       <>
         <div className="card-chef-container">
-          <div className="chef-header">
+          <div
+            className={week ? "chef-header chef-of-the-week" : "chef-header"}
+          >
             <div className="chef-image">
-              <img src={card.image} alt={card.name} />
+              <img src={card.image} alt={card.fullName} />
               <div className="chef-name">
-                <h3>{card.name}</h3>
+                <h3>{card.fullName}</h3>
               </div>
             </div>
           </div>
         </div>
       </>
     );
-  return <CardDish card={card} />;
+  return <CardDish hidePrice={hidePrice} card={card} />;
 };
 
 export default Card;

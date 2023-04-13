@@ -12,9 +12,7 @@ const RestSection: React.FC = () => {
   const chefOfTheWeek = (chefId: number) => {
     return restData.filter((rest) => rest.chefId === chefId);
   };
-  useEffect(() => {
-    console.log(restData);
-  }, []);
+  useEffect(() => {}, []);
   return (
     <section className="restaurants-container">
       <div className="popular-container">
@@ -23,8 +21,8 @@ const RestSection: React.FC = () => {
       {width && width < desktop && <Carousel cards={restData} />}
       {width && width >= desktop && (
         <div className="desktop-card">
-          {restData.slice(0, 3).map((rest) => (
-            <Card card={rest} />
+          {restData.slice(0, 3).map((rest, index) => (
+            <Card key={index} week={false} card={rest} />
           ))}
         </div>
       )}

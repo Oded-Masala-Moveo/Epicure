@@ -15,9 +15,13 @@ const DishSection: React.FC = () => {
       </div>
       {width && width < desktop && <Carousel cards={dishData} />}
       {width && width >= desktop && (
-        <div className="deskyop-card">
-          {dishData.slice(0, 3).map((dish) => (
-            <Card card={dish} />
+        <div className="desktop-card">
+          {dishData.slice(0, 3).map((dish, index) => (
+            <Card
+              key={index}
+              hidePrice={index == 1 ? false : true}
+              card={dish}
+            />
           ))}
         </div>
       )}
