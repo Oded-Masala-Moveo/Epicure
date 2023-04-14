@@ -8,7 +8,8 @@ export const Card: React.FC<{
   card: CardItem;
   week?: boolean;
   hidePrice?: boolean;
-}> = ({ card, week, hidePrice }) => {
+  restPage?: boolean;
+}> = ({ card, week, hidePrice, restPage }) => {
   const displayStars = (rate: number) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -34,9 +35,10 @@ export const Card: React.FC<{
       <>
         <div
           className={
-            week
-              ? "card-restaurant-container card-chef-week"
-              : "card-restaurant-container"
+            (week && "card-restaurant-container card-chef-week") ||
+            (restPage &&
+              "card-restaurant-container card-restaurant-page-container") ||
+            "card-restaurant-container"
           }
         >
           <div className="card-image-container">
@@ -59,8 +61,10 @@ export const Card: React.FC<{
           <div
             className={week ? "chef-header chef-of-the-week" : "chef-header"}
           >
-            <div className="chef-image">
-              <img src={card.image} alt={card.fullName} />
+            <div
+              className="chef-image"
+              style={{ backgroundImage: `url(${card.image})` }}
+            >
               <div className="chef-name">
                 <h3>{card.fullName}</h3>
               </div>
