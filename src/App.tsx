@@ -1,19 +1,22 @@
 import React from "react";
-import "./main.scss";
+import "./app.scss";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/home/HomePage";
-import { Navbar } from "./layouts";
+// import HomePage from "./pages/home/HomePage";
+import { Footer, Navbar } from "./layouts";
+import { RestaurantsPage, HomePage } from "./pages";
 
 const App: React.FC = () => {
   return (
-    <div>
+    <body>
       <div>
         <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/restaurants" element={<RestaurantsPage />}></Route>
+        </Routes>
       </div>
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-      </Routes>
-    </div>
+      <Footer />
+    </body>
   );
 };
 

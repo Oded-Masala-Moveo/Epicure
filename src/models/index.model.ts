@@ -56,6 +56,7 @@ export interface Restaurant {
   email: string;
   website: string;
   date: string;
+  new: boolean;
   open: boolean;
   rate: number;
 }
@@ -65,4 +66,11 @@ export interface Address {
   city: string;
   state: string;
   zip: string;
+}
+
+export enum RestaurantCategory {
+  ALL = "All",
+  NEW = "New",
+  POPULAR = "Most Popular",
+  OPEN = "Open Now",
 }
