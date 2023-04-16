@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "fName": "Yossi",
     "lName": "Shitrit",
     "fullName": "Yossi Shitrit",
@@ -12,7 +12,7 @@
     "viewed": ""
   },
   {
-    "id": 2,
+    "id": "2",
     "fName": "Asaf ",
     "lName": "Granit",
     "fullName": "Asaf Granit",
@@ -24,7 +24,7 @@
     "viewed": ""
   },
   {
-    "id": 3,
+    "id": "3",
     "fName": "Aviv",
     "lName": "Moshe",
     "fullName": "Aviv Moshe",
@@ -36,7 +36,7 @@
     "viewed": ""
   },
   {
-    "id": 4,
+    "id": "4",
     "fName": "Eyal",
     "lName": "Shani",
     "fullName": "Eyal Shani",
@@ -48,7 +48,7 @@
     "viewed": ""
   },
   {
-    "id": 5,
+    "id": "5",
     "fName": "Meir",
     "lName": "Adoni",
     "fullName": "Meir Adoni",
@@ -60,7 +60,7 @@
     "viewed": ""
   },
   {
-    "id": 6,
+    "id": "6",
     "fName": "Omer",
     "lName": "Miller",
     "fullName": "Omer Miller",
@@ -72,7 +72,7 @@
     "viewed": ""
   },
   {
-    "id": 7,
+    "id": "7",
     "fName": "Shahaf",
     "lName": "Shabtay",
     "fullName": "Shahaf Shabtay",
@@ -84,7 +84,7 @@
     "viewed": ""
   },
   {
-    "id": 8,
+    "id": "8",
     "fName": "Nitzan",
     "lName": "Raz",
     "fullName": "Nitzan Raz",
@@ -96,7 +96,7 @@
     "viewed": ""
   },
   {
-    "id": 9,
+    "id": "9",
     "fName": "Yuval",
     "lName": "Ben Neriah",
     "fullName": "Yuval Ben Neriah",

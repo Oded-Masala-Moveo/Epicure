@@ -1,14 +1,9 @@
 import { Arrow } from "../../assets/icons";
 import { Card, Carousel } from "../../components";
-import { getChefs, getDishes, getRestaurants } from "../../services";
+import { getChefs, getRestaurantByChefId } from "../../services";
 import "./chefOfTehWeek.scss";
 const ChefOfTehWeekSection: React.FC = () => {
-  const restData = getRestaurants();
-  const dishData = getDishes();
   const chefData = getChefs();
-  const chefOfTheWeek = (chefId: number) => {
-    return restData.filter((rest) => rest.chefId === chefId);
-  };
   return (
     <section className="chef-container">
       {chefData &&
@@ -32,12 +27,21 @@ const ChefOfTehWeekSection: React.FC = () => {
                 </div>
               </div>
               <div className="desktop-cards">
-                {chefOfTheWeek(chef.id).map((rest, index) => (
-                  <Card week={true} card={rest} />
+                {getRestaurantByChefId(chef.id).map((rest, index) => (
+                  <Card
+                    week={true}
+                    key={`${chef.fullName}${index}`}
+                    card={rest}
+                  />
                 ))}
               </div>
               <div className="carousel">
-                {<Carousel cards={chefOfTheWeek(chef.id)} weekChef={true} />}
+                {
+                  <Carousel
+                    cards={getRestaurantByChefId(chef.id)}
+                    weekChef={true}
+                  />
+                }
               </div>
               <div className="link-to-restaurants">
                 <h3>All restaurants</h3>

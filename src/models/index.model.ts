@@ -5,7 +5,7 @@ export type CardsList = Restaurant[] | Dish[] | Chef[];
 export type CardItem = Dish | Restaurant | Chef;
 
 export interface Chef {
-  id: number;
+  id: string;
   fName: string;
   lName: string;
   fullName: string;
@@ -17,8 +17,8 @@ export interface Chef {
   viewed: string;
 }
 export interface Dish {
-  id: number;
-  restId: number;
+  id: string;
+  restId: string;
   name: string;
   description: string;
   price: number;
@@ -27,7 +27,7 @@ export interface Dish {
   side: string[];
   changesOptions: string[];
   category?: string[];
-  mealTime: string[];
+  mealTime: string;
   subcategory: string;
   createdAt: string;
   updatedAt: string;
@@ -45,12 +45,12 @@ export enum MealTime {
 }
 
 export interface Restaurant {
-  id: number;
+  id: string;
   name: string;
   chef: string;
   image: string;
   image2?: string;
-  chefId: number;
+  chefId: string;
   address: Address;
   phone: string;
   email: string;
