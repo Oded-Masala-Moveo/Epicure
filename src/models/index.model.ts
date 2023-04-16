@@ -74,3 +74,9 @@ export enum RestaurantCategory {
   POPULAR = "Most Popular",
   OPEN = "Open Now",
 }
+
+export enum RestaurantRange {
+  PRICE = "Price",
+  DISTANCE = "Distance",
+  RATING = "Rating",
+}

@@ -7,6 +7,8 @@ import { Footer } from "../../layouts";
 import { Link } from "react-router-dom";
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { ArrowDown } from "../../assets/icons";
+import { Dropdown } from "flowbite-react";
+import DropdownButton from "../../components/DropdownButton/DropdownButton";
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();
   const [selectedCategory, setSelectedCategory] = useState<string>(
@@ -89,7 +91,6 @@ const RestaurantsPage: React.FC = () => {
             <p>Map View</p>
           </li>
         </ul>
-
         <ul className="range-filter-restaurant">
           <li className="range-option">
             <p>Price Range</p>

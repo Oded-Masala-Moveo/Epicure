@@ -4,6 +4,7 @@ import { CardItem } from "../../models/index.model";
 
 import CardDish from "../cardDish/CardDish";
 import { EmptyStar, FullStar } from "../../assets/icons";
+import { Link } from "react-router-dom";
 export const Card: React.FC<{
   card: CardItem;
   week?: boolean;
@@ -33,25 +34,27 @@ export const Card: React.FC<{
   if ("name" in card && "chef" in card)
     return (
       <>
-        <div
-          className={
-            (week && "card-restaurant-container card-chef-week") ||
-            (restPage &&
-              "card-restaurant-container card-restaurant-page-container") ||
-            "card-restaurant-container"
-          }
-        >
-          <div className="card-image-container">
-            <img src={card.image} alt={`${card.name} ${card.id}`} />
+        <Link to={`/restaurants:${card.id}`}>
+          <div
+            className={
+              (week && "card-restaurant-container card-chef-week") ||
+              (restPage &&
+                "card-restaurant-container card-restaurant-page-container") ||
+              "card-restaurant-container"
+            }
+          >
+            <div className="card-image-container">
+              <img src={card.image} alt={`${card.name} ${card.id}`} />
+            </div>
+            <div className="card-text-container">
+              <h3>{card.name}</h3>
+              {!week && <p>{card.chef}</p>}
+            </div>
+            {!week && (
+              <div className="star-rating">{displayStars(card.rate)}</div>
+            )}
           </div>
-          <div className="card-text-container">
-            <h3>{card.name}</h3>
-            {!week && <p>{card.chef}</p>}
-          </div>
-          {!week && (
-            <div className="star-rating">{displayStars(card.rate)}</div>
-          )}
-        </div>
+        </Link>
       </>
     );
   if ("fullName" in card && "newChef" in card)
