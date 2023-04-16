@@ -7,7 +7,7 @@ import { Footer } from "../../layouts";
 import { Link } from "react-router-dom";
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { ArrowDown } from "../../assets/icons";
-import { Dropdown } from "flowbite-react";
+// import { Dropdown } from "flowbite-react";
 import DropdownButton from "../../components/DropdownButton/DropdownButton";
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();
@@ -113,9 +113,7 @@ const RestaurantsPage: React.FC = () => {
         </ul>
         <div className="restaurants-list">
           {displayRestaurants.map((restaurant) => (
-            <Link to={`/restaurants:${restaurant.id}`}>
-              <Card restPage={width < tablet} card={restaurant} />{" "}
-            </Link>
+            <Card restPage={width < tablet} card={restaurant} />
           ))}
         </div>
       </section>
