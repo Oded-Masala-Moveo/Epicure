@@ -14,7 +14,12 @@ export interface Chef {
   dateCreated: string;
   weekChef: boolean;
   newChef: boolean;
-  viewed: string;
+  viewed: number;
+}
+export enum ChefCategory {
+  All = "All",
+  new = "New",
+  Viewed = "Most Viewed",
 }
 export interface Dish {
   id: string;

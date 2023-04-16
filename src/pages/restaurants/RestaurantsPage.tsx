@@ -17,13 +17,16 @@ const RestaurantsPage: React.FC = () => {
   const [displayRestaurants, setDisplayRestaurants] = useState<Restaurant[]>(
     []
   );
-  const handelClickCategory = (category: string) => {
-    setDisplayRestaurants(filterRestaurants(category));
+  const handelClickCategory = (category: string) =>
     setSelectedCategory(category);
-  };
+
   useEffect(() => {
-    setDisplayRestaurants(filterRestaurants(RestaurantCategory.ALL));
-  }, []);
+    const setRestaurantsData = () => {
+      const Restaurants = getRestaurants();
+      setDisplayRestaurants(filterRestaurants(Restaurants, selectedCategory));
+    };
+    setRestaurantsData();
+  }, [selectedCategory]);
   return (
     <>
       <section className="restaurants-section">

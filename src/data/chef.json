@@ -9,19 +9,19 @@
     "dateCreated": "",
     "weekChef": true,
     "newChef": false,
-    "viewed": ""
+    "viewed": 150
   },
   {
     "id": "2",
-    "fName": "Asaf ",
+    "fName": "Asaf",
     "lName": "Granit",
     "fullName": "Asaf Granit",
     "description": "Chef Asaf Granit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
     "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/ntr_259359_pq1udn.png",
     "dateCreated": "",
     "weekChef": false,
-    "newChef": false,
-    "viewed": ""
+    "newChef": true,
+    "viewed": 250
   },
   {
     "id": "3",
@@ -32,8 +32,8 @@
     "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/762799301000100980653no_l3dugg.png",
     "dateCreated": "",
     "weekChef": false,
-    "newChef": false,
-    "viewed": ""
+    "newChef": true,
+    "viewed": 231
   },
   {
     "id": "4",
@@ -44,8 +44,8 @@
     "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/DSC6992-P_1_ioqhpl.png",
     "dateCreated": "",
     "weekChef": false,
-    "newChef": false,
-    "viewed": ""
+    "newChef": true,
+    "viewed": 420
   },
   {
     "id": "5",
@@ -56,8 +56,8 @@
     "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/meirAdoni_qfvnfw.png",
     "dateCreated": "",
     "weekChef": false,
-    "newChef": false,
-    "viewed": ""
+    "newChef": true,
+    "viewed": 150
   },
   {
     "id": "6",
@@ -68,8 +68,8 @@
     "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522352/chef/omerMiller_hd_autoOrient_i_hec3a2.png",
     "dateCreated": "",
     "weekChef": false,
-    "newChef": false,
-    "viewed": ""
+    "newChef": true,
+    "viewed": 150
   },
   {
     "id": "7",
@@ -80,8 +80,8 @@
     "image": "https://res.cloudinary.com/dg38okczg/image/upload/v1680522353/chef/%D7%A9%D7%97%D7%A3-%D7%A9%D7%91%D7%AA%D7%90%D7%99_pux7nk.png",
     "dateCreated": "",
     "weekChef": false,
-    "newChef": false,
-    "viewed": ""
+    "newChef": true,
+    "viewed": 146
   },
   {
     "id": "8",
@@ -93,7 +93,7 @@
     "dateCreated": "",
     "weekChef": false,
     "newChef": false,
-    "viewed": ""
+    "viewed": 46
   },
   {
     "id": "9",
@@ -105,6 +105,6 @@
     "dateCreated": "",
     "weekChef": false,
     "newChef": false,
-    "viewed": ""
+    "viewed": 31
   }
 ]

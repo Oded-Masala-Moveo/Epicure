@@ -2,6 +2,8 @@ import restData from "../data/restaurant.json";
 import dishData from "../data/dish.json";
 import chefData from "../data/chef.json";
 import {
+  Chef,
+  ChefCategory,
   Dish,
   MealTime,
   Restaurant,
@@ -30,40 +32,58 @@ export const getChefs = () => {
   return chefData;
 };
 
-export const filterRestaurants = (category?: string): Restaurant[] => {
+export const filterRestaurants = (
+  receivedRestaurants: Restaurant[],
+  category: string
+): Restaurant[] => {
+  const restaurants = receivedRestaurants;
   switch (category) {
     case RestaurantCategory.NEW:
-      return getRestaurants().filter((r) => r.new);
+      return restaurants.filter((r) => r.new);
 
     case RestaurantCategory.POPULAR:
-      return getRestaurants().filter((r) => r.rate >= 4);
+      return restaurants.filter((r) => r.rate >= 4);
 
     case RestaurantCategory.OPEN:
-      return getRestaurants().filter((r) => r.open);
+      return restaurants.filter((r) => r.open);
 
     default:
-      return getRestaurants();
+      return restaurants;
   }
 };
 
-export const filterDishes = (restId: string, category?: string): Dish[] => {
+export const filterDishes = (
+  receivedDishes: Dish[],
+  category: string
+): Dish[] => {
+  const dishes = receivedDishes;
   switch (category) {
     case MealTime.Breakfast:
-      return getDishesByRestId(restId).filter(
-        (r) => r.mealTime == MealTime.Breakfast
-      );
+      return dishes.filter((r) => r.mealTime == MealTime.Breakfast);
 
     case MealTime.Lunch:
-      return getDishesByRestId(restId).filter(
-        (r) => r.mealTime == MealTime.Lunch
-      );
+      return dishes.filter((r) => r.mealTime == MealTime.Lunch);
 
     case MealTime.Dinner:
-      return getDishesByRestId(restId).filter(
-        (r) => r.mealTime == MealTime.Dinner
-      );
+      return dishes.filter((r) => r.mealTime == MealTime.Dinner);
 
     default:
       return [];
+  }
+};
+export const filterChefs = (
+  receivedChefs: Chef[],
+  category: string
+): Chef[] => {
+  const chefs = receivedChefs;
+  switch (category) {
+    case ChefCategory.new:
+      return chefs.filter((r) => r.newChef);
+
+    case ChefCategory.Viewed:
+      return chefs.filter((r) => r.viewed > 200);
+
+    default:
+      return chefs;
   }
 };

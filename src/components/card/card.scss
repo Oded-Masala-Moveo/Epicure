@@ -98,15 +98,15 @@
 }
 .card-chef-container {
   .chef-header {
-    width: 335px;
-    height: 262px;
-    margin-bottom: 24px;
+    width: 378px;
+    height: 338px;
+
     .chef-image {
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      width: 335px;
-      height: 262px;
+      width: 378px;
+      height: 338px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -120,6 +120,9 @@
     }
   }
   .chef-of-the-week {
+    margin-bottom: 24px;
+    width: 335px;
+    height: 262px;
     @include desktop() {
       width: 478px;
       height: 372px;
@@ -127,6 +130,8 @@
     }
 
     .chef-image {
+      width: 335px;
+      height: 262px;
       @include desktop() {
         background-size: contain;
 
