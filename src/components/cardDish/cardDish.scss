@@ -114,14 +114,18 @@
 .dish-page-card {
   width: 335px;
   height: 375.84px;
+  @include desktop() {
+    width: 272px;
+    height: 413px;
+  }
   .card-image-container {
     img {
       width: 335px;
       height: 212px;
-      // @include desktop() {
-      //   width: 380px;
-      //   height: 306px;
-      // }
+      @include desktop() {
+        width: 272px;
+        height: 172.73px;
+      }
     }
   }
   .card-text-container {
@@ -131,36 +135,75 @@
     padding-left: 16px;
     padding-top: 10px;
     gap: 8px;
+    @include desktop() {
+      width: 272px;
+      height: 211.27px;
+      padding: 0px;
+      margin-top: 24px;
+      align-items: center;
+      justify-content: start;
+    }
     .card-text {
       gap: 8px;
       .card-title {
         h3 {
           font-weight: 700;
+          @include desktop() {
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 26px;
+          }
         }
-      }
-
-      p {
-        line-height: 20px;
       }
 
       .card-description {
         width: 303px;
         height: 75px;
+        @include desktop() {
+          width: 222px;
+          height: 137.29px;
+        }
+        p {
+          line-height: 20px;
+          @include desktop() {
+            font-size: 20px;
+            line-height: 24px;
+          }
+        }
       }
     }
     .price-container {
       margin: 0px;
       p {
         @include mobile-title-h3;
+        @include desktop() {
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 30px;
+          text-align: center;
+          letter-spacing: 1.97px;
+        }
       }
       .shekel-logo {
         margin-top: 5px;
       }
-      .price-card-line {
+      .price-card-line-1 {
+        display: none;
+        @include desktop() {
+          display: block;
+          border: 0.5px solid $primary-light;
+          height: 0px;
+          width: 82.5px;
+        }
+      }
+      .price-card-line-2 {
         margin-left: 4px;
         border: 0.5px solid $primary-light;
         width: 256px;
         height: 0px;
+        @include desktop() {
+          width: 82.5px;
+        }
       }
     }
   }

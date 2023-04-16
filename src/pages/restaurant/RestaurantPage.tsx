@@ -5,8 +5,10 @@ import { filterDishes, getRestaurantById } from "../../services";
 import { Dish, MealTime, Restaurant } from "../../models/index.model";
 import { Clock } from "../../assets/icons";
 import { Card } from "../../components";
+import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 
 const RestaurantPage: React.FC = () => {
+  const { width } = useWindowSize();
   const { restId } = useParams();
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([]);
   const [restaurant, setRestaurant] = useState<Restaurant>();

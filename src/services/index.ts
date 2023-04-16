@@ -42,7 +42,7 @@ export const filterRestaurants = (category?: string): Restaurant[] => {
       return getRestaurants().filter((r) => r.open);
 
     default:
-      return [];
+      return getRestaurants();
   }
 };
 
