@@ -34,7 +34,7 @@ export const Card: React.FC<{
   if ("name" in card && "chef" in card)
     return (
       <>
-        <Link to={`/restaurants/:${card.id}`}>
+        <Link to={`/restaurants/${card.id}`}>
           <div
             className={
               (week && "card-restaurant-container card-chef-week") ||

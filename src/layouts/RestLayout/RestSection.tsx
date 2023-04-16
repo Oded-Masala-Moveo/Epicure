@@ -4,6 +4,7 @@ import { Card, Carousel } from "../../components";
 import { getChefs, getDishes, getRestaurants } from "../../services";
 import "./RestSection.scss";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
+import { Link } from "react-router-dom";
 const RestSection: React.FC = () => {
   const { width, height } = useWindowSize();
   const restData = getRestaurants();
@@ -26,10 +27,12 @@ const RestSection: React.FC = () => {
           ))}
         </div>
       )}
-      <div className="link-to-restaurants">
-        <h3>All restaurants</h3>
-        <Arrow className="arrow-icon" />
-      </div>
+      <Link to={"/restaurants"}>
+        <div className="link-to-restaurants">
+          <h3>All restaurants</h3>
+          <Arrow className="arrow-icon" />
+        </div>
+      </Link>
     </section>
   );
 };

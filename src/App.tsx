@@ -9,11 +9,11 @@ const App: React.FC = () => {
   return (
     <body>
       <div>
-        {/* <Navbar /> */}
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="restaurants" element={<RestaurantsPage />} />
-          <Route path="restaurants/:id" element={<RestaurantPage />} />
+          <Route path="/restaurants" element={<RestaurantsPage />} />
+          <Route path="/restaurants/:restId" element={<RestaurantPage />} />
         </Routes>
       </div>
       <Footer />
