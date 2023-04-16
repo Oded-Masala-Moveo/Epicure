@@ -9,6 +9,9 @@ footer {
   border-top: 1px solid $border-color;
   padding-top: 32px;
   padding-bottom: 32px;
+  @include desktop() {
+    padding: 0px;
+  }
   .footer-container {
     padding-left: 20px;
     display: flex;

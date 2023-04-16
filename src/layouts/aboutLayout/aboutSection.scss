@@ -8,10 +8,9 @@
   flex-direction: column;
   padding-left: 20px;
   @include desktop() {
-    // background-color: red;
     flex-direction: row;
     justify-content: space-between;
-    margin: 120px 127px 0px 127px;
+    padding: 120px 127px 0px 127px;
   }
   .about-logo-container {
     margin-top: 24px;

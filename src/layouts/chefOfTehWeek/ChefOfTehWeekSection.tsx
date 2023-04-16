@@ -1,19 +1,9 @@
 import { Arrow } from "../../assets/icons";
 import { Card, Carousel } from "../../components";
-import {
-  getChefs,
-  getDishes,
-  getRestaurantByChefId,
-  getRestaurants,
-} from "../../services";
+import { getChefs, getRestaurantByChefId } from "../../services";
 import "./chefOfTehWeek.scss";
 const ChefOfTehWeekSection: React.FC = () => {
-  const restData = getRestaurants();
-  const dishData = getDishes();
   const chefData = getChefs();
-  const chefOfTheWeek = (chefId: number) => {
-    return restData.filter((rest) => rest.chefId === chefId);
-  };
   return (
     <section className="chef-container">
       {chefData &&

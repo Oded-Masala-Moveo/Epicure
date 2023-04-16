@@ -45,6 +45,8 @@
         @include mobile-title-h3();
         letter-spacing: 1.92px;
         border-bottom: 2px solid $secondary-yellow;
+        padding-bottom: 8px;
+
         @include desktop() {
           border: none;
         }
