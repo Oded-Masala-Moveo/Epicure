@@ -5,18 +5,23 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  padding-left: 20px;
+  width: 100%;
+  border-top: 1px solid $border-color;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  @include desktop() {
+    padding: 0px;
+  }
   .footer-container {
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 146px;
-    margin-top: 32px;
-    padding-bottom: 32px;
+    gap: 40px;
+
     @include desktop() {
       flex-direction: row;
       height: 84px;
-      border-top: 0.2px solid $primary-light;
       padding: 0px;
       margin: 0px;
       margin-bottom: 20px;

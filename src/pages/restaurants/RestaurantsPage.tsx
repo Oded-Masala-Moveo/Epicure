@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./RestaurantsPage.scss";
-import { getRestaurants } from "../../services";
+import { filterRestaurants, getRestaurants } from "../../services";
 import { Restaurant, RestaurantCategory } from "../../models/index.model";
 import { Card } from "../../components";
 import { Footer } from "../../layouts";
@@ -17,30 +17,12 @@ const RestaurantsPage: React.FC = () => {
   const [displayRestaurants, setDisplayRestaurants] = useState<Restaurant[]>(
     []
   );
-  const restaurants = () => {
-    return getRestaurants();
-  };
   const handelClickCategory = (category: string) => {
-    filterRestaurants(category);
+    setDisplayRestaurants(filterRestaurants(category));
     setSelectedCategory(category);
   };
-  const filterRestaurants = (category?: string): void => {
-    switch (category) {
-      case RestaurantCategory.NEW:
-        setDisplayRestaurants(restaurants().filter((r) => r.new));
-        break;
-      case RestaurantCategory.POPULAR:
-        setDisplayRestaurants(restaurants().filter((r) => r.rate >= 4));
-        break;
-      case RestaurantCategory.OPEN:
-        setDisplayRestaurants(restaurants().filter((r) => r.open));
-        break;
-      default:
-        setDisplayRestaurants(restaurants());
-    }
-  };
   useEffect(() => {
-    filterRestaurants(RestaurantCategory.ALL);
+    setDisplayRestaurants(filterRestaurants(RestaurantCategory.ALL));
   }, []);
   return (
     <>

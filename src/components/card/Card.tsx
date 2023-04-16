@@ -10,7 +10,8 @@ export const Card: React.FC<{
   week?: boolean;
   hidePrice?: boolean;
   restPage?: boolean;
-}> = ({ card, week, hidePrice, restPage }) => {
+  dishPage?: boolean;
+}> = ({ card, week, hidePrice, restPage, dishPage }) => {
   const displayStars = (rate: number) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -76,7 +77,7 @@ export const Card: React.FC<{
         </div>
       </>
     );
-  return <CardDish hidePrice={hidePrice} card={card} />;
+  return <CardDish dishPage={dishPage} hidePrice={hidePrice} card={card} />;
 };
 
 export default Card;
