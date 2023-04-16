@@ -1,6 +1,10 @@
+@import "../../assets/styles/mixin/media-queries",
+  "../../assets/styles/variable";
 footer {
-  //   width: 377px;
-  //   height: 202px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding-left: 20px;
   .footer-container {
     display: flex;
@@ -9,6 +13,16 @@ footer {
     height: 146px;
     margin-top: 32px;
     padding-bottom: 32px;
+    @include desktop() {
+      flex-direction: row;
+      height: 84px;
+      border-top: 0.2px solid $primary-light;
+      padding: 0px;
+      margin: 0px;
+      margin-bottom: 20px;
+      align-items: center;
+      justify-content: center;
+    }
     a {
       width: 150px;
       text-decoration: none;

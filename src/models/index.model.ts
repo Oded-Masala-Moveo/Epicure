@@ -6,7 +6,9 @@ export type CardItem = Dish | Restaurant | Chef;
 
 export interface Chef {
   id: number;
-  name: string;
+  fName: string;
+  lName: string;
+  fullName: string;
   description: string;
   image: string;
   dateCreated: string;
@@ -24,8 +26,8 @@ export interface Dish {
   image: string;
   side: string[];
   changesOptions: string[];
-  category?: Category[];
-  mealTime: MealTime[];
+  category?: string[];
+  mealTime: string[];
   subcategory: string;
   createdAt: string;
   updatedAt: string;
@@ -54,6 +56,7 @@ export interface Restaurant {
   email: string;
   website: string;
   date: string;
+  new: boolean;
   open: boolean;
   rate: number;
 }
@@ -63,4 +66,17 @@ export interface Address {
   city: string;
   state: string;
   zip: string;
+}
+
+export enum RestaurantCategory {
+  ALL = "All",
+  NEW = "New",
+  POPULAR = "Most Popular",
+  OPEN = "Open Now",
+}
+
+export enum RestaurantRange {
+  PRICE = "Price",
+  DISTANCE = "Distance",
+  RATING = "Rating",
 }

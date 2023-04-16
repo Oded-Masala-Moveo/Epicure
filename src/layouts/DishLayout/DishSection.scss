@@ -1,7 +1,11 @@
+@import "../../assets/styles/mixin/media-queries";
 .dish-container {
   margin-bottom: 46px;
   padding-left: 20px;
-  .deskyop-card {
+  @include desktop() {
+    margin-bottom: 80px;
+  }
+  .desktop-card {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
@@ -15,6 +19,9 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    @include desktop() {
+      display: none;
+    }
     .arrow-icon {
       width: 24px;
       height: 24px;

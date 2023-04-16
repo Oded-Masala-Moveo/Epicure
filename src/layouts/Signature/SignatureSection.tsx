@@ -4,7 +4,8 @@ const SignatureSection: React.FC = () => {
   return (
     <section>
       <div className="signature-container">
-        <h2>Signature Dish Of:</h2>
+        <h2 className="mobile-title">Signature Dish Of:</h2>
+        <h2 className="desktop-title">THE MEANING OF OUR ICONS:</h2>
         <div className="icons-container">
           <div className="signature-icon">
             <SpicyBig className="Spicy-icon" />

@@ -18,7 +18,6 @@ const HomePage: React.FC = () => {
         <SignatureSection />
         <ChefOfTehWeekSection />
         <AboutSection />
-        <Footer />
       </div>
     </>
   );

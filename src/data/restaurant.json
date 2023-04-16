@@ -16,6 +16,7 @@
     "email": "",
     "website": "",
     "date": "",
+    "new": true,
     "open": false,
     "rate": 4
   },
@@ -36,6 +37,7 @@
     "email": "",
     "website": "",
     "date": "",
+    "new": true,
     "open": false,
     "rate": 3
   },
@@ -56,7 +58,8 @@
     "email": "",
     "website": "",
     "date": "",
-    "open": false,
+    "new": true,
+    "open": true,
     "rate": 4
   },
   {
@@ -75,6 +78,7 @@
     "email": "",
     "website": "",
     "date": "",
+    "new": false,
     "open": false,
     "rate": 1
   },
@@ -94,6 +98,7 @@
     "email": "",
     "website": "",
     "date": "",
+    "new": false,
     "open": false,
     "rate": 4
   },
@@ -113,8 +118,9 @@
     "email": "",
     "website": "",
     "date": "",
-    "open": false,
-    "rate": 2
+    "new": false,
+    "open": true,
+    "rate": 4
   },
   {
     "id": 7,
@@ -132,8 +138,9 @@
     "email": "",
     "website": "",
     "date": "",
-    "open": false,
-    "rate": 2
+    "new": false,
+    "open": true,
+    "rate": 5
   },
   {
     "id": 8,
@@ -151,6 +158,7 @@
     "email": "",
     "website": "",
     "date": "",
+    "new": false,
     "open": false,
     "rate": 2
   },
@@ -170,7 +178,8 @@
     "email": "",
     "website": "",
     "date": "",
-    "open": false,
-    "rate": 2
+    "new": false,
+    "open": true,
+    "rate": 4
   }
 ]
