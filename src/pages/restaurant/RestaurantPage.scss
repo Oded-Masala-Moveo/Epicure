@@ -1,5 +1,61 @@
-.restaurant-section {
-  background-color: red;
+@import "../../assets/styles/mixin/media-queries",
+  "../../assets/styles/mixin/typography-mixin";
+
+.restaurant-image-container {
+  width: 100%;
   padding-top: 47px;
+  .restaurant-image {
+    height: 272px;
+    width: 100%;
+  }
+}
+.restaurant-section {
   padding-left: 18px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  .restaurant-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .open-container {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .clock-icon {
+      width: 17px;
+      height: 18px;
+    }
+  }
+  .dish-category {
+    list-style: none;
+    display: flex;
+    gap: 21px;
+    margin-top: 33px;
+    .category {
+      cursor: pointer;
+      p {
+        font-size: 18px;
+      }
+    }
+    .selected {
+      p {
+        @include mobile-title-h3();
+        letter-spacing: 1.92px;
+        border-bottom: 2px solid $secondary-yellow;
+        @include desktop() {
+          border: none;
+        }
+      }
+    }
+  }
+  .dish-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 58px;
+  }
 }

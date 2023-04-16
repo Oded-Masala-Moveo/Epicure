@@ -6,13 +6,20 @@ import {
 } from "../../assets/icons";
 import { Dish, Category } from "../../models/index.model";
 import "./cardDish.scss";
-const CardDish: React.FC<{ card: Dish; hidePrice?: boolean }> = ({
-  card,
-  hidePrice,
-}) => {
+const CardDish: React.FC<{
+  card: Dish;
+  hidePrice?: boolean;
+  dishPage?: boolean;
+}> = ({ card, hidePrice, dishPage }) => {
   return (
     <>
-      <div className="card-dish-container">
+      <div
+        className={
+          !dishPage
+            ? "card-dish-container"
+            : "card-dish-container dish-page-card"
+        }
+      >
         <div className="card-image-container">
           <img src={card.image} alt={card.name} />
         </div>
@@ -24,7 +31,8 @@ const CardDish: React.FC<{ card: Dish; hidePrice?: boolean }> = ({
             <div className="card-description">
               {card.description && <p>{card.description}</p>}
             </div>
-            {card.category &&
+            {!dishPage &&
+              card.category &&
               card.category.map((cardCategory, index) => (
                 <div key={index} className="card-category">
                   {cardCategory == Category.Spicy && <SpicySmall />}
@@ -35,10 +43,12 @@ const CardDish: React.FC<{ card: Dish; hidePrice?: boolean }> = ({
           </div>
           {!hidePrice && (
             <div className="price-container">
-              <div className="price-line"></div>
+              {!dishPage && <div className="price-line"></div>}
+
               <Shekel className="shekel-logo" />
               <p>{card.price}</p>
-              <div className="price-line"></div>
+              {dishPage && <div className="price-card-line"></div>}
+              {!dishPage && <div className="price-line"></div>}
             </div>
           )}
         </div>
