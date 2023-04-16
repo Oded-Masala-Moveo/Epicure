@@ -25,8 +25,8 @@ const Carousel: React.FC<{ cards: CardsList; weekChef?: boolean }> = ({
             {cards &&
               cards.length > 0 &&
               cards.map((cardItem, index) => (
-                <SwiperSlide key={`${cardItem.name} ${cardItem.id} ${index}`}>
-                  <Card key={cardItem.name} card={cardItem} week={weekChef} />
+                <SwiperSlide key={`${cardItem.id} ${index}`}>
+                  <Card key={cardItem.id} card={cardItem} week={weekChef} />
                 </SwiperSlide>
               ))}
           </Swiper>
