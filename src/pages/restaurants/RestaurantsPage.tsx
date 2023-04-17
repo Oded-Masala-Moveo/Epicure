@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./RestaurantsPage.scss";
 import { filterRestaurants, getRestaurants } from "../../services";
-import { Restaurant, RestaurantCategory } from "../../models/index.model";
+import { Restaurant, RestaurantCategory } from "../../models";
 import { Card } from "../../components";
-import { Footer } from "../../layouts";
-import { Link } from "react-router-dom";
+
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { ArrowDown } from "../../assets/icons";
-// import { Dropdown } from "flowbite-react";
 import DropdownButton from "../../components/DropdownButton/DropdownButton";
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ChefPage.scss";
-import { Chef, ChefCategory } from "../../models/index.model";
+import { Chef, ChefCategory } from "../../models";
 import { filterChefs, getChefs } from "../../services";
 import { Card } from "../../components";
 const ChefPage: React.FC = () => {

@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import "./card.scss";
-import { CardItem } from "../../models/index.model";
-
+import { Chef, Dish, Restaurant } from "../../models";
 import CardDish from "../cardDish/CardDish";
 import { EmptyStar, FullStar } from "../../assets/icons";
 import { Link } from "react-router-dom";
+
+type CardItem = Dish | Restaurant | Chef;
 export const Card: React.FC<{
   card: CardItem;
   week?: boolean;

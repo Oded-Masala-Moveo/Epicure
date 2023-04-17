@@ -4,7 +4,7 @@ import {
   VeganSmall,
   VegetarianSmall,
 } from "../../assets/icons";
-import { Dish, Category } from "../../models/index.model";
+import { Dish, DishCategory } from "../../models";
 import "./cardDish.scss";
 const CardDish: React.FC<{
   card: Dish;
@@ -33,11 +33,13 @@ const CardDish: React.FC<{
             </div>
             {!dishPage &&
               card.category &&
-              card.category.map((cardCategory, index) => (
+              card.category.map((cardDishCategory, index) => (
                 <div key={index} className="card-category">
-                  {cardCategory == Category.Spicy && <SpicySmall />}
-                  {cardCategory == Category.Vegetarian && <VegetarianSmall />}
-                  {cardCategory == Category.Vegan && <VeganSmall />}
+                  {cardDishCategory == DishCategory.Spicy && <SpicySmall />}
+                  {cardDishCategory == DishCategory.Vegetarian && (
+                    <VegetarianSmall />
+                  )}
+                  {cardDishCategory == DishCategory.Vegan && <VeganSmall />}
                 </div>
               ))}
           </div>

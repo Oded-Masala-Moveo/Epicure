@@ -27,6 +27,7 @@
       gap: 40px;
     }
     .category {
+      cursor: pointer;
       p {
         @include desktop() {
           @include desk-body-text();
