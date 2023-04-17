@@ -9,44 +9,73 @@ import {
 } from "../../../assets/icons";
 import "./MobileNavbar.scss";
 import { Link } from "react-router-dom";
+import BagShop, { MobileNavBag } from "../../../components/bag/BagShop";
+import { InputSearch } from "../../../components";
 const MobileNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBagOpen, setIsBagOpen] = useState(false);
-  const toggleMenu = () => {
+  const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);
+    setIsSearchOpen(false);
+    setIsBagOpen(false);
   };
-  const toggleSearch = () => {
+  const toggleSearch = (): void => {
     setIsSearchOpen(!isSearchOpen);
+    setIsBagOpen(false);
   };
-  const toggleBag = () => {
+  const toggleBag = (): void => {
     setIsBagOpen(!isBagOpen);
   };
   return (
     <>
-      <div className="mobile-nav-bar">
-        <div onClick={toggleMenu} className="right-navbar">
-          {isMenuOpen ? (
-            <X_dark className="hamburger-icon" />
+      <div
+        className={
+          isSearchOpen ? "mobile-nav-bar search-nav-clicked" : "mobile-nav-bar"
+        }
+      >
+        <div className="right-navbar">
+          {isMenuOpen || isSearchOpen ? (
+            <div onClick={isMenuOpen ? toggleMenu : toggleSearch}>
+              <X_dark className="hamburger-icon" />
+            </div>
           ) : (
-            <Hamburger className="hamburger-icon" />
+            <div onClick={toggleMenu}>
+              <Hamburger className="hamburger-icon" />
+            </div>
           )}
         </div>
-        {!isBagOpen && !isMenuOpen && !isSearchOpen ? (
-          <div className="left-navbar">
+        {!isMenuOpen && !isSearchOpen ? (
+          <div className={"left-navbar"}>
             <div>
               <Link to={"/"}>
                 <Logo className="navbar-logo" />
               </Link>
             </div>
             <div className="icons-container">
-              <Search className="icon" />
-              <User className="icon" />
-              <Bag className="icon" />
+              <div onClick={toggleSearch}>
+                <Search className="icon" />
+              </div>
+              <div>
+                <User className="icon" />
+              </div>
+              <div onClick={toggleBag}>
+                <Bag className="icon" />
+              </div>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <>
+            {isSearchOpen && (
+              <div className="search-title">
+                <p>search</p>
+              </div>
+            )}
+          </>
+        )}
         <div>{isMenuOpen && <MenuNav setMenu={toggleMenu} />}</div>
+        <div>{isBagOpen && <BagShop />}</div>
+        <div>{isSearchOpen && <MobileSearchNav />}</div>
       </div>
     </>
   );
@@ -78,29 +107,13 @@ const MenuNav: React.FC<{ setMenu: () => void }> = ({ setMenu }) => {
   );
 };
 
-const SearchNav: React.FC = () => {
+const MobileSearchNav: React.FC = () => {
   return (
     <div className="search-nav">
-      <Link to="/search">
-        <Search className="icon" />
-      </Link>
+      <div className="search-container">
+        <InputSearch mobileNav={true} />
+      </div>
     </div>
   );
 };
-
-const BagNav: React.FC = () => {
-  return (
-    <>
-      <div className="bag-nav">
-        <div className="bag-container">
-          <Bag width={"49px"} height={"49px"} />
-          <div>
-            <h2>Your bag is empty</h2>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
 export default MobileNavbar;

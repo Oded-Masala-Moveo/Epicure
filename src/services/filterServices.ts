@@ -2,7 +2,7 @@ import {
   Chef,
   ChefCategory,
   Dish,
-  MealTime,
+  DishMealTime,
   Restaurant,
   RestaurantCategory,
 } from "../models";
@@ -11,7 +11,7 @@ export const filterRestaurants = (
   receivedRestaurants: Restaurant[],
   category: string
 ): Restaurant[] => {
-  const restaurants = receivedRestaurants;
+  const restaurants = [...receivedRestaurants];
   switch (category) {
     case RestaurantCategory.NEW:
       return restaurants.filter((r) => r.new);
@@ -30,16 +30,16 @@ export const filterDishes = (
   receivedDishes: Dish[],
   category: string
 ): Dish[] => {
-  const dishes = receivedDishes;
+  const dishes = [...receivedDishes];
   switch (category) {
-    case MealTime.Breakfast:
-      return dishes.filter((r) => r.mealTime == MealTime.Breakfast);
+    case DishMealTime.Breakfast:
+      return dishes.filter((r) => r.mealTime == DishMealTime.Breakfast);
 
-    case MealTime.Lunch:
-      return dishes.filter((r) => r.mealTime == MealTime.Lunch);
+    case DishMealTime.Lunch:
+      return dishes.filter((r) => r.mealTime == DishMealTime.Lunch);
 
-    case MealTime.Dinner:
-      return dishes.filter((r) => r.mealTime == MealTime.Dinner);
+    case DishMealTime.Dinner:
+      return dishes.filter((r) => r.mealTime == DishMealTime.Dinner);
 
     default:
       return [];
@@ -50,7 +50,7 @@ export const filterChefs = (
   receivedChefs: Chef[],
   category: string
 ): Chef[] => {
-  const chefs = receivedChefs;
+  const chefs = [...receivedChefs];
   switch (category) {
     case ChefCategory.new:
       return chefs.filter((r) => r.newChef);
