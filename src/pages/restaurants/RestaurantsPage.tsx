@@ -3,7 +3,6 @@ import "./RestaurantsPage.scss";
 import { filterRestaurants, getRestaurants } from "../../services";
 import { Restaurant, RestaurantCategory } from "../../models";
 import { Card } from "../../components";
-
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { ArrowDown } from "../../assets/icons";
 import DropdownButton from "../../components/DropdownButton/DropdownButton";

@@ -1,0 +1,28 @@
+@import "../../assets/styles/animation";
+
+.mobile-bag-nav {
+  @include Appeared();
+  position: absolute;
+  width: -webkit-fill-available;
+  height: 218px;
+  left: -1px;
+  top: 46px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .bag-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    gap: 20px;
+    width: 250px;
+    height: 210px;
+    .bag-icon {
+      width: 49px;
+    }
+  }
+}

@@ -1,16 +1,7 @@
 @import "../../../assets/styles/mixin/display-mixin",
   "../../../assets/styles/mixin/typography-mixin",
-  "../../../assets/styles/variable";
+  "../../../assets/styles/variable", "../../../assets/styles/animation";
 
-@keyframes example {
-  0% {
-    background-color: #ffffff96;
-  }
-
-  100% {
-    background-color: #ffffff;
-  }
-}
 .menu-nav {
   height: 367px;
   display: flex;
@@ -19,8 +10,7 @@
   height: 367px;
   left: -1px;
   top: 46px;
-  animation-name: example;
-  animation-duration: 0.5s;
+  @include Appeared();
   width: -webkit-fill-available;
   background-color: #ffffff;
   list-style: none;
@@ -44,28 +34,6 @@
     flex-direction: column;
     justify-content: center;
     gap: 40px;
-  }
-}
-
-.bag-nav {
-  position: absolute;
-  width: 100%;
-  height: 218px;
-  background: white;
-  box-shadow: 2px 4px 10px rgba(175, 175, 175, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .bag-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0px;
-    gap: 20px;
-    width: 145px;
-    height: 178px;
   }
 }
 
@@ -115,5 +83,52 @@
     height: 24px;
     width: 24px;
     cursor: pointer;
+  }
+}
+.search-nav-clicked {
+  justify-content: flex-start;
+}
+.bag-nav {
+  position: absolute;
+  width: -webkit-fill-available;
+  height: 218px;
+  left: -1px;
+  top: 46px;
+  background: white;
+  box-shadow: 2px 4px 10px rgba(175, 175, 175, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .bag-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    gap: 20px;
+    width: 145px;
+    height: 178px;
+  }
+}
+
+.search-nav {
+  height: 367px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 367px;
+  left: -1px;
+  top: 46px;
+  @include Appeared();
+  width: -webkit-fill-available;
+  background-color: #ffffff;
+  list-style: none;
+  a {
+    text-decoration: none;
+  }
+  .search-container {
+    display: flex;
+    justify-content: center;
   }
 }

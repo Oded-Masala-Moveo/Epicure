@@ -1,6 +1,7 @@
 import React from "react";
 import "./hero.scss";
 import { Search } from "../../assets/icons";
+import InputSearch from "../inputSearch/InputSearch";
 const Hero: React.FC = () => {
   return (
     <>
@@ -15,17 +16,5 @@ const Hero: React.FC = () => {
     </>
   );
 };
-export const InputSearch: React.FC = () => {
-  return (
-    <>
-      <div className="input-container">
-        <Search className="search-button" />
-        <input
-          placeholder="Search for restaurant cuisine, chef"
-          type="text"
-        ></input>
-      </div>
-    </>
-  );
-};
+
 export default Hero;
