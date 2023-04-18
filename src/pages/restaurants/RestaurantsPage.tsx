@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./RestaurantsPage.scss";
 import { filterRestaurants, getRestaurants } from "../../services";
 import { Restaurant, RestaurantCategory,RestaurantRange } from "../../models";
-import { Card } from "../../components";
+import { Card, DistanceComponent, PriceComponent, RatingComponent } from "../../components";
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { ArrowDown } from "../../assets/icons";
 import Dropdown from "../../components/DropdownButton/Dropdown";
@@ -43,13 +43,13 @@ const RestaurantsPage: React.FC = () => {
         </ul>
         <ul  className="range-filter-restaurant">
           <div onClick={handelClickRange(RestaurantRange.PRICE)}>
-            <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<ArrowDown />} />
+            <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent/>} />
           </div>
           <div onClick={handelClickRange(RestaurantRange.DISTANCE)}>
-          <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<ArrowDown />} />
+          <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<DistanceComponent />} />
           </div>
           <div onClick={handelClickRange(RestaurantRange.RATING)}>
-            <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<ArrowDown />} />
+            <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<RatingComponent/>} />
           </div>
         </ul>
         <div className="restaurants-list">
