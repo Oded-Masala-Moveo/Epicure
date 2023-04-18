@@ -73,9 +73,9 @@ const MobileNavbar: React.FC = () => {
             )}
           </>
         )}
-        <div>{isMenuOpen && <MenuNav setMenu={toggleMenu} />}</div>
-        <div>{isBagOpen && <BagShop />}</div>
-        <div>{isSearchOpen && <MobileSearchNav />}</div>
+        {isMenuOpen && <MenuNav setMenu={toggleMenu} />}
+        {isBagOpen && <BagShop />}
+        {isSearchOpen && <MobileSearchNav />}
       </div>
     </>
   );

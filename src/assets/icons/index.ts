@@ -1,5 +1,4 @@
 import { ReactComponent as Hamburger } from "./HAMBURGER.svg";
-import { ReactComponent as Active_bag } from "./active-bag.svg";
 import { ReactComponent as Arrow } from "./arrow.svg";
 import { ReactComponent as Bag } from "./bag.svg";
 import { ReactComponent as Clock } from "./clock.svg";
@@ -19,10 +18,9 @@ import { ReactComponent as Logo } from "./about-logo@3x 1.svg";
 import { ReactComponent as FullStar } from "./Star 1.svg";
 import { ReactComponent as EmptyStar } from "./Star 5.svg";
 import { ReactComponent as ArrowDown } from "./arrowDown.svg";
-
+import { ActiveBag } from "./ActiveBag";
 export {
   Hamburger,
-  Active_bag,
   Arrow,
   Bag,
   Clock,
@@ -42,4 +40,5 @@ export {
   FullStar,
   EmptyStar,
   ArrowDown,
+  ActiveBag,
 };
