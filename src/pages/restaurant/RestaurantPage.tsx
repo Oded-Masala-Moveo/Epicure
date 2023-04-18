@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./RestaurantPage.scss";
 import { useParams } from "react-router-dom";
-import {
-  filterDishes,
-  getDishesByRestId,
-  getRestaurantById,
-} from "../../services";
+import { filterDishes, getDishesByRestId, getRestaurantById, } from "../../services";
 import { Dish, DishMealTime, Restaurant } from "../../models";
 import { Clock } from "../../assets/icons";
 import { Card } from "../../components";
-
 const RestaurantPage: React.FC = () => {
   const { restId } = useParams();
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([]);
@@ -17,7 +12,6 @@ const RestaurantPage: React.FC = () => {
   const [dishCategory, setDishCategory] = useState<string>(
     DishMealTime.Breakfast
   );
-
   useEffect(() => {
     const setRestaurantData = () => {
       if (restId) {

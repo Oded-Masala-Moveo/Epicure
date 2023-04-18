@@ -5,18 +5,22 @@ interface DropdownButtonProps {
   dropdownLook: React.ReactNode;
   children: React.ReactNode;
   isOpen: boolean;
+  onClick?: () => void;
 }
 
 const Dropdown: React.FC<DropdownButtonProps> = ({
   dropdownLook,
   children,
   isOpen,
+  onClick
 }) => {
-  return (
+  return (<>
     <div className="dropdown">
-      {dropdownLook}
+      <div onClick={onClick}>{dropdownLook}</div>
       {isOpen && <div className="dropdown-content">{children}</div>}
+
     </div>
+  </>
   );
 };
 

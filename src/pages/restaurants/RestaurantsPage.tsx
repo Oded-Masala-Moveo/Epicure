@@ -42,17 +42,11 @@ const RestaurantsPage: React.FC = () => {
           <li className="map-view"> <p>Map View</p> </li>
         </ul>
         <ul  className="range-filter-restaurant">
-          <div onClick={handelClickRange(RestaurantRange.PRICE)}>
-            <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent/>} />
-          </div>
-          <div onClick={handelClickRange(RestaurantRange.DISTANCE)}>
-          <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<DistanceComponent />} />
-          </div>
-          <div onClick={handelClickRange(RestaurantRange.RATING)}>
-            <Dropdown isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<RatingComponent/>} />
-          </div>
+          <Dropdown onClick={handelClickRange(RestaurantRange.PRICE)} isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent/>} />
+          <Dropdown onClick={handelClickRange(RestaurantRange.DISTANCE)} isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<DistanceComponent />} />
+          <Dropdown onClick={handelClickRange(RestaurantRange.RATING)} isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<RatingComponent/>} />
         </ul>
-        <div className="restaurants-list">
+        <div className="restaurants-list" onClick={handelClickRange("")} >
           {displayRestaurants.map((restaurant) => (
             <Card restPage={width < tablet} card={restaurant} />
           ))}
