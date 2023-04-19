@@ -1,0 +1,52 @@
+@import "../../../assets/styles/mixin/typography-mixin",
+  "../../../assets/styles/variable";
+
+.click-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000000;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 5px 24px;
+  @include btn-text();
+  height: 1000px;
+  width: 206px;
+  height: 48px;
+  .icon-container {
+    display: none;
+  }
+}
+.primary-black {
+  padding: 5px 24px;
+  background: $primary-dark;
+  color: white;
+}
+
+.primary-gray {
+  background-color: $primary-gray;
+  padding: 5px 24px;
+  color: white;
+}
+
+.secondary {
+  background: none;
+  color: black;
+  padding: 5px 15px;
+}
+.secondary-black {
+  background: $primary-dark;
+  padding: 5px 15px;
+  color: white;
+}
+
+.icon-btn {
+  padding: 5px 16px;
+  gap: 10px;
+  .icon-container {
+    display: block;
+    width: 21px;
+    height: 24px;
+  }
+}

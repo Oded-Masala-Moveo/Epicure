@@ -64,6 +64,16 @@
   letter-spacing: 1.97px;
   color: $primary-light;
 }
+@mixin btn-text() {
+  @include font-style();
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 2.67px;
+  text-transform: uppercase;
+}
+
 /* DESKTOP DEVICES */
 @mixin desk-title-h1() {
   @include font-style();

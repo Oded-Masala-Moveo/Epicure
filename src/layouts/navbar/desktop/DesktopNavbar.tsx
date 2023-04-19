@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Logo, Search, User, Bag } from "../../../assets/icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import "./DesktopNavbar.scss";
 
 const DesktopNavbar: React.FC = () => {
+  const location = useLocation();
+  useEffect(() => {}, [location.pathname]);
   return (
     <nav>
       <div className="desktop-navbar-container">
@@ -14,12 +16,18 @@ const DesktopNavbar: React.FC = () => {
               <h2>EPICURE</h2>
             </Link>
           </div>
-          <div>
+          <div
+            className={
+              location.pathname.startsWith("/restaurants") ? "selected" : ""
+            }
+          >
             <Link to="/restaurants">
               <p>Restaurants</p>
             </Link>
           </div>
-          <div>
+          <div
+            className={location.pathname.startsWith("/chef") ? "selected" : ""}
+          >
             <Link to="/chef">
               <p>Chefs</p>
             </Link>

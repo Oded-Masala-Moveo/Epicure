@@ -1,5 +1,4 @@
 import { ReactComponent as Hamburger } from "./HAMBURGER.svg";
-import { ReactComponent as Active_bag } from "./active-bag.svg";
 import { ReactComponent as Arrow } from "./arrow.svg";
 import { ReactComponent as Bag } from "./bag.svg";
 import { ReactComponent as Clock } from "./clock.svg";
@@ -18,28 +17,11 @@ import { ReactComponent as SpicySmall } from "./spicySmall.svg";
 import { ReactComponent as Logo } from "./about-logo@3x 1.svg";
 import { ReactComponent as FullStar } from "./Star 1.svg";
 import { ReactComponent as EmptyStar } from "./Star 5.svg";
+import { ReactComponent as CheckOff } from "./checkOff.svg";
+import { ReactComponent as CheckOn } from "./checkOn.svg";
+import { ReactComponent as CheckCircleOff } from "./checkCircleOff.svg";
+import { ReactComponent as CheckCircleOn } from "./checkCircleOn.svg";
 import { ReactComponent as ArrowDown } from "./arrowDown.svg";
+import { ActiveBag } from "./ActiveBag";
 
-export {
-  Hamburger,
-  Active_bag,
-  Arrow,
-  Bag,
-  Clock,
-  Lock,
-  Search,
-  Shekel,
-  User,
-  X_dark,
-  X_white,
-  Logo,
-  VeganBig,
-  VeganSmall,
-  VegetarianBig,
-  VegetarianSmall,
-  SpicyBig,
-  SpicySmall,
-  FullStar,
-  EmptyStar,
-  ArrowDown,
-};
+export { Hamburger, Arrow, Bag, Clock, Lock, Search, Shekel, User, X_dark, X_white, Logo, VeganBig, VeganSmall, VegetarianBig, VegetarianSmall, SpicyBig, SpicySmall, FullStar, EmptyStar, ArrowDown, ActiveBag, CheckOff, CheckOn, CheckCircleOff, CheckCircleOn };

@@ -4,8 +4,9 @@ import "./carousel.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Card } from "../../components";
 import useWindowSize from "../../hooks/useWindowSize";
-import { CardsList } from "../../models/index.model";
+import { Chef, Dish, Restaurant } from "../../models";
 
+export type CardsList = Restaurant[] | Dish[] | Chef[];
 const Carousel: React.FC<{ cards: CardsList; weekChef?: boolean }> = ({
   cards,
   weekChef,

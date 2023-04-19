@@ -1,23 +1,27 @@
 import React, { useState } from "react";
-import "./DropdownButton.scss";
+import "./Dropdown.scss";
 
 interface DropdownButtonProps {
-  buttonText: string;
+  dropdownLook: React.ReactNode;
   children: React.ReactNode;
   isOpen: boolean;
+  onClick?: () => void;
 }
 
-const DropdownButton: React.FC<DropdownButtonProps> = ({
-  buttonText,
+const Dropdown: React.FC<DropdownButtonProps> = ({
+  dropdownLook,
   children,
   isOpen,
+  onClick
 }) => {
-  return (
+  return (<>
     <div className="dropdown">
-      <button className="btn">{buttonText}</button>
+      <div onClick={onClick}>{dropdownLook}</div>
       {isOpen && <div className="dropdown-content">{children}</div>}
+
     </div>
+  </>
   );
 };
 
-export default DropdownButton;
+export default Dropdown;

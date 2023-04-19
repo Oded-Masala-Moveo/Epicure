@@ -2,13 +2,12 @@ import { Link } from "react-router-dom";
 import { Arrow } from "../../assets/icons";
 import { Card, Carousel } from "../../components";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
-import { getChefs, getDishes, getRestaurants } from "../../services";
+import { getDishes } from "../../services";
 import "./DishSection.scss";
+
 const DishSection: React.FC = () => {
-  const { width, height } = useWindowSize();
-  const restData = getRestaurants();
+  const { width } = useWindowSize();
   const dishData = getDishes();
-  const chefData = getChefs();
   return (
     <section className="dish-container">
       <div className="popular-container">
