@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./RestaurantsPage.scss";
 import { filterRestaurants, getRestaurants } from "../../services";
 import { Restaurant, RestaurantCategory,RestaurantRange } from "../../models";
@@ -10,22 +10,26 @@ import LiElement from "../../components/li/LiElement";
 
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();
+  const restaurants:Restaurant[] =  useMemo(()=> getRestaurants() , []) ;
   const [selectedCategory, setSelectedCategory] = useState<string>( RestaurantCategory.ALL );
   const [displayRestaurants, setDisplayRestaurants] = useState<Restaurant[]>( [] );
   const [currentRange, setCurrentRange] = useState<string>("");
   const [rating, seRrating] = useState<number[]>([]);
+  const [values, setValues] = useState<[number, number]>([12, 357]);
+  const handleChange = (newValues: [number, number]):void => setValues(newValues);
   const handelClickCategory = (category: string) => () => setSelectedCategory(category);
   const handelClickRange = (rangeType: string) => () => rangeType == currentRange ? setCurrentRange("") : setCurrentRange(rangeType);
   const dropdownOpenOrClose = (rangeName:string) => (rangeState:string)=> rangeName == rangeState;
-  let restaurants:Restaurant[] = getRestaurants();
+  
   const setRestaurantsData = () => {
+    if(values[0]>12 || values[1]< 357) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory, rating ,values));
     if(rating[0]) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory, rating));
-    if (restaurants && !rating[0]) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory));
+    if (restaurants && !rating[0] && values[0] == 12 && values[1] == 357) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory));
   };
 
   useEffect(() => {
     setRestaurantsData();
-  }, [selectedCategory,rating]);
+  }, [selectedCategory,rating,values]);
   return (
     <>
       <section className="restaurants-section">
@@ -46,7 +50,7 @@ const RestaurantsPage: React.FC = () => {
           <li className="map-view"> <p>Map View</p> </li>
         </ul>
         <ul  className="range-filter-restaurant">
-          <Dropdown key={RestaurantRange.PRICE} onClick={handelClickRange(RestaurantRange.PRICE)} isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent />} />
+          <Dropdown key={RestaurantRange.PRICE} onClick={handelClickRange(RestaurantRange.PRICE)} isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent values={values} setValues={handleChange}/>} />
           <Dropdown key={RestaurantRange.DISTANCE} onClick={handelClickRange(RestaurantRange.DISTANCE)} isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<DistanceComponent   />} />
           <Dropdown key={RestaurantRange.RATING} onClick={handelClickRange(RestaurantRange.RATING)} isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<RatingComponent rateArr={rating} changeRate={seRrating}/>} />
         </ul>

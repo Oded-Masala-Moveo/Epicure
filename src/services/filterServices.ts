@@ -12,6 +12,7 @@ export const filterRestaurants = (
   receivedRestaurants: Restaurant[],
   category: string,
   ratingFilter?: number[],
+  priceFilter?: [number,number],
 ): Restaurant[] => {
   let filteredRestaurants = [...receivedRestaurants];
 
@@ -36,7 +37,11 @@ export const filterRestaurants = (
       ratingFilter.includes(r.rate)
     );
   }
-
+  if (priceFilter && priceFilter[0]>12 || priceFilter && priceFilter[1]< 357) {
+    filteredRestaurants = filteredRestaurants.filter((r) =>
+      r.lowerPrice >= priceFilter[0] && r.higherPrice <= priceFilter[1]
+    );
+  }
   return filteredRestaurants;
 };
 
