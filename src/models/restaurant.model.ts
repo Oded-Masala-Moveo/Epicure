@@ -30,7 +30,7 @@ export enum RestaurantCategory {
 }
 
 export enum RestaurantRange {
-  PRICE = "Price",
+  PRICE = "Price Range",
   DISTANCE = "Distance",
   RATING = "Rating",
 }

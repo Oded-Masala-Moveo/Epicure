@@ -20,10 +20,7 @@
       display: flex;
       margin-top: 8px;
     }
-    .star {
-      width: 40px;
-      height: 40px;
-    }
+
   }
   .card-image-container {
     img {
@@ -146,4 +143,9 @@
       }
     }
   }
+}
+
+.star {
+  width: 40px;
+  height: 40px;
 }

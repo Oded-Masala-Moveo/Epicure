@@ -26,7 +26,6 @@
     @include desktop() {
       justify-content: center;
       gap: 40px;
-      // margin: 0px 329px 0px 329px;
     }
     .map-view {
       display: none;
@@ -63,33 +62,21 @@
     margin-top: 40px;
     list-style: none;
     display: none;
-    justify-content: center;
+    justify-content: center;  
+    
     @include desktop() {
       display: flex;
     }
-    .range-option {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 186px;
-      height: 60px;
-      p {
-        font-size: 18px;
-      }
-      .arrow-down {
-        width: 24px;
-        height: 24px;
-      }
+  }
+  .range-filter-restaurant > * {
+    cursor: pointer;
+    &:hover{
+      background-color: $range-bottom;
     }
-  }
-  .dropdown-button {
-    display: flex;
-    justify-content: center;
-  }
+  } 
   .restaurants-list {
     margin-top: 37px;
     margin-bottom: 56px;
-    // margin-right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;

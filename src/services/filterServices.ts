@@ -7,25 +7,39 @@ import {
   RestaurantCategory,
 } from "../models";
 
+
 export const filterRestaurants = (
   receivedRestaurants: Restaurant[],
-  category: string
+  category: string,
+  ratingFilter?: number[],
 ): Restaurant[] => {
-  const restaurants = [...receivedRestaurants];
+  let filteredRestaurants = [...receivedRestaurants];
+
+  // Filter by category
   switch (category) {
     case RestaurantCategory.NEW:
-      return restaurants.filter((r) => r.new);
-
+      filteredRestaurants = filteredRestaurants.filter((r) => r.new);
+      break;
     case RestaurantCategory.POPULAR:
-      return restaurants.filter((r) => r.rate >= 4);
-
+      filteredRestaurants = filteredRestaurants.filter((r) => r.rate >= 4);
+      break;
     case RestaurantCategory.OPEN:
-      return restaurants.filter((r) => r.open);
-
+      filteredRestaurants = filteredRestaurants.filter((r) => r.open);
+      break;
     default:
-      return restaurants;
+      break;
   }
+
+  // Filter by rating
+  if (ratingFilter && ratingFilter.length > 0) {
+    filteredRestaurants = filteredRestaurants.filter((r) =>
+      ratingFilter.includes(r.rate)
+    );
+  }
+
+  return filteredRestaurants;
 };
+
 export const filterDishes = (
   receivedDishes: Dish[],
   category: string
