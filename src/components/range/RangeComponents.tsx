@@ -13,10 +13,12 @@ export const DistanceComponent: React.FC = () => {
     </div>
   );
 };
+
+
+
 interface  RatingProps {
   changeRate:(rateArr:number[])=> void;
   rateArr:number[];
-
 }
 export const RatingComponent: React.FC<RatingProps> = ({rateArr,changeRate}) => {
   const addRate  =   (chosenRate:number) => {    
