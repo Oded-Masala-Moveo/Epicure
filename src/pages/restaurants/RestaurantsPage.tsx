@@ -7,21 +7,25 @@ import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { ArrowDown } from "../../assets/icons";
 import Dropdown from "../../components/DropdownButton/Dropdown";
 import LiElement from "../../components/li/LiElement";
+
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();
   const [selectedCategory, setSelectedCategory] = useState<string>( RestaurantCategory.ALL );
   const [displayRestaurants, setDisplayRestaurants] = useState<Restaurant[]>( [] );
   const [currentRange, setCurrentRange] = useState<string>("");
+  const [rating, seRrating] = useState<number[]>([]);
   const handelClickCategory = (category: string) => () => setSelectedCategory(category);
   const handelClickRange = (rangeType: string) => () => rangeType == currentRange ? setCurrentRange("") : setCurrentRange(rangeType);
   const dropdownOpenOrClose = (rangeName:string) => (rangeState:string)=> rangeName == rangeState;
+  let restaurants:Restaurant[] = getRestaurants();
+  const setRestaurantsData = () => {
+    if(rating[0]) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory, rating));
+    if (restaurants && !rating[0]) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory));
+  };
+
   useEffect(() => {
-    const setRestaurantsData = () => {
-      const Restaurants = getRestaurants();
-      setDisplayRestaurants(filterRestaurants(Restaurants, selectedCategory));
-    };
     setRestaurantsData();
-  }, [selectedCategory]);
+  }, [selectedCategory,rating]);
   return (
     <>
       <section className="restaurants-section">
@@ -42,13 +46,13 @@ const RestaurantsPage: React.FC = () => {
           <li className="map-view"> <p>Map View</p> </li>
         </ul>
         <ul  className="range-filter-restaurant">
-          <Dropdown onClick={handelClickRange(RestaurantRange.PRICE)} isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent/>} />
-          <Dropdown onClick={handelClickRange(RestaurantRange.DISTANCE)} isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<DistanceComponent />} />
-          <Dropdown onClick={handelClickRange(RestaurantRange.RATING)} isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<RatingComponent/>} />
+          <Dropdown key={RestaurantRange.PRICE} onClick={handelClickRange(RestaurantRange.PRICE)} isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent />} />
+          <Dropdown key={RestaurantRange.DISTANCE} onClick={handelClickRange(RestaurantRange.DISTANCE)} isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<DistanceComponent   />} />
+          <Dropdown key={RestaurantRange.RATING} onClick={handelClickRange(RestaurantRange.RATING)} isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<RatingComponent rateArr={rating} changeRate={seRrating}/>} />
         </ul>
         <div className="restaurants-list" onClick={handelClickRange("")} >
           {displayRestaurants.map((restaurant) => (
-            <Card restPage={width < tablet} card={restaurant} />
+            <Card key={restaurant.chef + restaurant.image} restPage={width < tablet} card={restaurant} />
           ))}
         </div>
       </section>
