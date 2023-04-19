@@ -12,6 +12,8 @@ export interface Restaurant {
   date: string;
   new: boolean;
   open: boolean;
+  higherPrice: number,
+  lowerPrice: number,
   rate: number;
 }
 
