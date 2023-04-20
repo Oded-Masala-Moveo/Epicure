@@ -20,7 +20,7 @@ export const PriceComponent: React.FC <{values:[number, number],setValues:(newVa
         </div>
         <div className="slider-container">
           <Slider
-            thumbClassName={"thumb-style"} className={`slider ${values[0] > 12 && 'left-thumb'}  ${values[1] < 357 && 'right-thumb'}`} value={values} onChange={setValues} min={12} minDistance={50} max={357}
+            thumbClassName="thumb-style" trackClassName="track-style" className={`slider ${values[0] > 12 && 'left-thumb'}  ${values[1] < 357 && 'right-thumb'}`} value={values} onChange={setValues} min={12} minDistance={50} max={357}
             renderThumb={(props, state) => (
               <div {...props}>
                 <div>

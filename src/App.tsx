@@ -6,7 +6,7 @@ import "./app.scss";
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className="body-container">
       <div>
         <Navbar />
         <Routes>
