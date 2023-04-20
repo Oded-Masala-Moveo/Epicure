@@ -1,20 +1,15 @@
-import React, { useState } from "react";
-import {
-  Logo,
-  Hamburger,
-  Search,
-  User,
-  Bag,
-  X_dark,
-} from "../../../assets/icons";
+import React, { useEffect, useState } from "react";
+import { Logo, Hamburger, Search, User, Bag, X_dark, } from "../../../assets/icons";
 import "./MobileNavbar.scss";
-import { Link } from "react-router-dom";
-import BagShop, { MobileNavBag } from "../../../components/bag/BagShop";
+import { Link, useLocation } from "react-router-dom";
+import  {  BagShop} from "../../../components/";
 import { InputSearch } from "../../../components";
 const MobileNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBagOpen, setIsBagOpen] = useState(false);
+  const location = useLocation()
+  
   const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);
     setIsSearchOpen(false);
@@ -27,6 +22,11 @@ const MobileNavbar: React.FC = () => {
   const toggleBag = (): void => {
     setIsBagOpen(!isBagOpen);
   };
+  useEffect(()=>{
+    setIsMenuOpen(false);
+    setIsSearchOpen(false);
+    setIsBagOpen(false); 
+  },[location.pathname])
   return (
     <>
       <div

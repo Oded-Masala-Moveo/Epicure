@@ -5,13 +5,20 @@ import "./bagShop.scss";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 import {ClickButton} from "../../components"
 
-const BagShop: React.FC = () => {
-  const { width } = useWindowSize();
+const BagShop: React.FC <{width?:string}>= ({width}) => {
+  // const { width } = useWindowSize();
 
-  if (width < desktop) return <MobileNavBag />;
   return (
     <>
-      <MobileNavBag />;
+     <div className="mobile-bag-nav">
+      <div className="bag-container">
+        <div className="bag-icon">
+          <Bag />
+        </div>
+        <h2>Your bag is empty</h2>
+        {/* <ClickButton>add to bag</ClickButton> */}
+      </div>
+    </div>
     </>
   );
 };
@@ -24,7 +31,7 @@ export const MobileNavBag: React.FC = () => {
           <Bag />
         </div>
         <h2>Your bag is empty</h2>
-        <ClickButton>add to bag</ClickButton>
+        {/* <ClickButton>add to bag</ClickButton> */}
       </div>
     </div>
   );

@@ -120,6 +120,7 @@
   height: 367px;
   left: -1px;
   top: 46px;
+
   @include Appeared();
   width: -webkit-fill-available;
   background-color: #ffffff;
@@ -130,5 +131,6 @@
   .search-container {
     display: flex;
     justify-content: center;
+    margin-top: 24px;
   }
 }
