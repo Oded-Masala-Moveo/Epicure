@@ -13,6 +13,7 @@ export const filterRestaurants = (
   category: string,
   ratingFilter?: number[],
   priceFilter?: [number,number],
+  
 ): Restaurant[] => {
   let filteredRestaurants = [...receivedRestaurants];
 
