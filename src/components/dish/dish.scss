@@ -41,7 +41,7 @@
         width: 573px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
       }
 
       display: flex;
@@ -58,14 +58,12 @@
         }
       }
       .dish-detail-container {
-        // margin-top: 32px;
         padding-left: 24px;
         gap: 14px;
         display: flex;
         flex-direction: column;
         @include desktop() {
           align-items: center;
-          // margin-top: 40px;
         }
         .title-container {
           width: 318px;
