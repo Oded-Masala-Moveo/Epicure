@@ -4,6 +4,7 @@ import { Lock, Search } from "../../../assets/icons";
 
 interface ButtonProps {
   children: React.ReactNode;
+  disabled?: boolean
   width?: string;
   height?: string;
   primaryBlack?: boolean;
@@ -23,6 +24,7 @@ const ClickButton: React.FC<ButtonProps> = ({
   secondary,
   secondaryBlack,
   width,
+  disabled=false,
   onClick,
 }) => {
   const primaryBlackClass = primaryBlack ? "primary-black" : "";
@@ -30,13 +32,14 @@ const ClickButton: React.FC<ButtonProps> = ({
   const secondaryClass = secondary ? "secondary" : "";
   const secondaryBlackClass = secondaryBlack ? "secondary-black" : "";
   const iconClass = icon ? "icon-btn" : "";
+  const disabledBtn = disabled ? "disabled" : "";
   return (
-    <div className={`click-btn ${primaryBlackClass} ${primaryGrayClass} ${secondaryClass} ${secondaryBlackClass} ${iconClass}`} style={{ width: width, height: height }} onClick={onClick} >
+    <button disabled={disabled} className={`click-btn ${disabledBtn} ${primaryBlackClass} ${primaryGrayClass} ${secondaryClass} ${secondaryBlackClass} ${iconClass}`} style={{ width: width, height: height }} onClick={onClick} >
       <div className="icon-container">
         <Lock />
       </div>
       {children}
-    </div>
+    </button>
   );
 };
 

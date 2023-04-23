@@ -1,50 +1,87 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 import { Dish, Restaurant } from "../../models";
-import { RootState } from '../store';
 
-export interface CartState {
+interface CartDish {
+  dish: Dish;
+  quantity: number;
+}
+
+interface CartState {
   total: number;
   restaurant: Restaurant | null;
-  CartDishes: Dish[];
-  LimitPurchase: boolean;
+  cartDishes: CartDish[];
+  limitPurchase: boolean;
 }
 
 const initialState: CartState = {
   total: 0,
   restaurant: null,
-  CartDishes: [],
-  LimitPurchase: false,
+  cartDishes: [],
+  limitPurchase: false,
 };
 
 export const dishCartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    interRestaurant: (state, action: PayloadAction<Restaurant>) => {
-      if (!state.restaurant) state.restaurant = action.payload;
+    setCartRestaurant: (state, action: PayloadAction<Restaurant>) => {
+      if (!state.cartDishes[0]) state.restaurant = action.payload;
     },
-    outRestaurant: (state, action: PayloadAction<Restaurant>) => {
-      if (!state.CartDishes[0]) state.restaurant = null;
+    clearCartRestaurant: (state) => {
+      if (!state.cartDishes[0]) state.restaurant = null;
     },
-    addDishToCart: ( state, action: PayloadAction<{ dish: Dish; restId: string }> ) => {
-      if (action.payload.restId == state.restaurant?.id) {
-        state.total += action.payload.dish.price;
-        state.CartDishes.push(action.payload.dish);
-      }else {
-        state.LimitPurchase = true;
+    addDishToCart: (
+      state,
+      action: PayloadAction<{ dish: Dish; quantity: number }>
+    ) => {
+      const { dish, quantity } = action.payload;
+
+      if (state.restaurant?.id !== dish.restId) {
+        state.limitPurchase = true;
+        return;
       }
+
+      const cartDish = state.cartDishes.find((d) => d.dish.id === dish.id);
+      if (cartDish) {
+        cartDish.quantity += quantity;
+      } else {
+        state.cartDishes.push({ dish, quantity });
+      }
+
+      state.total += dish.price * quantity;
+      state.limitPurchase = false;
     },
     removeDishFromCart: (state, action: PayloadAction<Dish>) => {
-      state.total -= action.payload.price;
-      state.CartDishes.splice(state.CartDishes.indexOf(action.payload), 1);
-      if(!state.CartDishes[0]) state.restaurant = null;
+      const { id, price } = action.payload;
+      const cartDish = state.cartDishes.find((d) => d.dish.id === id);
+      if (!cartDish) {
+        return;
+      }
+      state.total -= cartDish.quantity * price;
+      state.cartDishes = state.cartDishes.filter((d) => d.dish.id !== id);
+      if (state.cartDishes.length === 0) {
+        state.restaurant = null;
+      }
+    },
+    clearCart: (state) => {
+      state.total = 0;
+      state.restaurant = null;
+      state.cartDishes = [];
+      state.limitPurchase = false;
     },
   },
 });
 
-export const { addDishToCart,interRestaurant,outRestaurant,removeDishFromCart } = dishCartSlice.actions;
+export const {
+  addDishToCart,
+  clearCart,
+  clearCartRestaurant,
+  removeDishFromCart,
+  setCartRestaurant,
+} = dishCartSlice.actions;
 
-export const selectDishes = (state: RootState) => state.cart.CartDishes;
+export const selectDishes = (state: RootState) => state.cart.cartDishes;
 export const selectCart = (state: RootState) => state.cart;
 
 export default dishCartSlice.reducer;

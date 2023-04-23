@@ -7,9 +7,9 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #000000;
-  cursor: pointer;
   box-sizing: border-box;
   padding: 5px 24px;
+  cursor: pointer;
   @include btn-text();
   height: 1000px;
   width: 206px;
@@ -20,7 +20,7 @@
 }
 .primary-black {
   padding: 5px 24px;
-  background: $primary-dark;
+  background-color: $primary-dark;
   color: white;
 }
 
@@ -36,7 +36,7 @@
   padding: 5px 15px;
 }
 .secondary-black {
-  background: $primary-dark;
+  background-color: $primary-dark;
   padding: 5px 15px;
   color: white;
 }
@@ -49,4 +49,8 @@
     width: 21px;
     height: 24px;
   }
+}
+.disabled {
+  background-color: #c3b1b1;
+  cursor: default;
 }

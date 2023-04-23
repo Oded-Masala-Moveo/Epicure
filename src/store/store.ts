@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import cartReducer from './dishCartSlice/dishSlice';
+import cartReducer from './index';
 
 export const store = configureStore({
   reducer: {

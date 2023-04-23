@@ -206,13 +206,16 @@
         .quantity {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 32px;
-          :nth-child(1) {
-            width: 15px;
-          }
-          :nth-child(3) {
-            width: 15px;
-          }
+         .handler-button{
+          cursor: pointer;
+          width: 15px;
+          height: 15px;
+          display: flex;
+          justify-content: center;
+         }
+         
         }
       }
       .add-to-bag-container {
