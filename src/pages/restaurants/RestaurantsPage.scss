@@ -68,10 +68,13 @@
       display: flex;
     }
   }
-  .range-filter-restaurant > * {
+  .range-filter-restaurant {
     cursor: pointer;
-    &:hover{
+    .selected{
       background-color: $range-bottom;
+    }
+    .disable{
+      cursor: not-allowed;
     }
   } 
   .restaurants-list {
@@ -89,6 +92,21 @@
       flex-direction: row;
       flex-wrap: wrap;
       gap: 24px;
+    }
+  }
+  .no-restaurants{
+    height: 60vh;
+    padding: 0px 127px 0px 127px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    h1{
+      font-size: 70px;
+    }
+    p{
+      font-size: 50px;
     }
   }
 }

@@ -22,9 +22,11 @@ const RestaurantsPage: React.FC = () => {
   const dropdownOpenOrClose = (rangeName:string) => (rangeState:string)=> rangeName == rangeState;
   
   const setRestaurantsData = () => {
-    if(values[0]>12 || values[1]< 357) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory, rating ,values));
-    if(rating[0]) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory, rating));
-    if (restaurants && !rating[0] && values[0] == 12 && values[1] == 357) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory));
+    let condition = values[0] >12 || values[1]< 357 || rating[0]
+    if(condition) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory, rating ,values));
+    
+    if (restaurants && !condition) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory));
+    ;
   };
 
   useEffect(() => {
@@ -50,15 +52,25 @@ const RestaurantsPage: React.FC = () => {
           <li className="map-view"> <p>Map View</p> </li>
         </ul>
         <ul  className="range-filter-restaurant">
+        <div className={currentRange == RestaurantRange.PRICE ? "selected" :""}> 
           <Dropdown key={RestaurantRange.PRICE} onClick={handelClickRange(RestaurantRange.PRICE)} isOpen={dropdownOpenOrClose(RestaurantRange.PRICE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.PRICE} />} children={<PriceComponent values={values} setValues={handleChange}/>} />
+        </div>
+        <div className="disable">
           <Dropdown key={RestaurantRange.DISTANCE} onClick={handelClickRange(RestaurantRange.DISTANCE)} isOpen={dropdownOpenOrClose(RestaurantRange.DISTANCE)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.DISTANCE} />} children={<DistanceComponent   />} />
+        </div>
+        <div className={currentRange == RestaurantRange.RATING ? "selected" :""}>
           <Dropdown key={RestaurantRange.RATING} onClick={handelClickRange(RestaurantRange.RATING)} isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={<RatingComponent rateArr={rating} changeRate={seRrating}/>} />
+        </div>
         </ul>
-        <div className="restaurants-list" onClick={handelClickRange("")} >
+       {displayRestaurants.length > 0 && <div className="restaurants-list" onClick={handelClickRange("")} >
           {displayRestaurants.map((restaurant) => (
             <Card key={restaurant.chef + restaurant.image} restPage={width < tablet} card={restaurant} />
           ))}
-        </div>
+        </div>}
+        {displayRestaurants.length <= 0 && <div className="no-restaurants">
+          <h1>No restaurants within the range</h1>
+          <p>Try different <span>&#128522;</span></p>
+        </div>}
       </section>
     </>
   );

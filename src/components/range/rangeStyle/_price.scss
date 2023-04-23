@@ -48,6 +48,21 @@
       background-color: rgb(180, 169, 169);
       border-radius: 5px;
       margin-top: 10px;
+      .track-style-0 {
+        top: -4px;
+        margin-right: 10px;
+        margin-left: -4px;
+        border: 4px solid rgb(234, 220, 220);
+        border-radius: 2px;
+      }
+
+      .track-style-2 {
+        top: -4px;
+        margin-right: -4px;
+        margin-left: 12px;
+        border: 4px solid rgb(234, 220, 220);
+        border-radius: 2px;
+      }
       .thumb {
         width: 23px;
         height: 23px;
