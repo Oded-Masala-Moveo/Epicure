@@ -7,9 +7,7 @@ const DesktopNavbar: React.FC = () => {
   const location = useLocation();
 
   useEffect(()=>{
-    // setIsMenuOpen(false);
-    // setIsSearchOpen(false);
-    // setIsBagOpen(false); 
+
   },[location])
   useEffect(() => {}, [location.pathname]);
   return (

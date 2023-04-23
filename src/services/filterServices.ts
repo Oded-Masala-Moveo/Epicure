@@ -17,7 +17,7 @@ export const filterRestaurants = (
 ): Restaurant[] => {
   let filteredRestaurants = [...receivedRestaurants];
 
-  // Filter by category
+
   switch (category) {
     case RestaurantCategory.NEW:
       filteredRestaurants = filteredRestaurants.filter((r) => r.new);
@@ -31,8 +31,6 @@ export const filterRestaurants = (
     default:
       break;
   }
-
-  // Filter by rating
   if (ratingFilter && ratingFilter.length > 0) {
     filteredRestaurants = filteredRestaurants.filter((r) =>
       ratingFilter.includes(r.rate)

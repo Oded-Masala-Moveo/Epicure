@@ -6,7 +6,6 @@ import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 import {ClickButton} from "../../components"
 
 const BagShop: React.FC <{width?:string}>= ({width}) => {
-  // const { width } = useWindowSize();
 
   return (
     <>
@@ -16,7 +15,6 @@ const BagShop: React.FC <{width?:string}>= ({width}) => {
           <Bag />
         </div>
         <h2>Your bag is empty</h2>
-        {/* <ClickButton>add to bag</ClickButton> */}
       </div>
     </div>
     </>
