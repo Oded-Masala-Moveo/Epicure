@@ -6,11 +6,10 @@
   box-sizing: border-box;
 }
 
-html {
+
+.body-container {
   margin: 0 auto;
   max-width: 1440px;
-}
-.body-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -21,6 +21,7 @@
         height: 20px;
         width: 573px;
         background: none;
+        margin-top: 32px;
       }
       padding-left: 24px;
       display: flex;
@@ -39,15 +40,23 @@
       width: 426px;
       @include desktop() {
         width: 573px;
+        height: 1064px;
+        margin-bottom: 80px;
         display: flex;
         align-items: center;
-        gap: 15px;
       }
-
       display: flex;
       flex-direction: column;
 
       .dish-image-container {
+        width: 426px;
+        height: 271px;
+        margin-bottom: 32px;
+        @include desktop() {
+          width: 576px;
+          height: 292px;
+          margin-bottom: 40px;
+        }
         img {
           width: 426px;
           height: 271px;
@@ -58,12 +67,14 @@
         }
       }
       .dish-detail-container {
+        margin-bottom: 48px;
         padding-left: 24px;
         gap: 14px;
         display: flex;
         flex-direction: column;
         @include desktop() {
           align-items: center;
+          margin-bottom: 20px;
         }
         .title-container {
           width: 318px;
@@ -72,6 +83,7 @@
             text-align: center;
             h3 {
               font-size: 32px;
+              line-height: 26px;
             }
           }
         }
@@ -88,15 +100,17 @@
         }
       }
       .dish-category-container {
-        margin-top: 15px;
         display: flex;
         justify-content: center;
+        margin-bottom: 14px;
+
         .dish-icon {
           width: 40px;
+          height: 30px;
         }
       }
       .price-container {
-        margin-top: 15px;
+        margin-bottom: 48px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -120,7 +134,7 @@
         }
       }
       .edit-side-container {
-        
+        margin-bottom: 48px;
         padding-left: 24px;
         @include desktop() {
           width: 232px;
@@ -129,23 +143,36 @@
           width: 146px;
           margin-bottom: 24px;
           @include desktop() {
-            padding-left: 10px;
-            
+            // padding-left: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
           }
           p {
             font-size: 18px;
+            line-height: 18px;
             border-bottom: 2px solid $secondary-yellow;
+            
           }
         }
         .side-change-title-container {
           width: 88px;
           margin-bottom: 24px;
+
           @include desktop() {
-            padding-left: 10px;
+            // padding-left: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
           }
           p {
             font-size: 18px;
+            line-height: 18px;
             border-bottom: 2px solid $secondary-yellow;
+            @include desktop() {
+              text-align: center;
+              
+            }
           }
         }
 
@@ -157,21 +184,28 @@
           p {
             @include desktop() {
               font-size: 18px;
+              line-height: 18px;
             }
           }
         }
       }
       .quantity-container {
+        margin-bottom: 32px;
         padding-left: 20px;
         display: flex;
         flex-direction: column;
+        @include desktop() {
+          margin-bottom: 40px;
+          width: 232px;
+           align-items: center;
+        }
         .quantity-title {
           width: 82px;
           font-size: 18px;
+          line-height: 18px;
           border-bottom: 2px solid $secondary-yellow;
         }
         .quantity {
-         
           display: flex;
           align-items: center;
           gap: 32px;
@@ -185,7 +219,7 @@
       }
       .add-to-bag-container {
         padding-left: 20px;
-        margin-bottom: 28px;
+        margin-bottom: 48px;
       }
     }
   }

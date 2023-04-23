@@ -1,6 +1,9 @@
 @import "../../assets/styles/mixin/media-queries";
 .restaurants-container {
   padding-left: 20px;
+  @include desktop(){
+    margin-top: 776px;
+  }
   .desktop-card {
     display: flex;
     flex-wrap: wrap;
