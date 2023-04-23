@@ -22,6 +22,8 @@ import { ReactComponent as CheckOn } from "./checkOn.svg";
 import { ReactComponent as CheckCircleOff } from "./checkCircleOff.svg";
 import { ReactComponent as CheckCircleOn } from "./checkCircleOn.svg";
 import { ReactComponent as ArrowDown } from "./arrowDown.svg";
+import { ReactComponent as Plus } from "./plus.svg";
+import { ReactComponent as Minus } from "./minus.svg";
 import { ActiveBag } from "./ActiveBag";
 
-export { Hamburger, Arrow, Bag, Clock, Lock, Search, Shekel, User, X_dark, X_white, Logo, VeganBig, VeganSmall, VegetarianBig, VegetarianSmall, SpicyBig, SpicySmall, FullStar, EmptyStar, ArrowDown, ActiveBag, CheckOff, CheckOn, CheckCircleOff, CheckCircleOn };
+export { Hamburger, Arrow, Bag, Clock, Lock, Search, Shekel, User, X_dark, X_white, Logo, VeganBig, VeganSmall, VegetarianBig, VegetarianSmall, SpicyBig, SpicySmall, FullStar, EmptyStar, ArrowDown, ActiveBag, CheckOff, CheckOn, CheckCircleOff, CheckCircleOn, Plus, Minus };

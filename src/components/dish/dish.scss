@@ -1,0 +1,194 @@
+@import "../../assets/styles/variable",
+  "../../assets/styles/mixin/media-queries";
+
+.dish-card-popup-container {
+  display: flex;
+  @include desktop() {
+    justify-content: center;
+  }
+  .dish-card-popup {
+    display: flex;
+    flex-direction: column;
+    @include desktop() {
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-dish-container {
+      width: 375px;
+      height: 46px;
+      background-color: white;
+      @include desktop() {
+        height: 20px;
+        width: 573px;
+        background: none;
+      }
+      padding-left: 24px;
+      display: flex;
+      align-items: center;
+      .close-btn {
+        width: 24px;
+        height: 24px;
+        @include desktop() {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    .dish-component {
+      background-color: white;
+      width: 426px;
+      @include desktop() {
+        width: 573px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      display: flex;
+      flex-direction: column;
+
+      .dish-image-container {
+        img {
+          width: 426px;
+          height: 271px;
+          @include desktop() {
+            width: 576px;
+            height: 292px;
+          }
+        }
+      }
+      .dish-detail-container {
+        // margin-top: 32px;
+        padding-left: 24px;
+        gap: 14px;
+        display: flex;
+        flex-direction: column;
+        @include desktop() {
+          align-items: center;
+          // margin-top: 40px;
+        }
+        .title-container {
+          width: 318px;
+          @include desktop() {
+            width: 270px;
+            text-align: center;
+            h3 {
+              font-size: 32px;
+            }
+          }
+        }
+        .description-container {
+          width: 318px;
+          @include desktop() {
+            width: 232px;
+            p {
+              font-size: 14px;
+              line-height: 18px;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .dish-category-container {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        .dish-icon {
+          width: 40px;
+        }
+      }
+      .price-container {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 573px;
+        .price {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 3px;
+          .price-icon {
+            display: flex;
+            justify-content: center;
+            width: 15px;
+          }
+        }
+        .line {
+          border: 1px solid $primary-light;
+          width: 100px;
+          height: 0px;
+        }
+      }
+      .edit-side-container {
+        
+        padding-left: 24px;
+        @include desktop() {
+          width: 232px;
+        }
+        .side-title-container {
+          width: 146px;
+          margin-bottom: 24px;
+          @include desktop() {
+            padding-left: 10px;
+            
+          }
+          p {
+            font-size: 18px;
+            border-bottom: 2px solid $secondary-yellow;
+          }
+        }
+        .side-change-title-container {
+          width: 88px;
+          margin-bottom: 24px;
+          @include desktop() {
+            padding-left: 10px;
+          }
+          p {
+            font-size: 18px;
+            border-bottom: 2px solid $secondary-yellow;
+          }
+        }
+
+        .side {
+          margin-top: 24px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          p {
+            @include desktop() {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+      .quantity-container {
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        .quantity-title {
+          width: 82px;
+          font-size: 18px;
+          border-bottom: 2px solid $secondary-yellow;
+        }
+        .quantity {
+         
+          display: flex;
+          align-items: center;
+          gap: 32px;
+          :nth-child(1) {
+            width: 15px;
+          }
+          :nth-child(3) {
+            width: 15px;
+          }
+        }
+      }
+      .add-to-bag-container {
+        padding-left: 20px;
+        margin-bottom: 28px;
+      }
+    }
+  }
+}

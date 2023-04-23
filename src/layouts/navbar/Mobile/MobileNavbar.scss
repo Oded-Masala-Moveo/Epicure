@@ -41,7 +41,7 @@
   box-shadow: 0px 0px 5px 0px rgb(178, 175, 175);
   padding: 0px 10px 0px 10px;
   position: fixed;
-  z-index: 999;
+  z-index: 900;
 
   background-color: white;
   height: 46px;
@@ -120,6 +120,7 @@
   height: 367px;
   left: -1px;
   top: 46px;
+
   @include Appeared();
   width: -webkit-fill-available;
   background-color: #ffffff;
@@ -130,5 +131,6 @@
   .search-container {
     display: flex;
     justify-content: center;
+    margin-top: 24px;
   }
 }
