@@ -16,7 +16,7 @@ const initialState: CartState = {
   LimitPurchase: false,
 };
 
-export const counterSlice = createSlice({
+export const dishCartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -42,9 +42,9 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { addDishToCart,interRestaurant,outRestaurant,removeDishFromCart } = counterSlice.actions;
+export const { addDishToCart,interRestaurant,outRestaurant,removeDishFromCart } = dishCartSlice.actions;
 
 export const selectDishes = (state: RootState) => state.cart.CartDishes;
 export const selectCart = (state: RootState) => state.cart;
 
-export default counterSlice.reducer;
+export default dishCartSlice.reducer;
