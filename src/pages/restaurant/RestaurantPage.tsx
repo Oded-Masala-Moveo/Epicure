@@ -75,7 +75,7 @@ const RestaurantPage: React.FC = () => {
         </ul>
         <div className="dish-list">
           {displayDishes.map((dish) => (
-            <Card   dishPage={true} card={dish} />
+            <Card dishPage={true} card={dish} />
           ))}
         </div>
       </section>
