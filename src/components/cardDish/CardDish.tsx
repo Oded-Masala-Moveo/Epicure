@@ -80,8 +80,7 @@ const CardDish: React.FC<{
             <DishComponent onClose={handelPopup} dishData={card} />
           </PopUp>
         )}
-      </div>
-    </>
+      </div> </>
   );
 };
 
