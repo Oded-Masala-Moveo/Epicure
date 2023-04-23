@@ -114,6 +114,7 @@
 .dish-page-card {
   width: 335px;
   height: 375.84px;
+  cursor: pointer;
   @include desktop() {
     width: 272px;
     height: 413px;

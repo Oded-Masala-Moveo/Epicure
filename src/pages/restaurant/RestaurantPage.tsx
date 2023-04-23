@@ -9,8 +9,11 @@ import {
 import { Dish, DishMealTime, Restaurant } from "../../models";
 import { Clock } from "../../assets/icons";
 import { Card } from "../../components";
+import {useAppSelector ,setCartRestaurant, useAppDispatch,selectCart, clearCartRestaurant} from "../../store"
 const RestaurantPage: React.FC = () => {
   const { restId } = useParams();
+  const cart = useAppSelector(selectCart);
+  const dispatch = useAppDispatch();
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([]);
   const [restaurant, setRestaurant] = useState<Restaurant>();
   const [dishCategory, setDishCategory] = useState<string>(
@@ -22,10 +25,18 @@ const RestaurantPage: React.FC = () => {
         setRestaurant(getRestaurantById(restId));
         const dish = getDishesByRestId(restId);
         setDisplayDishes(filterDishes(dish, dishCategory));
+        
       }
     };
-    setRestaurantData();
+    setRestaurantData(); 
   }, [dishCategory]);
+
+  useEffect(()=>{
+    if(restaurant) dispatch(setCartRestaurant(restaurant));
+    return () => {
+     if(restaurant) dispatch(clearCartRestaurant());
+    }
+  },[restaurant])
   return (
     <>
         <div className="restaurant-image-container">
@@ -75,7 +86,7 @@ const RestaurantPage: React.FC = () => {
         </ul>
         <div className="dish-list">
           {displayDishes.map((dish) => (
-            <Card   dishPage={true} card={dish} />
+            <Card dishPage={true} card={dish} />
           ))}
         </div>
       </section>
