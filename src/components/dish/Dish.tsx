@@ -94,8 +94,7 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
                     />
                   </div>
                   <div>
-                    {" "}
-                    <p>{side}</p>{" "}
+                    <p>{side}</p>
                   </div>
                 </div>
               ))}
