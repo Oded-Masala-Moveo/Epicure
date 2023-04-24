@@ -14,112 +14,14 @@
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-  @include desktop (){
+  @include desktop() {
     top: 64px;
     left: 1050px;
   }
 }
 .mobile-bag-nav > * {
   width: 380px;
-
 }
-.active-bag-container {
-  position: relative;
-  @include flex-container(column, center, center);
-  background-color: white;
-  @include desktop() {
-    width: 497px;
-    height: 778px;
-  }
-  .bag-title {
-    margin-top: 16px;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 4px;
-  }
-  .rest-title {
-    font-size: 18px;
-    line-height: 20px;
-    margin-bottom: 20px;
-  }
-  .bag-item-list-container {
-    margin-bottom: 90px;
-  }
-  .total-bag-price-container {
-    @include flex-container(row, center, center, 10px);
-    margin-bottom: 20px;
-    h2 {
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 18px;
-    }
-    p {
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 18px;
-    }
-  }
-  .bag-item-list-container {
-    @include flex-container(column, center, center, 20px);
-  }
-  .checkout-bag-btn {
-    margin-bottom: 24px;
-  }
-  .icon {
-    width: 10px;
-    height: 17px;
-  }
-}
-
-.bag-dish-card-container {
-  @include flex-container(row, space-between, center);
-  background-color: $secondary-beige;
-  height: 96px;
-  width: 340px;
-
-  .bag-dish-card-image {
-    width: 96px;
-    height: 96px;
-    img {
-      width: 96px;
-      height: 96px;
-    }
-  }
-  .bag-dish-card-detail {
-    height: 100%;
-    @include flex-container(column, start, start, 8px);
-    margin-top: 12px;
-    .title {
-      @include flex-container(row, center, center, 5px);
-      p {
-        font-size: 12px;
-        line-height: 26px;
-      }
-      h3 {
-        line-height: 26px;
-      }
-    }
-    .side-change {
-      p {
-        font-size: 12px;
-        line-height: 16px;
-      }
-    }
-  }
-  .item-total-price {
-    height: 100%;
-    margin-right: 12px;
-    padding-bottom: 12px;
-    @include flex-container(row, center, end, 3px);
-    p {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 18px;
-    }
-  }
-}
-
 .empty-bag-container {
   position: absolute;
   background-color: white;
@@ -133,3 +35,4 @@
     width: 49px;
   }
 }
+

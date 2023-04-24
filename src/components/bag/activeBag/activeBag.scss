@@ -1,0 +1,78 @@
+@import "../../../assets/styles/animation",
+  "../../../assets/styles/mixin/display-mixin", "../../../assets/styles/variable",
+  "../../../assets/styles/mixin/media-queries";
+
+.active-bag-container {
+    position: relative;
+    @include flex-container(column, start, center);
+    background-color: white;
+    @include desktop() {
+      width: 497px;
+      height: 778px;
+    }
+    .bag-title {
+      margin-top: 16px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 4px;
+    }
+    .rest-title {
+      font-size: 18px;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+    .bag-item-list-container {
+      margin-bottom: 90px;
+    }
+    .top-comment-line{
+  
+    }
+    .bag-comment-container{
+      background-color: red;
+      .comment-input{
+  
+      }
+    }
+    .total-bag-price-container {
+      @include flex-container(row, center, center, 10px);
+      margin-bottom: 20px;
+      h2 {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 18px;
+      }
+      p {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 18px;
+      }
+    }
+    .bag-item-list-container {
+      @include flex-container(column, center, center, 20px);
+    }
+    .checkout-bag-btn {
+      margin-bottom: 24px;
+    }
+    .icon {
+      width: 10px;
+      height: 17px;
+    }
+  }
+
+  .checkout-bag-btn {
+    @include desktop(){
+   @include flex-container(column, flex-start, center,9px)
+    }
+     .btn-checkout-total {
+       @include desktop() {
+         display: flex;
+         margin-left: 30px;
+         align-items: flex-end;
+       }
+       .icon {
+         width: 10px;
+         height: 19px;
+       }
+     }
+   }

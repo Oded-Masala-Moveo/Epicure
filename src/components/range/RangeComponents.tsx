@@ -15,7 +15,7 @@ export const PriceComponent: React.FC <{values:[number, number],setValues:(newVa
         <div className="slider-title">
           <p>Price Range Selected</p>
           <div className="range-price">
-            <div className="icon"> <Shekel /> </div> <p>12 -</p> <div className="icon"> <Shekel /></div> <p>357</p> 
+            <div className="icon"> <Shekel stroke="black"/> </div> <p>12 -</p> <div className="icon"> <Shekel stroke="black"/></div> <p>357</p> 
             </div>
         </div>
         <div className="slider-container">
@@ -24,7 +24,7 @@ export const PriceComponent: React.FC <{values:[number, number],setValues:(newVa
             renderThumb={(props, state) => (
               <div {...props}>
                 <div>
-                  <span className="text-thumb"> <div className="shekel-icon"> <Shekel /> </div> {state.valueNow} </span>
+                  <span className="text-thumb"> <div className="shekel-icon"> <Shekel stroke="black"/> </div> {state.valueNow} </span>
                 </div>
               </div>
             )}

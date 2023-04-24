@@ -113,7 +113,7 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
                 <div className="line"></div>
                 <div className="price">
                   <div className="price-icon">
-                    <Shekel />
+                    <Shekel stroke="black"/>
                   </div>
                   <p>{dishData.price}</p>
                 </div>
