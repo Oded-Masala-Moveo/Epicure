@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Logo, Hamburger, Search, User, Bag, X_dark, } from "../../../assets/icons";
+import {
+  Logo,
+  Hamburger,
+  Search,
+  User,
+  Bag,
+  X_dark,
+  ActiveBag,
+} from "../../../assets/icons";
 import "./MobileNavbar.scss";
 import { Link, useLocation } from "react-router-dom";
-import  {  BagShop} from "../../../components/";
+import { BagShop } from "../../../components/";
 import { InputSearch } from "../../../components";
+import { selectCloseNow, useAppSelector,selectBagDishes ,selectBagTotalQuantity} from "../../../store";
 const MobileNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBagOpen, setIsBagOpen] = useState(false);
-  const location = useLocation()
-  
+  const location = useLocation();
+  const closeNow = useAppSelector(selectCloseNow);
+  const BagDishes = useAppSelector(selectBagDishes);
+  const TotalQuantity = useAppSelector(selectBagTotalQuantity);
+
+
+
   const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);
     setIsSearchOpen(false);
@@ -22,11 +36,13 @@ const MobileNavbar: React.FC = () => {
   const toggleBag = (): void => {
     setIsBagOpen(!isBagOpen);
   };
-  useEffect(()=>{
+  useEffect(() => {
     setIsMenuOpen(false);
     setIsSearchOpen(false);
-    setIsBagOpen(false); 
-  },[location.pathname])
+    setIsBagOpen(false);
+    console.log(closeNow);
+    
+  }, [location.pathname,closeNow]);
   return (
     <>
       <div
@@ -60,7 +76,7 @@ const MobileNavbar: React.FC = () => {
                 <User className="icon" />
               </div>
               <div onClick={toggleBag}>
-                <Bag className="icon" />
+                {BagDishes.length ? <ActiveBag className="icon-bag" quantity={TotalQuantity}/>: <Bag className="icon" />}
               </div>
             </div>
           </div>

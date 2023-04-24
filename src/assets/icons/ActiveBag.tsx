@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ActiveBag: React.FC<{ quantity: number }> = ({ quantity }) => {
+export const ActiveBag: React.FC<{ quantity: number,className?:string}> = ({ quantity ,className}) => {
   const styleIcon = {
     color: "white",
     width: "12px",
@@ -13,6 +13,7 @@ export const ActiveBag: React.FC<{ quantity: number }> = ({ quantity }) => {
   return (
     <>
       <svg
+      className={className}
         width="100%"
         height="100%"
         viewBox="0 0 30 30"

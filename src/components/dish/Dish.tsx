@@ -24,13 +24,13 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
   const { width } = useWindowSize();
   const [ChosenSide, setIsChosenSide] = useState<string[]>([]);
   const [sideChanges, setSideChanges] = useState<string[]>([]);
-  const [quantity, setQuantity] = useState<number>(0);
+  const [quantity, setQuantity] = useState<number>(1);
   const dispatch = useAppDispatch();
   const handleClose = () => {
     onClose();
   };
   const sendDishToCart = ()=> () => {
-    dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:ChosenSide,sides:ChosenSide}));
+    dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:sideChanges,sides:ChosenSide}));
     onClose();
   }
   const increase = () => () => setQuantity(quantity + 1);

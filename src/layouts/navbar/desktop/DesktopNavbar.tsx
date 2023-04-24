@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Logo, Search, User, Bag } from "../../../assets/icons";
 import { Link, useLocation, useParams } from "react-router-dom";
 import "./DesktopNavbar.scss";
+import { selectCloseNow, useAppSelector } from "../../../store";
 
 const DesktopNavbar: React.FC = () => {
   const location = useLocation();
-
-  useEffect(()=>{
-
-  },[location])
+  const closeNow = useAppSelector(selectCloseNow);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isBagOpen, setIsBagOpen] = useState(false);
+  useEffect(() => {
+    let closeAllIcons = () => {
+      setIsMenuOpen(false);
+      setIsSearchOpen(false);
+      setIsBagOpen(false);
+    };
+    closeAllIcons();
+  }, [closeNow]);
   useEffect(() => {}, [location.pathname]);
   return (
     <nav>

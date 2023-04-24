@@ -9,10 +9,18 @@ import {
 import { Dish, DishMealTime, Restaurant } from "../../models";
 import { Clock } from "../../assets/icons";
 import { Card } from "../../components";
-import {useAppSelector ,setBagRestaurant, useAppDispatch,selectBag, clearBagRestaurant} from "../../store"
+import {
+  closeNavbar,
+  useAppSelector,
+  setBagRestaurant,
+  useAppDispatch,
+  selectBag,
+  clearBagRestaurant,
+  selectCloseNow,
+} from "../../store";
 const RestaurantPage: React.FC = () => {
+  const closeNav = useAppSelector(selectCloseNow);
   const { restId } = useParams();
-  const cart = useAppSelector(selectBag);
   const dispatch = useAppDispatch();
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([]);
   const [restaurant, setRestaurant] = useState<Restaurant>();
@@ -25,28 +33,30 @@ const RestaurantPage: React.FC = () => {
         setRestaurant(getRestaurantById(restId));
         const dish = getDishesByRestId(restId);
         setDisplayDishes(filterDishes(dish, dishCategory));
-        
+        closeNavbar();
       }
     };
-    setRestaurantData(); 
+    setRestaurantData();
+
   }, [dishCategory]);
 
-  useEffect(()=>{
-    if(restaurant) dispatch(setBagRestaurant(restaurant));
+
+  useEffect(() => {
+    if (restaurant) dispatch(setBagRestaurant(restaurant));
     return () => {
-     if(restaurant) dispatch(clearBagRestaurant());
-    }
-  },[restaurant])
+      if (restaurant) dispatch(clearBagRestaurant());
+    };
+  }, [restaurant]);
   return (
     <>
-        <div className="restaurant-image-container">
-          <img
-            src={restaurant?.image}
-            alt={restaurant?.name}
-            className="restaurant-image"
-          />
-        </div>
-      
+      <div className="restaurant-image-container">
+        <img
+          src={restaurant?.image}
+          alt={restaurant?.name}
+          className="restaurant-image"
+        />
+      </div>
+
       <section className="restaurant-section">
         <div className="restaurant-detail">
           <h3 className="restaurant-name">{restaurant?.name}</h3>

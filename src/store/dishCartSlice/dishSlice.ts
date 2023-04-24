@@ -15,6 +15,7 @@ interface BagState {
   restaurant: Restaurant | null;
   bagDishes: BagDish[];
   limitPurchase: boolean;
+  closeNow: boolean;
 }
 
 const initialState: BagState = {
@@ -23,6 +24,7 @@ const initialState: BagState = {
   restaurant: null,
   bagDishes: [],
   limitPurchase: false,
+  closeNow: false,
 };
 
 export const bagSlice = createSlice({
@@ -80,6 +82,12 @@ export const bagSlice = createSlice({
       state.bagDishes = [];
       state.limitPurchase = false;
     },
+    closeNavbar(state){
+      state.closeNow = true;
+      setTimeout(() => {
+        state.closeNow = false;
+      }, 2000);
+    }
   },
 });
 
@@ -89,11 +97,14 @@ export const {
   clearBagRestaurant,
   removeDishFromBag,
   setBagRestaurant,
+  closeNavbar
 } = bagSlice.actions;
 
 export const selectBag = (state: RootState) => state.bag;
 export const selectBagDishes = (state: RootState) => state.bag.bagDishes;
 export const selectBagTotal = (state: RootState) => state.bag.total;
+export const selectBagTotalQuantity = (state: RootState) => state.bag.totalQuantity;
 export const selectBagRestaurant = (state: RootState) => state.bag.restaurant;
+export const selectCloseNow = (state: RootState) => state.bag.closeNow;
 
 export default bagSlice.reducer;
