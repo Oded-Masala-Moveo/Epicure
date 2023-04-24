@@ -3,9 +3,11 @@ import { Logo, Search, User, Bag, ActiveBag } from "../../../assets/icons";
 import { Link, useLocation, useParams } from "react-router-dom";
 import "./DesktopNavbar.scss";
 import {
+  closeAllNavbar,
   selectBagDishes,
   selectBagTotalQuantity,
   selectCloseNow,
+  useAppDispatch,
   useAppSelector,
 } from "../../../store";
 import { BagShop } from "../../../components";
@@ -18,19 +20,18 @@ const DesktopNavbar: React.FC = () => {
   const [isBagOpen, setIsBagOpen] = useState(false);
   const BagDishes = useAppSelector(selectBagDishes);
   const TotalQuantity = useAppSelector(selectBagTotalQuantity);
+  const dispatch = useAppDispatch();
   const toggleBag = (): void => {
-    setIsBagOpen(!isBagOpen);
+    setIsBagOpen(!closeNow);
+    dispatch(closeAllNavbar(!closeNow));
   };
-
   useEffect(() => {
-    let closeAllIcons = () => {
-      setIsMenuOpen(false);
-      setIsSearchOpen(false);
+    return (): void => {
       setIsBagOpen(false);
+      dispatch(closeAllNavbar(false));
     };
-    closeAllIcons();
-  }, [closeNow]);
-  useEffect(() => {}, [location.pathname]);
+  },[]);
+
   return (
     <>
       <nav>
@@ -75,7 +76,7 @@ const DesktopNavbar: React.FC = () => {
                 <Bag className="logo" />
               )}
             </div>
-            {isBagOpen && <BagShop />}
+            {isBagOpen && closeNow && <BagShop />}
           </div>
         </div>
       </nav>

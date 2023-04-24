@@ -8,10 +8,13 @@ import {
   SignatureSection,
 } from "../../layouts";
 import { Hero } from "../../components";
+import { closeAllNavbar, useAppDispatch } from "../../store";
 const HomePage: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
   return (
     <>
-      <div>
+      <div onClick={sendCloseNavbar()}>
         <Hero />
         <RestSection />
         <DishSection />

@@ -7,6 +7,7 @@ import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { ArrowDown } from "../../assets/icons";
 import Dropdown from "../../components/DropdownButton/Dropdown";
 import LiElement from "../../components/li/LiElement";
+import { closeAllNavbar, useAppDispatch } from "../../store";
 
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();
@@ -28,13 +29,14 @@ const RestaurantsPage: React.FC = () => {
     if (restaurants && !condition) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory));
     ;
   };
-
+  const dispatch = useAppDispatch()
+  const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
   useEffect(() => {
     setRestaurantsData();
   }, [selectedCategory,rating,values]);
   return (
     <>
-      <section className="restaurants-section">
+      <section onClick={sendCloseNavbar()} className="restaurants-section">
         <h2 className="restaurants-title">Restaurants</h2>
         <ul className="filter-restaurant">
           <li onClick={handelClickCategory(RestaurantCategory.ALL)} className={ selectedCategory == RestaurantCategory.ALL ? "selected" : "category" } >
