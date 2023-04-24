@@ -2,86 +2,98 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { Dish, Restaurant } from "../../models";
 
-interface CartDish {
+export interface BagDish {
   dish: Dish;
   quantity: number;
+  sides: string[];
+  changes: string[];
 }
 
-interface CartState {
+interface BagState {
   total: number;
+  totalQuantity: number;
   restaurant: Restaurant | null;
-  cartDishes: CartDish[];
+  bagDishes: BagDish[];
   limitPurchase: boolean;
 }
 
-const initialState: CartState = {
+const initialState: BagState = {
   total: 0,
+  totalQuantity: 0,
   restaurant: null,
-  cartDishes: [],
+  bagDishes: [],
   limitPurchase: false,
 };
 
-export const dishCartSlice = createSlice({
-  name: "cart",
+export const bagSlice = createSlice({
+  name: "bag",
   initialState,
   reducers: {
-    setCartRestaurant: (state, action: PayloadAction<Restaurant>) => {
-      if (!state.cartDishes[0]) state.restaurant = action.payload;
+    setBagRestaurant: (state, action: PayloadAction<Restaurant>) => {
+      if (!state.bagDishes.length) {
+        state.restaurant = action.payload;
+      }
     },
-    clearCartRestaurant: (state) => {
-      if (!state.cartDishes[0]) state.restaurant = null;
+    clearBagRestaurant: (state) => {
+      if (!state.bagDishes.length) {
+        state.restaurant = null;
+      }
     },
-    addDishToCart: (
+    addDishToBag: (
       state,
-      action: PayloadAction<{ dish: Dish; quantity: number }>
+      action: PayloadAction<{ dish: Dish; quantity: number; sides: string[]; changes: string[] }>
     ) => {
-      const { dish, quantity } = action.payload;
+      const { dish, quantity, sides, changes } = action.payload;
 
       if (state.restaurant?.id !== dish.restId) {
         state.limitPurchase = true;
         return;
       }
 
-      const cartDish = state.cartDishes.find((d) => d.dish.id === dish.id);
-      if (cartDish) {
-        cartDish.quantity += quantity;
+      const existingDish = state.bagDishes.find((d) => d.dish.id === dish.id);
+      if (existingDish) {
+        existingDish.quantity += quantity;
       } else {
-        state.cartDishes.push({ dish, quantity });
+        state.bagDishes.push({ dish, quantity, sides, changes });
       }
-
       state.total += dish.price * quantity;
+      state.totalQuantity += quantity;
       state.limitPurchase = false;
     },
-    removeDishFromCart: (state, action: PayloadAction<Dish>) => {
-      const { id, price } = action.payload;
-      const cartDish = state.cartDishes.find((d) => d.dish.id === id);
-      if (!cartDish) {
+    removeDishFromBag: (state, action: PayloadAction<{ dish: Dish; sides: string[]; changes: string[] }>) => {
+      const { dish, sides, changes } = action.payload;
+      const existingDish = state.bagDishes.find((d) => d.dish.id === dish.id);
+      if (!existingDish) {
         return;
       }
-      state.total -= cartDish.quantity * price;
-      state.cartDishes = state.cartDishes.filter((d) => d.dish.id !== id);
-      if (state.cartDishes.length === 0) {
+      state.total -= existingDish.quantity * dish.price;
+      state.totalQuantity -= existingDish.quantity;
+      state.bagDishes = state.bagDishes.filter((d) => d.dish.id !== dish.id || d.sides !== sides || d.changes !== changes);
+      if (!state.bagDishes.length) {
         state.restaurant = null;
       }
     },
-    clearCart: (state) => {
+    clearBag: (state) => {
       state.total = 0;
+      state.totalQuantity = 0;
       state.restaurant = null;
-      state.cartDishes = [];
+      state.bagDishes = [];
       state.limitPurchase = false;
     },
   },
 });
 
 export const {
-  addDishToCart,
-  clearCart,
-  clearCartRestaurant,
-  removeDishFromCart,
-  setCartRestaurant,
-} = dishCartSlice.actions;
+  addDishToBag,
+  clearBag,
+  clearBagRestaurant,
+  removeDishFromBag,
+  setBagRestaurant,
+} = bagSlice.actions;
 
-export const selectDishes = (state: RootState) => state.cart.cartDishes;
-export const selectCart = (state: RootState) => state.cart;
+export const selectBag = (state: RootState) => state.bag;
+export const selectBagDishes = (state: RootState) => state.bag.bagDishes;
+export const selectBagTotal = (state: RootState) => state.bag.total;
+export const selectBagRestaurant = (state: RootState) => state.bag.restaurant;
 
-export default dishCartSlice.reducer;
+export default bagSlice.reducer;

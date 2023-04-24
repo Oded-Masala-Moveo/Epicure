@@ -9,10 +9,10 @@ import {
 import { Dish, DishMealTime, Restaurant } from "../../models";
 import { Clock } from "../../assets/icons";
 import { Card } from "../../components";
-import {useAppSelector ,setCartRestaurant, useAppDispatch,selectCart, clearCartRestaurant} from "../../store"
+import {useAppSelector ,setBagRestaurant, useAppDispatch,selectBag, clearBagRestaurant} from "../../store"
 const RestaurantPage: React.FC = () => {
   const { restId } = useParams();
-  const cart = useAppSelector(selectCart);
+  const cart = useAppSelector(selectBag);
   const dispatch = useAppDispatch();
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([]);
   const [restaurant, setRestaurant] = useState<Restaurant>();
@@ -32,9 +32,9 @@ const RestaurantPage: React.FC = () => {
   }, [dishCategory]);
 
   useEffect(()=>{
-    if(restaurant) dispatch(setCartRestaurant(restaurant));
+    if(restaurant) dispatch(setBagRestaurant(restaurant));
     return () => {
-     if(restaurant) dispatch(clearCartRestaurant());
+     if(restaurant) dispatch(clearBagRestaurant());
     }
   },[restaurant])
   return (

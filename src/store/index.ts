@@ -1,13 +1,16 @@
 export {
-  addDishToCart,
-  clearCartRestaurant,
-  setCartRestaurant,
-  removeDishFromCart,
-  selectDishes,
-  selectCart,
-  clearCart,
+  addDishToBag,
+  clearBag,
+  clearBagRestaurant,
+  removeDishFromBag,
+  setBagRestaurant,
+  selectBag,
+  selectBagDishes,
+  selectBagRestaurant,
+  selectBagTotal,
 } from "./dishCartSlice/dishSlice";
+export type { BagDish } from "./dishCartSlice/dishSlice";
 export { useAppDispatch, useAppSelector } from "./hook";
-import cartReducer from "./dishCartSlice/dishSlice";
+import bagReducer from "./dishCartSlice/dishSlice";
 
-export default cartReducer;
+export default bagReducer;

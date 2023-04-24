@@ -15,7 +15,7 @@ import CheckButton from "../buttons/checkButton/CheckButton";
 import { Footer } from "../../layouts";
 import ClickButton from "../buttons/clickButton/ClickButton";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
-import { addDishToCart, useAppDispatch } from "../../store";
+import { addDishToBag, useAppDispatch } from "../../store";
 interface DishComponentProps {
   onClose: () => void;
   dishData: Dish;
@@ -30,7 +30,8 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
     onClose();
   };
   const sendDishToCart = ()=> () => {
-    dispatch(addDishToCart({dish:dishData, quantity:quantity}));
+    dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:ChosenSide,sides:ChosenSide}));
+    onClose();
   }
   const increase = () => () => setQuantity(quantity + 1);
   const decrease = () => () =>
