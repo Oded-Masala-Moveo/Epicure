@@ -5,7 +5,6 @@
 .mobile-bag-nav {
   @include Appeared();
   position: absolute;
-  border: 2px solid black;
   top: 46px;
   left: 0px;
   background-color: white;
@@ -23,16 +22,24 @@
   width: 380px;
 }
 .empty-bag-container {
-  position: absolute;
+  position: relative;
   background-color: white;
   @include flex-container(column, center, center);
   text-align: center;
+  margin-top: 60px;
+  margin-bottom: 50px;
   padding: 0px;
   gap: 20px;
-  width: 145px;
-  height: 178px;
+  @include desktop() {
+    width: 497px;
+    height: 200px;
+  }
   .bag-icon {
-    width: 49px;
+    width: 55px;
+    height: 55px;
+  }
+  h2{
+    width: 145px;
   }
 }
 
