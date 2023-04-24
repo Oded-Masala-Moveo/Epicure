@@ -9,6 +9,7 @@ export {
   selectBagDishes,
   selectBagRestaurant,
   selectBagTotal,
+  selectBagTotalQuantity,
   selectCloseNow
 } from "./dishCartSlice/dishSlice";
 export type { BagDish } from "./dishCartSlice/dishSlice";

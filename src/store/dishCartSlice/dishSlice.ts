@@ -103,6 +103,7 @@ export const {
 export const selectBag = (state: RootState) => state.bag;
 export const selectBagDishes = (state: RootState) => state.bag.bagDishes;
 export const selectBagTotal = (state: RootState) => state.bag.total;
+export const selectBagTotalQuantity = (state: RootState) => state.bag.totalQuantity;
 export const selectBagRestaurant = (state: RootState) => state.bag.restaurant;
 export const selectCloseNow = (state: RootState) => state.bag.closeNow;
 

@@ -30,7 +30,7 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
     onClose();
   };
   const sendDishToCart = ()=> () => {
-    dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:ChosenSide,sides:ChosenSide}));
+    dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:sideChanges,sides:ChosenSide}));
     onClose();
   }
   const increase = () => () => setQuantity(quantity + 1);

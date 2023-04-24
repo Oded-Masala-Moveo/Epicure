@@ -25,8 +25,8 @@ export const ActiveBag: React.FC = () => {
   return (
     <div className="mobile-bag-nav">
       <div className="active-bag-container">
-        <h2> my order</h2>
-        <p>{restaurant?.name}</p>
+        <h2 className="bag-title"> my order</h2>
+        <p className="rest-title">{restaurant?.name}</p>
         <div className="bag-item-list-container">
           {shopBag.map((shopBagItem) => (
             <BagDishCard item={shopBagItem} />
@@ -34,7 +34,7 @@ export const ActiveBag: React.FC = () => {
         </div>
         <div className="total-bag-price-container">
           <h2>total -</h2>
-          <div className="total-icon">
+          <div className="icon">
             <Shekel />
           </div>
           <p>{total}</p>
@@ -54,9 +54,23 @@ const BagDishCard: React.FC<{ item: BagDish }> = ({ item }) => {
         <div className="bag-dish-card-image">
           <img src={item.dish.image} alt={item.dish.name} />
         </div>
-        <div>
-          <h3>{item.dish.name}</h3>
-          <p>{item.dish.description}</p>
+        <div className="bag-dish-card-detail">
+          <div className="title">
+            <p>{`${item.quantity}x`}</p><h3>{item.dish.name}</h3>
+          </div>
+          <div className="side-change">
+            <p >
+              {item.sides.map((c) => c)}{" "}
+              {item.sides.length && item.changes.length && <span>|</span>}{" "}
+              {item.changes.map((c) => c)}
+            </p>
+          </div>
+        </div>
+        <div className="item-total-price">
+          <div className="icon">
+            <Shekel />
+          </div>
+          <p>{item.dish.price * item.quantity}</p>
         </div>
       </div>
     </>
