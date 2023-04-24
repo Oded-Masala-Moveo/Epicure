@@ -50,8 +50,8 @@ export const ActiveBag: React.FC = () => {
 const BagDishCard: React.FC<{ item: BagDish }> = ({ item }) => {
   return (
     <>
-      <div>
-        <div>
+      <div className="bag-dish-card-container">
+        <div className="bag-dish-card-image">
           <img src={item.dish.image} alt={item.dish.name} />
         </div>
         <div>
