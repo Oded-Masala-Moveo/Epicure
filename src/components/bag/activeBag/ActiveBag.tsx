@@ -5,12 +5,18 @@ import { desktop } from "../../../hooks/useWindowSize";
 import { Shekel } from "../../../assets/icons";
 import ClickButton from "../../buttons/clickButton/ClickButton";
 import "./activeBag.scss"
+import { useRef } from "react";
 
 export const ActiveBagComponent: React.FC = () => {
     const { width } = useWindowSize();
     const restaurant = useAppSelector(selectBagRestaurant);
     const shopBag = useAppSelector(selectBagDishes);
     const total = useAppSelector(selectBagTotal);
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    const focusTextArea = () => {
+      if (textAreaRef.current) textAreaRef.current.focus();
+    }
+    
     return (
     
         <div className="active-bag-container">
@@ -34,9 +40,9 @@ export const ActiveBagComponent: React.FC = () => {
           <>
           <div className="top-comment-line"></div>
            <div className="bag-comment-container">
-            <div><h1>Add A Comment</h1></div>
+            <div className="comment-title"><h1>Add A Comment</h1></div>
             <div className="comment-input">
-            <textarea cols={30} rows={10}/>
+            <textarea ref={textAreaRef} placeholder="Special requests, allergies, detary restrictions, etc." cols={30} rows={10}/>
             </div>
             </div></>}
           <div className="checkout-bag-btn">

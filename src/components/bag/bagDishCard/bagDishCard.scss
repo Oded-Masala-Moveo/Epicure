@@ -5,6 +5,7 @@
 
 .bag-dish-card-container {
     @include flex-container(row, space-between, center);
+    direction: initial;
     background-color: $secondary-beige;
     width: 342px;
     height: 96px;
