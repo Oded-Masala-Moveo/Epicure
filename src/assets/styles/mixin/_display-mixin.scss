@@ -6,15 +6,16 @@
 }
 
 @mixin flex-container(
-  $width-in-percent: 80%,
-  $flex-direction: row,
-  $gap: 10px
+  $flex-direction:"",
+  $justifyContent:"",
+  $alignItems:"",
+  $gap:"",
+  $width-in-percent:"",
 ) {
-  width: $width-in-percent;
-  margin: 10px;
   display: flex;
   flex-direction: $flex-direction;
-  justify-content: center;
-  align-items: center;
+  justify-content:  $justifyContent;
+  align-items: $alignItems;
   gap: $gap;
+  width:  $width-in-percent;
 }

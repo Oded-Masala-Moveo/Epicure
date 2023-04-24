@@ -4,10 +4,10 @@ import { Footer, Navbar } from "./layouts";
 import { RestaurantsPage, HomePage, RestaurantPage, ChefPage } from "./pages";
 
 import "./app.scss";
-import { selectCart, useAppSelector } from "./store";
+import { selectBag, useAppSelector } from "./store";
 
 const App: React.FC = () => {
-  const cart = useAppSelector(selectCart)
+  const cart = useAppSelector(selectBag)
   useEffect(()=>{
 console.log(cart);
 

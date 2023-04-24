@@ -1,30 +1,43 @@
-@import "../../assets/styles/animation";
+@import "../../assets/styles/animation",
+  "../../assets/styles/mixin/display-mixin";
 
 .mobile-bag-nav {
   @include Appeared();
   position: absolute;
-  width: -webkit-fill-available;
-  height: 218px;
   width: 380px;
-  left: -1px;
+  right: 0;
   top: 46px;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  .bag-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0px;
-    gap: 20px;
-    width: 145px;
-    height: 178px;
-    .bag-icon {
-      width: 49px;
+  @include flex-container(column, center, center);
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.active-bag-container {
+  @include flex-container(column, center, center);
+  .bag-item-list-container{
+    margin-bottom: 90px
+  }
+  .total-bag-price-container {
+    @include flex-container(row, center, center,10px);
+    margin-bottom: 20px;
+    .total-icon {
+      width: 10px;
+      height: 17px;
     }
+  }
+  .checkout-bag-btn{
+    margin-bottom: 24px
+  }
+}
+.empty-bag-container {
+  @include flex-container(column, center, center);
+  text-align: center;
+  padding: 0px;
+  gap: 20px;
+  width: 145px;
+  height: 178px;
+  .bag-icon {
+    width: 49px;
   }
 }
