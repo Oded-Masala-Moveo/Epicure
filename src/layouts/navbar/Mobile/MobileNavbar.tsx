@@ -93,6 +93,7 @@ const MobileNavbar: React.FC = () => {
         {isBagOpen && <BagShop />}
         {isSearchOpen && <MobileSearchNav />}
       </div>
+     
     </>
   );
 };

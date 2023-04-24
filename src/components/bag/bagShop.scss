@@ -1,20 +1,36 @@
 @import "../../assets/styles/animation",
-  "../../assets/styles/mixin/display-mixin", "../../assets/styles/variable";
+  "../../assets/styles/mixin/display-mixin", "../../assets/styles/variable",
+  "../../assets/styles/mixin/media-queries";
 
 .mobile-bag-nav {
   @include Appeared();
   position: absolute;
-  width: 380px;
-  right: 0;
+  border: 2px solid black;
   top: 46px;
+  left: 0px;
   background-color: white;
+  z-index: 998;
   @include flex-container(column, center, center);
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  @include desktop (){
+    top: 64px;
+    left: 1050px;
+  }
+}
+.mobile-bag-nav > * {
+  width: 380px;
+
 }
 .active-bag-container {
+  position: relative;
   @include flex-container(column, center, center);
+  background-color: white;
+  @include desktop() {
+    width: 497px;
+    height: 778px;
+  }
   .bag-title {
     margin-top: 16px;
     font-weight: 400;
@@ -61,6 +77,7 @@
   background-color: $secondary-beige;
   height: 96px;
   width: 340px;
+
   .bag-dish-card-image {
     width: 96px;
     height: 96px;
@@ -94,11 +111,18 @@
     height: 100%;
     margin-right: 12px;
     padding-bottom: 12px;
-    @include flex-container(row, center, end);
+    @include flex-container(row, center, end, 3px);
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 18px;
+    }
   }
 }
 
 .empty-bag-container {
+  position: absolute;
+  background-color: white;
   @include flex-container(column, center, center);
   text-align: center;
   padding: 0px;
