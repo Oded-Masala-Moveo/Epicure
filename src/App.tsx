@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Footer, Navbar } from "./layouts";
-import { RestaurantsPage, HomePage, RestaurantPage, ChefPage } from "./pages";
+import { RestaurantsPage, HomePage, RestaurantPage, ChefPage, CheckOut } from "./pages";
 
 import "./app.scss";
 import { selectBag, useAppSelector } from "./store";
@@ -20,6 +20,7 @@ console.log(cart);
           <Route path="/restaurants" element={<RestaurantsPage />} />
           <Route path="/restaurants/:restId" element={<RestaurantPage />} />
           <Route path="/chef" element={<ChefPage />} />
+          <Route path="/checkout" element={< CheckOut />} />
         </Routes>
       <Footer />
     </div>
