@@ -1,38 +1,41 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ActiveBag, Bag, Search } from "../../assets/icons";
+import { Bag, Shekel } from "../../assets/icons";
 import "./bagShop.scss";
+import {
+  selectBag,
+  selectBagDishes,
+  useAppSelector,
+  selectBagRestaurant,
+  BagDish,
+  selectBagTotal,
+} from "../../store";
+import ClickButton from "../buttons/clickButton/ClickButton";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
-import {ClickButton} from "../../components"
+import { BagDishCard } from "./bagDishCard/BagDishCard";
+import { ActiveBagComponent } from "./activeBag/ActiveBag";
+const BagShop: React.FC<{ width?: string }> = ({ width }) => {
+  const shopBag = useAppSelector(selectBagDishes);
 
-const BagShop: React.FC <{width?:string}>= ({width}) => {
-  // const { width } = useWindowSize();
-
-  return (
-    <>
-     <div className="mobile-bag-nav">
-      <div className="bag-container">
-        <div className="bag-icon">
-          <Bag />
-        </div>
-        <h2>Your bag is empty</h2>
-        {/* <ClickButton>add to bag</ClickButton> */}
+  if (shopBag.length)
+    return (
+      <div className="mobile-bag-nav">
+        <ActiveBagComponent />
       </div>
+    );
+  return (
+    <div className="mobile-bag-nav">
+      <EmptyBag />
     </div>
-    </>
   );
 };
 
-export const MobileNavBag: React.FC = () => {
+export const EmptyBag: React.FC = () => {
   return (
-    <div className="mobile-bag-nav">
-      <div className="bag-container">
-        <div className="bag-icon">
-          <Bag />
-        </div>
-        <h2>Your bag is empty</h2>
-        {/* <ClickButton>add to bag</ClickButton> */}
+    <div className="empty-bag-container">
+      <div className="bag-icon">
+        <Bag />
       </div>
+      <h2>Your bag is empty</h2>
     </div>
   );
 };

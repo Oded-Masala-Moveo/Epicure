@@ -67,7 +67,7 @@ const CardDish: React.FC<{
               <div className="price-container">
                 {!dishPage && <div className="price-line"></div>}
                 {dishPage && <div className="price-card-line-1"></div>}
-                <Shekel className="shekel-logo" />
+                <Shekel stroke="black" className="shekel-logo" />
                 <p>{card.price}</p>
                 {dishPage && <div className="price-card-line-2"></div>}
                 {!dishPage && <div className="price-line"></div>}

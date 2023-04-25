@@ -101,9 +101,8 @@
       .shekel-logo {
         height: 10px;
         width: 10px;
-
         @include desktop() {
-          width: 18px;
+          width: 12px;
           height: 21px;
         }
       }
@@ -114,6 +113,7 @@
 .dish-page-card {
   width: 335px;
   height: 375.84px;
+  cursor: pointer;
   @include desktop() {
     width: 272px;
     height: 413px;

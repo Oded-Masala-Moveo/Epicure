@@ -20,7 +20,6 @@ const Carousel: React.FC<{ cards: CardsList; weekChef?: boolean }> = ({
           <Swiper
             spaceBetween={24}
             slidesPerView={width && width > 650 ? 3 : 1.5}
-            // centeredSlides={true}
             autoplay={{ delay: 3000 }}
           >
             {cards &&

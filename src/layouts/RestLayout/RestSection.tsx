@@ -10,9 +10,6 @@ const RestSection: React.FC = () => {
   const restData = getRestaurants();
   const dishData = getDishes();
   const chefData = getChefs();
-  const chefOfTheWeek = (chefId: number) => {
-    return restData.filter((rest) => rest.chefId === chefId);
-  };
   useEffect(() => {}, []);
   return (
     <section className="restaurants-container">

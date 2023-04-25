@@ -3,10 +3,12 @@ import "./ChefPage.scss";
 import { Chef, ChefCategory } from "../../models";
 import { filterChefs, getChefs } from "../../services";
 import { Card } from "../../components";
+import { closeAllNavbar, useAppDispatch } from "../../store";
 const ChefPage: React.FC = () => {
   const [chefs, setChefs] = useState<Chef[]>([]);
   const [chefsCategory, setChefsCategory] = useState<string>(ChefCategory.All);
-
+  const dispatch = useAppDispatch()
+  const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
   useEffect(() => {
     const setChefsData = () => {
       const chefsData = getChefs();
@@ -16,7 +18,7 @@ const ChefPage: React.FC = () => {
   }, [chefsCategory]);
   return (
     <>
-      <section className="chef-section">
+      <section onClick={sendCloseNavbar()} className="chef-section">
         <div className="chef-title">
           <h2>CHEFS</h2>
         </div>

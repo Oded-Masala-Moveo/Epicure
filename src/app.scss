@@ -6,11 +6,10 @@
   box-sizing: border-box;
 }
 
-html {
+
+.html-container {
   margin: 0 auto;
   max-width: 1440px;
-}
-.body-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -58,5 +57,11 @@ input {
   @include mobile-input-text();
   @include desktop() {
     @include desk-input-text();
+  }
+}
+label{
+  @include mobile-label-text();
+  @include desktop() {
+    @include  desk-label-text();
   }
 }
