@@ -206,7 +206,10 @@
         .quantity {
           display: flex;
           align-items: center;
+          justify-content: start;
+         @include desktop() {
           justify-content: center;
+         }
           gap: 32px;
          .handler-button{
           cursor: pointer;
