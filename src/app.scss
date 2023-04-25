@@ -59,3 +59,9 @@ input {
     @include desk-input-text();
   }
 }
+label{
+  @include mobile-label-text();
+  @include desktop() {
+    @include  desk-label-text();
+  }
+}
