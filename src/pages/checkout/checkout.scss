@@ -1,3 +1,30 @@
-.checkout-page-container{
-    margin-top: 300px;
+@import "../../assets/styles/variable",
+  "../../assets/styles/mixin/display-mixin",
+  "../../assets/styles/mixin/media-queries";
+
+.checkout-page-container {
+  .checkout-mobile-navbar-container {
+    position: fixed;
+    width: 100%;
+    height: 46px;
+    @include flex-container(row,flex-start,center,40%);
+    background-color: $secondary-gray;
+    box-shadow: $box-shadow-setting;
+    padding-left: 20px;
+    .close-mobile-logo {
+      .logo {
+        width: 32.93px;
+        height: 32px;
+      }
+    }
+    .close-checkout-nav {
+      .logo {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  .checkout-title{
+    margin-top: 46px;
+  }
 }
