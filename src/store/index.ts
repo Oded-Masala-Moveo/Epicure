@@ -4,13 +4,16 @@ export {
   clearBagRestaurant,
   removeDishFromBag,
   setBagRestaurant,
-  closeNavbar,
+  closeAllNavbar,
+  addCommentToBag,
+  clearCommentFromBag,
   selectBag,
   selectBagDishes,
   selectBagRestaurant,
   selectBagTotal,
   selectBagTotalQuantity,
-  selectCloseNow
+  selectCloseNow,
+  selectComment
 } from "./dishCartSlice/dishSlice";
 export type { BagDish } from "./dishCartSlice/dishSlice";
 export { useAppDispatch, useAppSelector } from "./hook";

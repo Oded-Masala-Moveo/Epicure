@@ -12,7 +12,14 @@ import "./MobileNavbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { BagShop } from "../../../components/";
 import { InputSearch } from "../../../components";
-import { selectCloseNow, useAppSelector,selectBagDishes ,selectBagTotalQuantity} from "../../../store";
+import {
+  selectCloseNow,
+  useAppSelector,
+  selectBagDishes,
+  selectBagTotalQuantity,
+  useAppDispatch,
+  closeAllNavbar,
+} from "../../../store";
 const MobileNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -21,28 +28,44 @@ const MobileNavbar: React.FC = () => {
   const closeNow = useAppSelector(selectCloseNow);
   const BagDishes = useAppSelector(selectBagDishes);
   const TotalQuantity = useAppSelector(selectBagTotalQuantity);
-
-
+  const dispatch = useAppDispatch();
 
   const toggleMenu = (): void => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!closeNow);
     setIsSearchOpen(false);
     setIsBagOpen(false);
+    dispatch(closeAllNavbar(!closeNow));
   };
   const toggleSearch = (): void => {
-    setIsSearchOpen(!isSearchOpen);
+    setIsSearchOpen(!closeNow);
     setIsBagOpen(false);
+    dispatch(closeAllNavbar(!closeNow));
   };
   const toggleBag = (): void => {
-    setIsBagOpen(!isBagOpen);
+    setIsBagOpen(!closeNow);
+    setIsSearchOpen(false);
+    setIsMenuOpen(false);
+    dispatch(closeAllNavbar(!closeNow));
   };
+
   useEffect(() => {
     setIsMenuOpen(false);
     setIsSearchOpen(false);
     setIsBagOpen(false);
-    console.log(closeNow);
-    
-  }, [location.pathname,closeNow]);
+  }, [location.pathname]);
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsSearchOpen(false);
+    setIsBagOpen(false);
+  }, []);
+  useEffect(() => {
+    return (): void => {
+      setIsMenuOpen(false);
+      setIsSearchOpen(false);
+      setIsBagOpen(false);
+      dispatch(closeAllNavbar(false));
+    };
+  }, []);
   return (
     <>
       <div
@@ -51,7 +74,7 @@ const MobileNavbar: React.FC = () => {
         }
       >
         <div className="right-navbar">
-          {isMenuOpen || isSearchOpen ? (
+          {(isMenuOpen && closeNow) || (isSearchOpen && closeNow) ? (
             <div onClick={isMenuOpen ? toggleMenu : toggleSearch}>
               <X_dark className="hamburger-icon" />
             </div>
@@ -61,7 +84,7 @@ const MobileNavbar: React.FC = () => {
             </div>
           )}
         </div>
-        {!isMenuOpen && !isSearchOpen ? (
+        {!isMenuOpen && !isSearchOpen || !closeNow ? (
           <div className={"left-navbar"}>
             <div>
               <Link to={"/"}>
@@ -76,24 +99,27 @@ const MobileNavbar: React.FC = () => {
                 <User className="icon" />
               </div>
               <div onClick={toggleBag}>
-                {BagDishes.length ? <ActiveBag className="icon-bag" quantity={TotalQuantity}/>: <Bag className="icon" />}
+                {BagDishes.length ? (
+                  <ActiveBag className="icon-bag" quantity={TotalQuantity} />
+                ) : (
+                  <Bag className="icon" />
+                )}
               </div>
             </div>
           </div>
         ) : (
           <>
-            {isSearchOpen && (
+            {isSearchOpen && closeNow && (
               <div className="search-title">
                 <p>search</p>
               </div>
             )}
           </>
         )}
-        {isMenuOpen && <MenuNav setMenu={toggleMenu} />}
-        {isBagOpen && <BagShop />}
-        {isSearchOpen && <MobileSearchNav />}
+        {isMenuOpen && closeNow && <MenuNav setMenu={toggleMenu} />}
+        {isBagOpen && closeNow && <BagShop />}
+        {isSearchOpen && closeNow && <MobileSearchNav />}
       </div>
-     
     </>
   );
 };

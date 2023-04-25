@@ -7,6 +7,7 @@
   position: relative;
   @include flex-container(column, start, center);
   background-color: white;
+
   @include desktop() {
     width: 497px;
     height: 778px;

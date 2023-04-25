@@ -16,6 +16,7 @@ interface BagState {
   bagDishes: BagDish[];
   limitPurchase: boolean;
   closeNow: boolean;
+  orderComment: string;
 }
 
 const initialState: BagState = {
@@ -25,6 +26,7 @@ const initialState: BagState = {
   bagDishes: [],
   limitPurchase: false,
   closeNow: false,
+  orderComment: "",
 };
 
 export const bagSlice = createSlice({
@@ -75,6 +77,12 @@ export const bagSlice = createSlice({
         state.restaurant = null;
       }
     },
+    addCommentToBag: (state, action: PayloadAction< string >) => {
+      state.orderComment = action.payload;
+    },
+    clearCommentFromBag: (state) => {
+      state.orderComment = "";
+    },
     clearBag: (state) => {
       state.total = 0;
       state.totalQuantity = 0;
@@ -82,11 +90,8 @@ export const bagSlice = createSlice({
       state.bagDishes = [];
       state.limitPurchase = false;
     },
-    closeNavbar(state){
-      state.closeNow = true;
-      setTimeout(() => {
-        state.closeNow = false;
-      }, 2000);
+    closeAllNavbar(state,action: PayloadAction< boolean >){
+      state.closeNow = action.payload;
     }
   },
 });
@@ -97,7 +102,9 @@ export const {
   clearBagRestaurant,
   removeDishFromBag,
   setBagRestaurant,
-  closeNavbar
+  closeAllNavbar,
+  addCommentToBag,
+  clearCommentFromBag,
 } = bagSlice.actions;
 
 export const selectBag = (state: RootState) => state.bag;
@@ -106,5 +113,6 @@ export const selectBagTotal = (state: RootState) => state.bag.total;
 export const selectBagTotalQuantity = (state: RootState) => state.bag.totalQuantity;
 export const selectBagRestaurant = (state: RootState) => state.bag.restaurant;
 export const selectCloseNow = (state: RootState) => state.bag.closeNow;
+export const selectComment = (state: RootState) => state.bag.orderComment;
 
 export default bagSlice.reducer;
