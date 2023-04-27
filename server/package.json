@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "repository": "https://github.com/Oded-Masala-Moveo/Epicure-app",
-  "author": "oded masala",
+  "author": "Oded Masala",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
