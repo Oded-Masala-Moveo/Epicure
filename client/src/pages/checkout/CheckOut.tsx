@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import "./checkout.scss";
 import { Logo, X_dark } from "../../assets/icons";
-import { MyApp } from "./FormikTest";
-import { Field } from "formik";
+import { CheckOutForm } from "../../components";
+
 const CheckOut: React.FC = () => {
   const refInput = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -23,33 +23,11 @@ const CheckOut: React.FC = () => {
           <h1>Checkout</h1>
         </div>
         <div className="checkout-form-container">
-        
+          <CheckOutForm />
         </div>
       </div>
     </>
   );
 };
 
-interface InputFieldProp {
-  labelName: string;
-  inputName:string;
-  type: string;
-  placeholder: string;
-  inputRef: React.RefObject<HTMLInputElement>;
-}
-const InputFieldComponent: React.FC<InputFieldProp> = ({
-  labelName,
-  inputName,
-  placeholder,
-  inputRef,
-  type,
-}) => {
-  return (
-    
-    <><Field name={inputName} type={type} ref={inputRef} placeholder={placeholder}/>
-      {/* <label htmlFor={labelName}>{labelName}</label>
-      <input type={type} ref={inputRef} placeholder={placeholder} /> */}
-    </>
-  );
-};
 export default CheckOut;
