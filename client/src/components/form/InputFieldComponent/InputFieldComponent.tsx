@@ -1,8 +1,8 @@
 import { Field, FormikProps } from "formik";
 import { MyFormValues } from "../../../models";
-
+import "./inputFieldComponent.scss"
 interface InputFieldProp {
-  labelName: string;
+  labelName?: string;
   inputName: keyof MyFormValues;
   inputType: string;
   inputPlaceholder?: string;
@@ -22,19 +22,17 @@ const InputFieldComponent: React.FC<InputFieldProp> = ({
   return (
     <>
       <div className="input-checkout-container">
-        <label className="label-checkout" htmlFor={inputName}>
+       {labelName && <label className="label-checkout" htmlFor={inputName}>
           {labelName}
-        </label>
+        </label>}
         <Field
           className={`input-checkout ${hasError ? "has-error" : ""}`}
           name={inputName}
           type={inputType}
           placeholder={inputPlaceholder}
         />
-        {hasError && <div className="error-message">{errors[inputName]}</div>}
-        {touched[inputName] && !errors[inputName] && (
-          <div className="success-message">Valid input!</div>
-        )}
+        <div>{hasError && <p className="error-message">{errors[inputName]}</p>}</div>
+    
       </div>
     </>
   );

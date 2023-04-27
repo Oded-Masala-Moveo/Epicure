@@ -11,7 +11,7 @@ import {
 import * as Yup from "yup";
 import { MyFormValues } from "../../models";
 import { ClickButton, InputFieldComponent } from "..";
-
+import "./CheckOutForm.scss";
 const cvcRegex = /^\d{3,4}$/;
 const expiryDateRegex = /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/;
 const phoneRegex = /^((\+|00)?972\-?|0)([234578]\d|\d{2})\-?\d{7}$/;
@@ -86,18 +86,18 @@ const CheckOutForm: React.FC = () => {
     nameOnCard: {
       name: "nameOnCard",
       labelName: "Name on Card",
-      placeholder: "fill your name on",
+      placeholder: "Name On Card",
     },
     cardNumber: {
       name: "cardNumber",
       labelName: "Card Number",
-      placeholder: "fill your card number",
+      placeholder: "Card Number",
     },
-    cvc: { name: "cvc", labelName: "CVC", placeholder: "fill your CVV" },
+    cvc: { name: "cvc", labelName: "CVC", placeholder: "CVV" },
     expiryDate: {
       name: "expiryDate",
       labelName: "Expiry Date",
-      placeholder: "fill your expiry date",
+      placeholder: "Expiry Date",
     },
   };
 
@@ -110,64 +110,56 @@ const CheckOutForm: React.FC = () => {
       >
         {({ touched, errors, ...Formik }) => (
           <Form>
-            <div className="checkout-form-container">
-              <div className="checkout-form-inputs">
+            <div className="checkout-form-inputs-top">
+              <InputFieldComponent
+                formikProps={{ touched, errors, ...Formik }}
+                labelName={fieldFill.fullName.labelName}
+                inputName={fieldFill.fullName.name as keyof MyFormValues}
+                inputType="text"
+                inputPlaceholder={fieldFill.fullName.placeholder}
+              />
+              <InputFieldComponent
+                formikProps={{ touched, errors, ...Formik }}
+                labelName={fieldFill.address.labelName}
+                inputName={fieldFill.address.name as keyof MyFormValues}
+                inputType="text"
+                inputPlaceholder={fieldFill.address.placeholder}
+              />
+              <InputFieldComponent
+                formikProps={{ touched, errors, ...Formik }}
+                labelName={fieldFill.phone.labelName}
+                inputName={fieldFill.phone.name as keyof MyFormValues}
+                inputType="tel"
+                inputPlaceholder={fieldFill.phone.placeholder}
+              />
+            </div>
+            <div className="checkout-form-inputs-bottom">
+              <h2>payment details</h2>
+            
+              <InputFieldComponent
+                formikProps={{ touched, errors, ...Formik }}
+                inputName={fieldFill.cardNumber.name as keyof MyFormValues}
+                inputType="text"
+                inputPlaceholder={fieldFill.cardNumber.placeholder}
+              />
                 <InputFieldComponent
-                  formikProps={{ touched, errors, ...Formik }}
-                  labelName={fieldFill.fullName.labelName}
-                  inputName={fieldFill.fullName.name as keyof MyFormValues}
-                  inputType="text"
-                  inputPlaceholder={fieldFill.fullName.placeholder}
-                />
-                <InputFieldComponent
-                  formikProps={{ touched, errors, ...Formik }}
-                  labelName={fieldFill.address.labelName}
-                  inputName={fieldFill.address.name as keyof MyFormValues}
-                  inputType="text"
-                  inputPlaceholder={fieldFill.address.placeholder}
-                />
-                <InputFieldComponent
-                  formikProps={{ touched, errors, ...Formik }}
-                  labelName={fieldFill.phone.labelName}
-                  inputName={fieldFill.phone.name as keyof MyFormValues}
-                  inputType="tel"
-                  inputPlaceholder={fieldFill.phone.placeholder}
-                />
-              </div>
-              <div className="checkout-form-inputs">
-                <InputFieldComponent
-                  formikProps={{ touched, errors, ...Formik }}
-                  labelName={fieldFill.nameOnCard.labelName}
-                  inputName={fieldFill.nameOnCard.name as keyof MyFormValues}
-                  inputType="text"
-                  inputPlaceholder={fieldFill.nameOnCard.placeholder}
-                />
-                <InputFieldComponent
-                  formikProps={{ touched, errors, ...Formik }}
-                  labelName={fieldFill.cardNumber.labelName}
-                  inputName={fieldFill.cardNumber.name as keyof MyFormValues}
-                  inputType="text"
-                  inputPlaceholder={fieldFill.cardNumber.placeholder}
-                />
-                <InputFieldComponent
-                  formikProps={{ touched, errors, ...Formik }}
-                  labelName={fieldFill.cvc.labelName}
-                  inputName={fieldFill.cvc.name as keyof MyFormValues}
-                  inputType="text"
-                  inputPlaceholder={fieldFill.cvc.placeholder}
-                />
-                <InputFieldComponent
-                  formikProps={{ touched, errors, ...Formik }}
-                  labelName={fieldFill.expiryDate.labelName}
-                  inputName={fieldFill.expiryDate.name as keyof MyFormValues}
-                  inputType="text"
-                  inputPlaceholder={fieldFill.expiryDate.placeholder}
-                />
-              </div>
-              {/* <div className="checkout-form-buttons">
-                <button type="submit">Submit</button>
-                <ClickButton type="submit">Submit</ClickButton>
-              </div> */}
+                formikProps={{ touched, errors, ...Formik }}
+                inputName={fieldFill.nameOnCard.name as keyof MyFormValues}
+                inputType="text"
+                inputPlaceholder={fieldFill.nameOnCard.placeholder}
+              />
+              <InputFieldComponent
+                formikProps={{ touched, errors, ...Formik }}
+                inputName={fieldFill.cvc.name as keyof MyFormValues}
+                inputType="text"
+                inputPlaceholder={fieldFill.cvc.placeholder}
+              />
+              <InputFieldComponent
+                formikProps={{ touched, errors, ...Formik }}
+                inputName={fieldFill.expiryDate.name as keyof MyFormValues}
+                inputType="text"
+                inputPlaceholder={fieldFill.expiryDate.placeholder}
+              />
             </div>
           </Form>
         )}

@@ -20,7 +20,7 @@ const CheckOut: React.FC = () => {
           </div>
         </div>
         <div className="checkout-title">
-          <h1>Checkout</h1>
+          <h2>delivery details</h2>
         </div>
         <div className="checkout-form-container">
           <CheckOutForm />

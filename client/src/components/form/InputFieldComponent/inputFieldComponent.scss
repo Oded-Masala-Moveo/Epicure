@@ -1,0 +1,22 @@
+@import "../../../assets/styles/mixin/display-mixin",
+  "../../../assets/styles/mixin/media-queries",
+  "../../../assets/styles/variable";
+.input-checkout-container {
+  @include flex-container(column, start, flex-start,8px);
+  .label-checkout {
+  }
+  .input-checkout {
+    width: 336px;
+    border: none;
+    border-bottom:  0.5px solid #000000;
+    outline: none;
+    padding-bottom: 8px;
+  }
+  .has-error{
+    border-bottom:  0.5px solid #cd0909;
+   
+  }
+  .error-message{
+    color: #cd0909;
+  }
+}
