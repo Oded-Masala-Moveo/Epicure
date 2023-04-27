@@ -4,3 +4,4 @@ export { DishCategory, DishMealTime } from "./dish.model";
 export type { Dish } from "./dish.model";
 export { RestaurantCategory, RestaurantRange } from "./restaurant.model";
 export type { Restaurant } from "./restaurant.model";
+export type { MyFormValues } from "./formValue.model";
