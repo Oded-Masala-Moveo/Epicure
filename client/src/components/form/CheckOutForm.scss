@@ -10,6 +10,7 @@
     }
     .checkout-form-inputs-bottom{
         @include flex-container(column, start, flex-start,50px);
+        margin-bottom: 40px;
         h2{
             font-size: 14px; 
         }

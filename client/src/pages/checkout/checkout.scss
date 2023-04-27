@@ -3,11 +3,12 @@
   "../../assets/styles/mixin/media-queries";
 
 .checkout-page-container {
+  padding-left: 18px;
   .checkout-mobile-navbar-container {
     position: fixed;
     width: 100%;
     height: 46px;
-    @include flex-container(row,flex-start,center,40%);
+    @include flex-container(row, flex-start, center, 40%);
     background-color: $secondary-gray;
     box-shadow: $box-shadow-setting;
     padding-left: 20px;
@@ -24,12 +25,32 @@
       }
     }
   }
-  .checkout-title{
-    margin-top: 46px;
+  .checkout-title {
+    margin-top: 82px;
+    margin-bottom: 40px;
     text-align: center;
+    h2 {
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
-  .checkout-form-container{
-    padding-left: 18px;
+  .checkout-form-container {
+    // padding-left: 18px;
   }
-
+  .order-details-container {
+    @include flex-container(column, flex-start, "", 20px);
+  }
+  .order-total-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    p {
+      text-align: center;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  .submit-button-container {
+    margin-bottom: 40px;
+  }
 }
