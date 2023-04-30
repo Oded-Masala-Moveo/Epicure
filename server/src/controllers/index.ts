@@ -1,0 +1,1 @@
+export {default as ChefController} from './chef.controller';
