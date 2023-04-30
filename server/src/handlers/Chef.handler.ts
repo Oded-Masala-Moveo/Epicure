@@ -1,3 +1,4 @@
+import { ErrorHandler ,HttpError,HttpStatusCode,HttpErrorMessage} from "../exceptions";
 import { Chefs } from "../models";
 import { Chef } from "../models/ChefsSchema";
 
@@ -39,19 +40,31 @@ export default class ChefHandler {
   }
   static async addManyChefs(chefs: Chef[]) {
     try {
-      const chefInstances = chefs.map(
-        (chef) =>
-          new Chefs({
-            fName: chef.fName,
-            lName: chef.lName,
-            fullName: chef.fullName,
-            description: chef.description,
-            image: chef.image,
-            weekChef: chef.weekChef,
-            newChef: chef.newChef,
-            viewed: chef.viewed,
-          })
-      );
+      const chefInstances:Chef[] = [];
+      
+      for (const chef of chefs) {
+        const existingChef = await Chefs.findOne({
+          fName: chef.fName,
+          lName: chef.lName
+        });
+        
+        if (existingChef) {
+          throw ErrorHandler.createHttpError(HttpStatusCode.NOT_ACCEPTABLE, HttpErrorMessage.NOT_ACCEPTABLE);
+        }
+        
+        const newChef = new Chefs({
+          fName: chef.fName,
+          lName: chef.lName,
+          fullName: chef.fullName,
+          description: chef.description,
+          image: chef.image,
+          weekChef: chef.weekChef,
+          newChef: chef.newChef,
+          viewed: chef.viewed,
+        });
+        
+        chefInstances.push(newChef);
+      }
 
       return await Chefs.insertMany(chefInstances);
     } catch (error) {
@@ -60,8 +73,16 @@ export default class ChefHandler {
     }
   }
 
+
   static async addChef(obj: Chef) {
     try {
+      const existingChef = await Chefs.findOne({
+        fName: obj.fName,
+        lName: obj.lName
+      });
+      if (existingChef) {
+        throw  ErrorHandler.createHttpError(HttpStatusCode.NOT_ACCEPTABLE,HttpErrorMessage.NOT_ACCEPTABLE)
+      }
       const newChef = new Chefs({
         fName: obj.fName,
         lName: obj.lName,
