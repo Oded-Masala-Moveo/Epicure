@@ -1,4 +1,4 @@
-import { Date, Schema, model } from 'mongoose';
+import { Date, Schema, model } from "mongoose";
 
 export interface Chef {
   fName: string;
@@ -35,15 +35,15 @@ const chefSchema = new Schema<Chef>({
   },
   createdAt: {
     type: Date,
-    default : Date.now,
+    default: Date.now,
   },
   weekChef: {
     type: Boolean,
-    default : false,
+    default: false,
   },
   newChef: {
     type: Boolean,
-    default : false,
+    default: false,
   },
   viewed: {
     type: Number,
@@ -51,6 +51,6 @@ const chefSchema = new Schema<Chef>({
   },
 });
 
-const ChefModel = model<Chef>('Chef', chefSchema);
+const ChefModel = model<Chef>("chefs", chefSchema);
 
 export default ChefModel;
