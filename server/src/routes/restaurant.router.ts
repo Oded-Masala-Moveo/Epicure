@@ -1,12 +1,13 @@
 import { Router } from "express";
-// import {RestaurantController } from "../controllers";
+import {RestaurantController } from "../controllers";
 
 const RestaurantRouter: Router = Router();
-// router.get("/", RestaurantController.getAllRestaurantController);
-// router.get("/:id", RestaurantController.getRestaurantController);
-// router.put("/:id", RestaurantController.updateRestaurantController);
-// router.post("/", RestaurantController.addRestaurantController);
-// router.post("/many", RestaurantController.addManyRestaurantController);
-// router.delete("/:id", RestaurantController.deleteRestaurantController);
+
+RestaurantRouter.get("/", RestaurantController.getAllRestaurants);
+RestaurantRouter.get("/:id", RestaurantController.getRestaurant);
+RestaurantRouter.put("/:id", RestaurantController.updateRestaurant);
+RestaurantRouter.post("/", RestaurantController.addRestaurant);
+RestaurantRouter.post("/many", RestaurantController.addManyRestaurants);
+RestaurantRouter.delete("/:id", RestaurantController.deleteRestaurant);
 
 export default RestaurantRouter;
