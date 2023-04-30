@@ -1,24 +1,18 @@
-import { Schema, model } from 'mongoose';
+import { Date, Schema, model } from 'mongoose';
 
 export interface Chef {
-  id: string;
   fName: string;
   lName: string;
   fullName: string;
   description: string;
   image: string;
-  dateCreated: string;
+  createdAt: Date;
   weekChef: boolean;
   newChef: boolean;
   viewed: number;
 }
 
 const chefSchema = new Schema<Chef>({
-  id: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   fName: {
     type: String,
     required: true,
@@ -39,17 +33,17 @@ const chefSchema = new Schema<Chef>({
     type: String,
     required: true,
   },
-  dateCreated: {
-    type: String,
-    required: true,
+  createdAt: {
+    type: Date,
+    default : Date.now,
   },
   weekChef: {
     type: Boolean,
-    required: true,
+    default : false,
   },
   newChef: {
     type: Boolean,
-    required: true,
+    default : false,
   },
   viewed: {
     type: Number,
