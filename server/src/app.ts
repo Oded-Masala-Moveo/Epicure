@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-console.log("a");
 
 // Define your API routes here
 app.use("/api", apiRouter);
