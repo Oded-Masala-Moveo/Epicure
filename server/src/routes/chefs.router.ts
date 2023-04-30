@@ -1,23 +1,11 @@
-import express from "express";
+import { Router } from "express";
+import { ChefController } from "../controllers";
 
-const router = express.Router();
-
-router.get("/", (req, res) => {
-  res.send("Hello World");
-});
-// router.get("/:id", (req, res) => {
-//   res.send("Hello World");
-// });
-// router.put("/updateChef/:id", (req, res) => {
-//   res.send("Hello World");
-// });
-// router.delete("/deleteChef/:id", (req, res) => {
-//   res.send("Hello World");
-// });
-// router.post("/addChef", (req, res) => {
-//   res.send("Hello World");
-// });
-
-
+const router: Router = Router();
+router.get("/chefs", ChefController.getAllChefs);
+router.get("/chefs/:id", ChefController.getChef);
+router.put("/chefs/:id", ChefController.updateChef);
+router.post("/chefs", ChefController.addChef);
+router.delete("/chefs/:id", ChefController.deleteChef);
 
 export default router;
