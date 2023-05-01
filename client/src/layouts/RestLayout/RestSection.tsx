@@ -1,25 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Arrow } from "../../assets/icons";
 import { Card, Carousel } from "../../components";
-import { getChefs, getDishes, getRestaurants } from "../../services";
+import { fetchAllRestaurants } from "../../services";
 import "./RestSection.scss";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 import { Link } from "react-router-dom";
+import { Restaurant } from "../../models";
 const RestSection: React.FC = () => {
   const { width, height } = useWindowSize();
-  const restData = getRestaurants();
-  const dishData = getDishes();
-  const chefData = getChefs();
-  useEffect(() => {}, []);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+
+  useEffect(() => {
+    fetchAllRestaurants()
+      .then(setRestaurants)
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <section className="restaurants-container">
       <div className="popular-container">
         <h2>popular restaurant in epicure:</h2>
       </div>
-      {width && width < desktop && <Carousel cards={restData} />}
+      {width && width < desktop && <Carousel cards={restaurants} />}
       {width && width >= desktop && (
         <div className="desktop-card">
-          {restData.slice(0, 3).map((rest, index) => (
+          {restaurants.slice(0, 3).map((rest, index) => (
             <Card key={index} week={false} card={rest} />
           ))}
         </div>

@@ -3,8 +3,8 @@ import "./RestaurantPage.scss";
 import { useParams } from "react-router-dom";
 import {
   filterDishes,
-  getDishesByRestId,
-  getRestaurantById,
+  fetchDishesByRestId,
+  fetchRestaurantById,
 } from "../../services";
 import { Dish, DishMealTime, Restaurant } from "../../models";
 import { Clock } from "../../assets/icons";
@@ -24,6 +24,7 @@ const RestaurantPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([]);
   const [restaurant, setRestaurant] = useState<Restaurant>();
+  const [dishes, setDishes] = useState<Dish[]>([]);
   const [dishCategory, setDishCategory] = useState<string>(
     DishMealTime.Breakfast
   );
@@ -31,16 +32,33 @@ const RestaurantPage: React.FC = () => {
   const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
 
   useEffect(() => {
-    const setRestaurantData = () => {
-      if (restId) {
-        setRestaurant(getRestaurantById(restId));
-        const dish = getDishesByRestId(restId);
-        setDisplayDishes(filterDishes(dish, dishCategory));
-        // closeNavbar();
-      }
-    };
-    setRestaurantData();
-  }, [dishCategory]);
+    if (restId) {
+      fetchRestaurantById(restId)
+        .then((restaurant) => {
+          setRestaurant(restaurant);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (restId) {
+      fetchDishesByRestId(restId)
+        .then((dishes) => {
+          setDishes(dishes);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
+
+  
+  useEffect(() => {
+    setDisplayDishes(filterDishes(dishes, dishCategory));
+  }, [dishes, dishCategory]);
 
   useEffect(() => {
     if (restaurant) dispatch(setBagRestaurant(restaurant));

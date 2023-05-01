@@ -3,7 +3,6 @@ import {
   AboutSection,
   ChefOfTehWeekSection,
   DishSection,
-  Footer,
   RestSection,
   SignatureSection,
 } from "../../layouts";

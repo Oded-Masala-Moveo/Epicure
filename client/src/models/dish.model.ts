@@ -1,5 +1,5 @@
 export interface Dish {
-  id: string;
+  _id: string;
   restId: string;
   name: string;
   description: string;
@@ -8,11 +8,11 @@ export interface Dish {
   image: string;
   side: string[];
   changesOptions: string[];
-  category?: string[];
+  category: string[];
   mealTime: string;
-  subcategory: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
 }
 
 export enum DishCategory {
