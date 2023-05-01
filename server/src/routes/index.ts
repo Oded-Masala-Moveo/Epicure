@@ -1,4 +1,5 @@
 export {default as chefsRouter} from './chefs.router';
+export {default as restaurantRouter} from './restaurant.router';
 
 
 
