@@ -6,16 +6,18 @@ import { Card } from "../../components";
 import { closeAllNavbar, useAppDispatch } from "../../store";
 const ChefPage: React.FC = () => {
   const [chefs, setChefs] = useState<Chef[]>([]);
+  const [displayChefs, setDisplayChefs] = useState<Chef[]>([]);
   const [chefsCategory, setChefsCategory] = useState<string>(ChefCategory.All);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
   useEffect(() => {
-    const setChefsData = () => {
-      const chefsData = getChefs();
-      setChefs(filterChefs(chefsData, chefsCategory));
-    };
-    setChefsData();
-  }, [chefsCategory]);
+    getChefs()
+      .then((chefs) => setChefs(chefs))
+      .catch((err) => console.log(err));
+  }, []);
+  useEffect(() => {    
+    setDisplayChefs(filterChefs(chefs, chefsCategory));
+  }, [chefs, chefsCategory]);
   return (
     <>
       <section onClick={sendCloseNavbar()} className="chef-section">
@@ -23,18 +25,35 @@ const ChefPage: React.FC = () => {
           <h2>CHEFS</h2>
         </div>
         <ul className="chef-category">
-          <li onClick={() => setChefsCategory(ChefCategory.All)} className={ chefsCategory == ChefCategory.All ? "selected" : "category" } >
+          <li
+            onClick={() => setChefsCategory(ChefCategory.All)}
+            className={
+              chefsCategory == ChefCategory.All ? "selected" : "category"
+            }
+          >
             <p>{ChefCategory.All}</p>
           </li>
-          <li onClick={() => setChefsCategory(ChefCategory.new)} className={ chefsCategory == ChefCategory.new ? "selected" : "category" } >
+          <li
+            onClick={() => setChefsCategory(ChefCategory.new)}
+            className={
+              chefsCategory == ChefCategory.new ? "selected" : "category"
+            }
+          >
             <p>{ChefCategory.new}</p>
           </li>
-          <li onClick={() => setChefsCategory(ChefCategory.Viewed)} className={ chefsCategory == ChefCategory.Viewed ? "selected" : "category" } >
+          <li
+            onClick={() => setChefsCategory(ChefCategory.Viewed)}
+            className={
+              chefsCategory == ChefCategory.Viewed ? "selected" : "category"
+            }
+          >
             <p>{ChefCategory.Viewed}</p>
           </li>
         </ul>
         <div className="chef-list">
-          {chefs.map((chef) => ( <Card key={chef.id} card={chef} /> ))}
+          {displayChefs.map((chef) => (
+            <Card key={chef._id} card={chef} />
+          ))}
         </div>
       </section>
     </>
