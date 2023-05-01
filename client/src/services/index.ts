@@ -1,9 +1,9 @@
 export { filterChefs, filterDishes, filterRestaurants } from "./filterServices";
 export {
+  fetchAllRestaurants,
+  fetchDishes,
+  fetchDishesByRestId,
+  fetchRestaurantByChefId,
+  fetchRestaurantById,
   getChefs,
-  getDishes,
-  getDishesByRestId,
-  getRestaurantByChefId,
-  getRestaurantById,
-  getRestaurants,
 } from "./requestsApiServices";

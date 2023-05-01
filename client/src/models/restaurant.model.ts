@@ -1,20 +1,21 @@
 export interface Restaurant {
-  id: string;
+  _id: string;
   name: string;
   chef: string;
   image: string;
   image2?: string;
   chefId: string;
-  address: Address;
-  phone: string;
-  email: string;
-  website: string;
-  date: string;
+  address?: Address;
+  phone?: string;
+  email?: string;
+  website?: string;
+  createdAt: Date;
   new: boolean;
   open: boolean;
-  higherPrice: number,
-  lowerPrice: number,
+  higherPrice: number;
+  lowerPrice: number;
   rate: number;
+  __v: number;
 }
 
 export interface Address {

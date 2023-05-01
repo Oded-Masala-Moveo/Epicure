@@ -1,54 +1,62 @@
+import { useEffect, useState } from "react";
 import { Arrow } from "../../assets/icons";
 import { Card, Carousel } from "../../components";
-import { getChefs, getRestaurantByChefId } from "../../services";
+import { getChefs, fetchRestaurantByChefId } from "../../services";
 import "./chefOfTehWeek.scss";
+import { Chef, Restaurant } from "../../models";
 const ChefOfTehWeekSection: React.FC = () => {
-  const chefData = getChefs();
+  const [chef, setChef] = useState<Chef>();
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  useEffect(() => {
+    getChefs()
+      .then((chefs) => {
+        setChef(chefs.find((chef) => chef.weekChef === true));
+      })
+      .catch((error) => console.log(error));
+    if (chef) {
+      fetchRestaurantByChefId(chef._id).then((restaurants) => {
+        setRestaurants(restaurants);
+      });
+    }
+  }, []);
   return (
     <section className="chef-container">
-      {chefData &&
-        chefData
-          .filter((chef) => chef.weekChef === true)
-          .map((chef, index) => (
-            <div key={`${chef.id} ${index}`}>
-              <div className="chef-detail">
-                <div className="chef-title">
-                  <h2>Chef of the week:</h2>
-                </div>
-                <div className="chef-box">
-                  <Card week={true} card={chef} />
-                  <div className="chef-description">
-                    <p>{chef.description}</p>
-                  </div>
-                </div>
-                <div className="chef-week-title">
-                  <h2 className="mobile-title">Chef of the week:</h2>
-                  <h1 className="desktop-title">{`${chef.fName}'s Restaurants`}</h1>
-                </div>
-              </div>
-              <div className="desktop-cards">
-                {getRestaurantByChefId(chef.id).map((rest, index) => (
-                  <Card
-                    week={true}
-                    key={`${chef.fullName}${index}`}
-                    card={rest}
-                  />
-                ))}
-              </div>
-              <div className="carousel">
-                {
-                  <Carousel
-                    cards={getRestaurantByChefId(chef.id)}
-                    weekChef={true}
-                  />
-                }
-              </div>
-              <div className="link-to-restaurants">
-                <h3>All restaurants</h3>
-                <Arrow className="arrow-icon" />
+      {chef && (
+        <div key={chef._id}>
+          <div className="chef-detail">
+            <div className="chef-title">
+              <h2>Chef of the week:</h2>
+            </div>
+            <div className="chef-box">
+              <Card week={true} card={chef} />
+              <div className="chef-description">
+                <p>{chef.description}</p>
               </div>
             </div>
-          ))}
+            <div className="chef-week-title">
+              <h2 className="mobile-title">Chef of the week:</h2>
+              <h1 className="desktop-title">{`${chef.fName}'s Restaurants`}</h1>
+            </div>
+          </div>
+          <div className="desktop-cards">
+            {restaurants.map((rest, index) => (
+              <Card week={true} key={chef._id} card={rest} />
+            ))}
+          </div>
+          <div className="carousel">
+            {
+              <Carousel
+                cards={restaurants}
+                weekChef={true}
+              />
+            }
+          </div>
+          <div className="link-to-restaurants">
+            <h3>All restaurants</h3>
+            <Arrow className="arrow-icon" />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -1,14 +1,15 @@
 export interface Chef {
-  id: string;
+  _id: string;
   fName: string;
   lName: string;
   fullName: string;
   description: string;
   image: string;
-  dateCreated?: string;
   weekChef: boolean;
   newChef: boolean;
   viewed: number;
+  createdAt: Date;
+  __v: number;
 }
 export enum ChefCategory {
   All = "All",
