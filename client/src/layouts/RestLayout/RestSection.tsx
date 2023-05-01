@@ -23,8 +23,8 @@ const RestSection: React.FC = () => {
       {width && width < desktop && <Carousel cards={restaurants} />}
       {width && width >= desktop && (
         <div className="desktop-card">
-          {restaurants.slice(0, 3).map((rest, index) => (
-            <Card key={index} week={false} card={rest} />
+          {restaurants.slice(0, 3).map((rest) => (
+            <Card key={rest._id} week={false} card={rest} />
           ))}
         </div>
       )}

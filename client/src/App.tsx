@@ -14,10 +14,6 @@ import { selectBag, useAppSelector } from "./store";
 
 const App: React.FC = () => {
   const location = useLocation();
-  const cart = useAppSelector(selectBag);
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
   return (
     <div className="html-container">
       {location.pathname != "/checkout" && <Navbar />}
