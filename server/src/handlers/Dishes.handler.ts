@@ -42,6 +42,18 @@ export default class DishHandler {
   static async addDish(obj: IDish) {
     try {
       obj.restId = obj.restId.toString();
+      const existingDishes = await Dishes.findOne({
+        name: obj.name,
+        restId: obj.restId,
+      });
+
+      if (existingDishes) {
+        throw ErrorHandler.createHttpError(
+          HttpStatusCode.NOT_ACCEPTABLE,
+          HttpErrorMessage.NOT_ACCEPTABLE
+        );
+      }
+      obj.restId = obj.restId.toString();
       const newDish = new Dishes({
         restId: new Types.ObjectId(obj.restId),
         name: obj.name,
@@ -80,6 +92,7 @@ export default class DishHandler {
             HttpErrorMessage.NOT_ACCEPTABLE
           );
         }
+
         dish.restId = dish.restId.toString();
         const newDish = new Dishes({
           restId: new Types.ObjectId(dish.restId),

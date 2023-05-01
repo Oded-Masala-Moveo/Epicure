@@ -7,12 +7,11 @@ import { apiRouter } from "./routes";
 dotenv.config();
 import "./config/config";
 import "./process";
-
-
-
 const app = express();
-app.use(bodyParser.json());
+
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // API routes
 app.use("/api", apiRouter);
