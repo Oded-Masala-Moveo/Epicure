@@ -15,7 +15,6 @@ const addressSchema = new Schema<Address>({
 });
 
 export interface Restaurant {
-  id: string;
   name: string;
   chef: string;
   image: string;
@@ -34,12 +33,11 @@ export interface Restaurant {
 }
 
 const restaurantSchema = new Schema<Restaurant>({
-  id: { type: String, required: true },
   name: { type: String, required: true },
   chef: { type: String, required: true },
   image: { type: String, required: true },
   image2: { type: String },
-  chefId: { type: Schema.Types.ObjectId, ref: "chefs", required: true },
+  chefId: { type: Schema.Types.ObjectId, ref: "chefs" },
   address: addressSchema,
   phone: { type: String },
   email: { type: String },

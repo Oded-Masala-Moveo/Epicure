@@ -1,10 +1,4 @@
-import {
-  ErrorHandler,
-  HttpError,
-  HttpStatusCode,
-  HttpErrorMessage,
-} from "../exceptions";
-
+import { ErrorHandler, HttpStatusCode, HttpErrorMessage, } from "../exceptions";
 import { Restaurants, Restaurant } from "../models";
 import { Types } from "mongoose";
 
@@ -63,7 +57,6 @@ export default class RestaurantHandler {
         }
         restaurant.chefId = restaurant.chefId.toString();
         const newRestaurant = new Restaurants({
-          id: restaurant.id,
           name: restaurant.name,
           chef: restaurant.chef,
           image: restaurant.image,
@@ -107,7 +100,6 @@ export default class RestaurantHandler {
       }
       obj.chefId = obj.chefId.toString();
       const newRestaurant = new Restaurants({
-        id: obj.id,
         name: obj.name,
         chef: obj.chef,
         image: obj.image,
