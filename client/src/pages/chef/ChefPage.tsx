@@ -25,28 +25,13 @@ const ChefPage: React.FC = () => {
           <h2>CHEFS</h2>
         </div>
         <ul className="chef-category">
-          <li
-            onClick={() => setChefsCategory(ChefCategory.All)}
-            className={
-              chefsCategory == ChefCategory.All ? "selected" : "category"
-            }
-          >
+          <li onClick={() => setChefsCategory(ChefCategory.All)} className={ chefsCategory == ChefCategory.All ? "selected" : "category" } >
             <p>{ChefCategory.All}</p>
           </li>
-          <li
-            onClick={() => setChefsCategory(ChefCategory.new)}
-            className={
-              chefsCategory == ChefCategory.new ? "selected" : "category"
-            }
-          >
+          <li onClick={() => setChefsCategory(ChefCategory.new)} className={ chefsCategory == ChefCategory.new ? "selected" : "category" } >
             <p>{ChefCategory.new}</p>
           </li>
-          <li
-            onClick={() => setChefsCategory(ChefCategory.Viewed)}
-            className={
-              chefsCategory == ChefCategory.Viewed ? "selected" : "category"
-            }
-          >
+          <li onClick={() => setChefsCategory(ChefCategory.Viewed)} className={ chefsCategory == ChefCategory.Viewed ? "selected" : "category" } >
             <p>{ChefCategory.Viewed}</p>
           </li>
         </ul>
