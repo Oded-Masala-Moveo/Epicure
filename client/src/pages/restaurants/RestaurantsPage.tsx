@@ -1,17 +1,16 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./RestaurantsPage.scss";
-import { filterRestaurants, getRestaurants } from "../../services";
+import { filterRestaurants, fetchAllRestaurants } from "../../services";
 import { Restaurant, RestaurantCategory,RestaurantRange } from "../../models";
 import { Card, DistanceComponent, PriceComponent, RatingComponent } from "../../components";
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
-import { ArrowDown } from "../../assets/icons";
 import Dropdown from "../../components/DropdownButton/Dropdown";
 import LiElement from "../../components/li/LiElement";
 import { closeAllNavbar, useAppDispatch } from "../../store";
 
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();
-  const restaurants:Restaurant[] =  useMemo(()=> getRestaurants() , []) ;
+  const [restaurants,setRestaurants] =  useState<Restaurant[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>( RestaurantCategory.ALL );
   const [displayRestaurants, setDisplayRestaurants] = useState<Restaurant[]>( [] );
   const [currentRange, setCurrentRange] = useState<string>("");
@@ -21,7 +20,6 @@ const RestaurantsPage: React.FC = () => {
   const handelClickCategory = (category: string) => () => setSelectedCategory(category);
   const handelClickRange = (rangeType: string) => () => rangeType == currentRange ? setCurrentRange("") : setCurrentRange(rangeType);
   const dropdownOpenOrClose = (rangeName:string) => (rangeState:string)=> rangeName == rangeState;
-  
   const setRestaurantsData = () => {
     let condition = values[0] >12 || values[1]< 357 || rating[0]
     if(condition) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory, rating ,values));
@@ -32,7 +30,15 @@ const RestaurantsPage: React.FC = () => {
   const dispatch = useAppDispatch()
   const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
   useEffect(() => {
-    setRestaurantsData();
+    !restaurants.length && fetchAllRestaurants()
+    .then((restaurants) => {
+        setRestaurants(restaurants);
+        setRestaurantsData();
+      })
+    .catch((error) => {
+        console.log(error);
+      });
+      restaurants.length > 0 && setRestaurantsData();
   }, [selectedCategory,rating,values]);
   return (
     <>
