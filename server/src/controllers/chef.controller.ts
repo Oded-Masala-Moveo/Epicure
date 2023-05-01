@@ -43,7 +43,7 @@ export default class ChefController {
       const data = await ChefHandler.addManyChefs(req.body);
       res
         .status(HttpStatusCode.CREATED)
-        .send({ res_message: HttpErrorMessage.CREATED });
+        .send({ res_message: HttpErrorMessage.CREATED ,data});
     } catch (err) {
       next(err);
     }
