@@ -13,12 +13,16 @@ const ChefOfTehWeekSection: React.FC = () => {
         setChef(chefs.find((chef) => chef.weekChef === true));
       })
       .catch((error) => console.log(error));
-    if (chef) {
-      fetchRestaurantByChefId(chef._id).then((restaurants) => {
-        setRestaurants(restaurants);
-      });
-    }
   }, []);
+  useEffect(() => {
+    if (chef) {
+      fetchRestaurantByChefId(chef._id)
+        .then((restaurants) => {
+          setRestaurants(restaurants);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [chef]);
   return (
     <section className="chef-container">
       {chef && (
@@ -44,12 +48,7 @@ const ChefOfTehWeekSection: React.FC = () => {
             ))}
           </div>
           <div className="carousel">
-            {
-              <Carousel
-                cards={restaurants}
-                weekChef={true}
-              />
-            }
+            {<Carousel cards={restaurants} weekChef={true} />}
           </div>
           <div className="link-to-restaurants">
             <h3>All restaurants</h3>
