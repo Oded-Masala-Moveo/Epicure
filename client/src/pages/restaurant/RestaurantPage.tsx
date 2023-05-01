@@ -55,7 +55,6 @@ const RestaurantPage: React.FC = () => {
     }
   }, []);
 
-  
   useEffect(() => {
     setDisplayDishes(filterDishes(dishes, dishCategory));
   }, [dishes, dishCategory]);
@@ -65,6 +64,7 @@ const RestaurantPage: React.FC = () => {
     return () => {
       if (restaurant) dispatch(clearBagRestaurant());
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurant]);
   return (
     <>
@@ -116,7 +116,7 @@ const RestaurantPage: React.FC = () => {
           </ul>
           <div className="dish-list">
             {displayDishes.map((dish) => (
-              <Card dishPage={true} card={dish} />
+              <Card key={dish._id} dishPage={true} card={dish} />
             ))}
           </div>
         </section>

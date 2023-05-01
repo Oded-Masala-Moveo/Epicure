@@ -43,8 +43,8 @@ const ChefOfTehWeekSection: React.FC = () => {
             </div>
           </div>
           <div className="desktop-cards">
-            {restaurants.map((rest, index) => (
-              <Card week={true} key={chef._id} card={rest} />
+            {restaurants.map((rest) => (
+              <Card week={true} key={rest._id} card={rest} />
             ))}
           </div>
           <div className="carousel">
