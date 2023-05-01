@@ -20,7 +20,13 @@ export default class DishHandler {
       throw error;
     }
   }
-
+  static async getDishByRestaurantId(restaurantId: string) {
+    try {
+      return await Dishes.find({ restId: restaurantId });
+    } catch (error) {
+      console.error(`Error in getDishByRestaurantId method: ${error}`);
+    }
+  }
   static async updateDish(id: string, obj: any) {
     try {
       return await Dishes.findByIdAndUpdate(id, obj);

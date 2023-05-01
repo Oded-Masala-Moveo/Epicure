@@ -1,19 +1,25 @@
-import restData from "../data/restaurant.json";
-import dishData from "../data/dish.json";
-import chefData from "../data/chef.json";
+// import restData from "../data/restaurant.json";
+// import dishData from "../data/dish.json";
+// import chefData from "../data/chef.json";
 import { Chef, Dish, Restaurant } from "../models";
-
-export const getRestaurants = (): Restaurant[] => {
-  return restData;
+import axios from "axios";
+const BASE_URL = "http://localhost:8001/api/v1/";
+export const fetchAllRestaurants = async () => {
+  let res = await axios.get<Restaurant[]>(`${BASE_URL}restaurant`);
+  let restaurants = res.data;
+  return restaurants;
 };
 
-export const getRestaurantById = (id: string): Restaurant | undefined => {
-  const rest = restData.find((restaurant) => restaurant.id === id);
-  if (!rest) return undefined;
-  return rest;
+export const getRestaurantById = async (id: string) => {
+ let res = await axios.get<Restaurant>(`${BASE_URL}restaurant/${id}`);
+ let restaurant = res.data;
+ return restaurant;
 };
-export const getRestaurantByChefId = (id: string): Restaurant[] => {
-  return restData.filter((restaurant) => restaurant.chefId === id);
+
+export const getRestaurantByChefId = async (id: string): Restaurant[] => {
+  let res = await axios.get<Restaurant[]>(`${BASE_URL}restaurant/chef/${id || ""}`);
+  let restaurants = res.data;
+  return restaurants;
 };
 export const getDishes = (): Dish[] => {
   return dishData;
