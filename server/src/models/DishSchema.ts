@@ -1,7 +1,7 @@
 import { Schema, model, Document } from "mongoose";
 
-interface IDish extends Document {
-  restId: string;
+export interface IDish extends Document {
+  restId: Schema.Types.ObjectId | string;
   name: string;
   description: string;
   price: number;
@@ -17,7 +17,7 @@ interface IDish extends Document {
 }
 
 const DishSchema: Schema = new Schema({
-  restId: { type: String, required: true },
+  restId:  { type: Schema.Types.ObjectId, ref: "restaurants" },
   name: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, required: true },
