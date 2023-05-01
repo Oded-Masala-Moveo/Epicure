@@ -27,7 +27,20 @@ export default class RestaurantController {
       next(err);
     }
   }
-
+  static async getRestaurantByChefId( req: Request, res: Response, next: NextFunction){
+    try{
+      const data = await RestaurantHandler.getRestaurantByChefId(req.params.id);
+      if (!data) {
+        throw ErrorHandler.createHttpError(
+          HttpStatusCode.NOT_FOUND,
+          HttpErrorMessage.NOT_FOUND
+        );
+      }
+      res.status(HttpStatusCode.OK).send(data);
+    }catch(err){
+      next(err);
+    }
+  }
   static async updateRestaurant(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await RestaurantHandler.updateRestaurant(req.params.id, req.body);

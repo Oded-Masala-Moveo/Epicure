@@ -1,26 +1,34 @@
-import restData from "../data/restaurant.json";
-import dishData from "../data/dish.json";
-import chefData from "../data/chef.json";
+
 import { Chef, Dish, Restaurant } from "../models";
-
-export const getRestaurants = (): Restaurant[] => {
-  return restData;
+import axios from "axios";
+const BASE_URL = "http://localhost:8001/api/v1/";
+export const fetchAllRestaurants = async () => {
+  let res = await axios.get<Restaurant[]>(`${BASE_URL}restaurant`);
+  return res.data;
 };
 
-export const getRestaurantById = (id: string): Restaurant | undefined => {
-  const rest = restData.find((restaurant) => restaurant.id === id);
-  if (!rest) return undefined;
-  return rest;
+export const fetchRestaurantById = async (id: string) => {
+  let res = await axios.get<Restaurant>(`${BASE_URL}restaurant/${id}`);
+  return res.data;
 };
-export const getRestaurantByChefId = (id: string): Restaurant[] => {
-  return restData.filter((restaurant) => restaurant.chefId === id);
+
+export const fetchRestaurantByChefId = async (id: string) => {
+  let res = await axios.get<Restaurant[]>(
+    `${BASE_URL}restaurant/chef_restaurant/${id}`
+  );
+
+  return res.data;
 };
-export const getDishes = (): Dish[] => {
-  return dishData;
+export const fetchDishes = async () => {
+  let res = await axios.get<Dish[]>(`${BASE_URL}dish`);
+
+  return res.data;
 };
-export const getDishesByRestId = (id: string): Dish[] => {
-  return dishData.filter((dish) => dish.restId == id);
+export const fetchDishesByRestId = async (id: string) => {
+  let res = await axios.get<Dish[]>(`${BASE_URL}dish/restaurant_dishes/${id}`);
+  return res.data;
 };
-export const getChefs = (): Chef[] => {
-  return chefData;
-};
+export const getChefs = async()=> {
+  let res = await axios.get<Chef[]>(`${BASE_URL}chef`);
+  return res.data;
+}

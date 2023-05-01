@@ -20,7 +20,13 @@ export default class RestaurantHandler {
       throw error;
     }
   }
-
+static async getRestaurantByChefId(id: string) {
+  try{
+    return await Restaurants.find({chefId:id});
+  }catch(error){
+    console.error(`Error in getRestaurantByChefId method: ${error}`);
+  }
+}
   static async updateRestaurant(id: string, obj: any) {
     try {
       return await Restaurants.findByIdAndUpdate(id, obj);

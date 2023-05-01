@@ -16,10 +16,10 @@ export const Card: React.FC<{
   if ("name" in card && "chef" in card)
     return (
       <>
-        <Link to={`/restaurants/${card.id}`}>
+        <Link to={`/restaurants/${card._id}`}>
           <div className={ (week && "card-restaurant-container card-chef-week") || (restPage && "card-restaurant-container card-restaurant-page-container") || "card-restaurant-container" } >
             <div className="card-image-container">
-              <img src={card.image} alt={`${card.name} ${card.id}`} />
+              <img src={card.image} alt={card.name} />
             </div>
             <div className="card-text-container">
               <h3>{card.name}</h3>

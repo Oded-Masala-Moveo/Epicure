@@ -27,7 +27,24 @@ export default class DishController {
       next(err);
     }
   }
-
+  static async getDishByRestaurantId(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await DishHandler.getDishByRestaurantId(req.params.id);
+      if (!data) {
+        throw ErrorHandler.createHttpError(
+          HttpStatusCode.NOT_FOUND,
+          HttpErrorMessage.NOT_FOUND
+        );
+      }
+      res.status(HttpStatusCode.OK).send(data);
+    } catch (err) {
+      next(err);
+    }
+  }
   static async updateDish(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await DishHandler.updateDish(req.params.id, req.body);
@@ -37,7 +54,9 @@ export default class DishController {
           HttpErrorMessage.NOT_FOUND
         );
       }
-      res.status(HttpStatusCode.OK).send({ res_message: HttpErrorMessage.OK, data });
+      res
+        .status(HttpStatusCode.OK)
+        .send({ res_message: HttpErrorMessage.OK, data });
     } catch (err) {
       next(err);
     }
@@ -46,7 +65,9 @@ export default class DishController {
   static async addDish(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await DishHandler.addDish(req.body as IDish);
-      res.status(HttpStatusCode.CREATED).send({ res_message: HttpErrorMessage.CREATED, data });
+      res
+        .status(HttpStatusCode.CREATED)
+        .send({ res_message: HttpErrorMessage.CREATED, data });
     } catch (err) {
       next(err);
     }
@@ -55,12 +76,14 @@ export default class DishController {
     try {
       const dishes = req.body as IDish[];
       const data = await DishHandler.addManyDishes(dishes);
-      res.status(HttpStatusCode.CREATED).send({ res_message: HttpErrorMessage.CREATED, data });
+      res
+        .status(HttpStatusCode.CREATED)
+        .send({ res_message: HttpErrorMessage.CREATED, data });
     } catch (err) {
       next(err);
     }
   }
-  
+
   static async deleteDish(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await DishHandler.deleteDish(req.params.id);
@@ -70,7 +93,9 @@ export default class DishController {
           HttpErrorMessage.NOT_FOUND
         );
       }
-      res.status(HttpStatusCode.OK).send({ res_message: HttpErrorMessage.OK, data });
+      res
+        .status(HttpStatusCode.OK)
+        .send({ res_message: HttpErrorMessage.OK, data });
     } catch (err) {
       next(err);
     }
