@@ -70,11 +70,7 @@ const RestaurantPage: React.FC = () => {
     <>
       <div onClick={sendCloseNavbar()}>
         <div className="restaurant-image-container">
-          <img
-            src={restaurant?.image}
-            alt={restaurant?.name}
-            className="restaurant-image"
-          />
+          <img src={restaurant?.image} alt={restaurant?.name} className="restaurant-image" />
         </div>
 
         <section className="restaurant-section">
@@ -83,41 +79,22 @@ const RestaurantPage: React.FC = () => {
             <p className="restaurant-chef">{restaurant?.chef} </p>
           </div>
           <div className="open-container">
-            <div className="clock-icon">
-              <Clock />
-            </div>
+            <div className="clock-icon"> <Clock /> </div>
             {restaurant?.open ? <p>Open now</p> : <p>Close</p>}
           </div>
           <ul className="dish-category">
-            <li
-              onClick={() => setDishCategory(DishMealTime.Breakfast)}
-              className={
-                dishCategory == DishMealTime.Breakfast ? "selected" : "category"
-              }
-            >
+            <li onClick={() => setDishCategory(DishMealTime.Breakfast)} className={ dishCategory == DishMealTime.Breakfast ? "selected" : "category" } >
               <p>{DishMealTime.Breakfast}</p>
             </li>
-            <li
-              onClick={() => setDishCategory(DishMealTime.Lunch)}
-              className={
-                dishCategory == DishMealTime.Lunch ? "selected" : "category"
-              }
-            >
+            <li onClick={() => setDishCategory(DishMealTime.Lunch)} className={ dishCategory == DishMealTime.Lunch ? "selected" : "category" } >
               <p>{DishMealTime.Lunch}</p>
             </li>
-            <li
-              onClick={() => setDishCategory(DishMealTime.Dinner)}
-              className={
-                dishCategory == DishMealTime.Dinner ? "selected" : "category"
-              }
-            >
+            <li onClick={() => setDishCategory(DishMealTime.Dinner)} className={ dishCategory == DishMealTime.Dinner ? "selected" : "category" } >
               <p>{DishMealTime.Dinner}</p>
             </li>
           </ul>
           <div className="dish-list">
-            {displayDishes.map((dish) => (
-              <Card key={dish._id} dishPage={true} card={dish} />
-            ))}
+            {displayDishes.map((dish) => ( <Card key={dish._id} dishPage={true} card={dish} /> ))}
           </div>
         </section>
       </div>
