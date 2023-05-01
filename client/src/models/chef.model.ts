@@ -5,7 +5,7 @@ export interface Chef {
   fullName: string;
   description: string;
   image: string;
-  dateCreated: string;
+  dateCreated?: string;
   weekChef: boolean;
   newChef: boolean;
   viewed: number;
