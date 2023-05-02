@@ -37,17 +37,21 @@ const restaurantSchema = new Schema<Restaurant>({
   chef: { type: String, required: true },
   image: { type: String, required: true },
   image2: { type: String },
-  chefId: { type: Schema.Types.ObjectId, ref: "chefs" },
+  chefId: { type: Schema.Types.ObjectId, required: true, ref: "chefs" },
   address: addressSchema,
   phone: { type: String },
   email: { type: String },
   website: { type: String },
-  createdAt: { type: Date, default: Date.now },
   new: { type: Boolean, default: false },
   open: { type: Boolean, default: false },
   higherPrice: { type: Number, required: true },
   lowerPrice: { type: Number, required: true },
   rate: { type: Number, required: true },
+},
+{
+  versionKey: false,
+  suppressReservedKeysWarning: true,
+  timestamps: true,
 });
 
 const RestaurantModel = model<Restaurant>("restaurants", restaurantSchema);
