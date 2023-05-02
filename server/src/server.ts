@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import session from "express-session";
 import cors from "cors";
 import dotenv from "dotenv";
 import { ErrorHandler } from "./exceptions";
@@ -12,7 +13,14 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(
+  session({
+    secret: "epicure",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
 // API routes
 app.use("/api", apiRouter);
 
