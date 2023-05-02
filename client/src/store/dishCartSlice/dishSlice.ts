@@ -49,12 +49,12 @@ export const bagSlice = createSlice({
     ) => {
       const { dish, quantity, sides, changes } = action.payload;
 
-      if (state.restaurant?.id !== dish.restId) {
+      if (state.restaurant?._id !== dish.restId) {
         state.limitPurchase = true;
         return;
       }
 
-      const existingDish = state.bagDishes.find((d) => d.dish.id === dish.id);
+      const existingDish = state.bagDishes.find((d) => d.dish._id === dish._id);
       if (existingDish) {
         existingDish.quantity += quantity;
       } else {
@@ -66,13 +66,13 @@ export const bagSlice = createSlice({
     },
     removeDishFromBag: (state, action: PayloadAction<{ dish: Dish; sides: string[]; changes: string[] }>) => {
       const { dish, sides, changes } = action.payload;
-      const existingDish = state.bagDishes.find((d) => d.dish.id === dish.id);
+      const existingDish = state.bagDishes.find((d) => d.dish._id === dish._id);
       if (!existingDish) {
         return;
       }
       state.total -= existingDish.quantity * dish.price;
       state.totalQuantity -= existingDish.quantity;
-      state.bagDishes = state.bagDishes.filter((d) => d.dish.id !== dish.id || d.sides !== sides || d.changes !== changes);
+      state.bagDishes = state.bagDishes.filter((d) => d.dish._id !== dish._id || d.sides !== sides || d.changes !== changes);
       if (!state.bagDishes.length) {
         state.restaurant = null;
       }
