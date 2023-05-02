@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { RestaurantHandler } from "../handlers";
 import { HttpErrorMessage, HttpStatusCode, ErrorHandler } from "../exceptions";
-import { Restaurant } from "../models";
+import { IRestaurant } from "../models";
 
 export default class RestaurantController {
   static async getAllRestaurants(req: Request, res: Response, next: NextFunction) {
@@ -58,7 +58,7 @@ export default class RestaurantController {
 
   static async addRestaurant(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await RestaurantHandler.addRestaurant(req.body as Restaurant);
+      const data = await RestaurantHandler.addRestaurant(req.body as IRestaurant);
       res.status(HttpStatusCode.CREATED).send({ res_message: HttpErrorMessage.CREATED, data });
     } catch (err) {
       next(err);
