@@ -14,7 +14,7 @@ const addressSchema = new Schema<Address>({
   zip: { type: String },
 });
 
-export interface Restaurant {
+export interface IRestaurant {
   name: string;
   chef: string;
   image: string;
@@ -32,7 +32,7 @@ export interface Restaurant {
   rate: number;
 }
 
-const restaurantSchema = new Schema<Restaurant>({
+const restaurantSchema = new Schema<IRestaurant>({
   name: { type: String, required: true },
   chef: { type: String, required: true },
   image: { type: String, required: true },
@@ -54,5 +54,5 @@ const restaurantSchema = new Schema<Restaurant>({
   timestamps: true,
 });
 
-const RestaurantModel = model<Restaurant>("restaurants", restaurantSchema);
+const RestaurantModel = model<IRestaurant>("restaurants", restaurantSchema);
 export default RestaurantModel;

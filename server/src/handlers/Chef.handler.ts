@@ -1,6 +1,6 @@
 import { ErrorHandler ,HttpError,HttpStatusCode,HttpErrorMessage} from "../exceptions";
 import { Chefs } from "../models";
-import { Chef } from "../models/ChefsSchema";
+import { IChef } from "../models/ChefsSchema";
 
 export default class ChefHandler {
   static async getAllChefs() {
@@ -38,9 +38,9 @@ export default class ChefHandler {
       throw error;
     }
   }
-  static async addManyChefs(chefs: Chef[]) {
+  static async addManyChefs(chefs: IChef[]) {
     try {
-      const chefInstances:Chef[] = [];
+      const chefInstances:IChef[] = [];
       
       for (const chef of chefs) {
         const existingChef = await Chefs.findOne({
@@ -74,7 +74,7 @@ export default class ChefHandler {
   }
 
 
-  static async addChef(obj: Chef) {
+  static async addChef(obj: IChef) {
     try {
       const existingChef = await Chefs.findOne({
         fName: obj.fName,

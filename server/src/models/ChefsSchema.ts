@@ -1,6 +1,6 @@
 import { Date, Schema, model } from "mongoose";
 
-export interface Chef {
+export interface IChef {
   fName: string;
   lName: string;
   fullName: string;
@@ -12,7 +12,7 @@ export interface Chef {
   viewed: number;
 }
 
-const chefSchema = new Schema<Chef>(
+const chefSchema = new Schema<IChef>(
   {
     fName: { type: String, required: true },
     lName: { type: String, required: true },
@@ -26,6 +26,6 @@ const chefSchema = new Schema<Chef>(
   { versionKey: false, suppressReservedKeysWarning: true, timestamps: true }
 );
 
-const ChefModel = model<Chef>("chefs", chefSchema);
+const ChefModel = model<IChef>("chefs", chefSchema);
 
 export default ChefModel;
