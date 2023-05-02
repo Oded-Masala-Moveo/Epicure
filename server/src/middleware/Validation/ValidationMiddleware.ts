@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { IRestaurant, IDish, Address, IChef } from "../../models";
 import { HttpErrorMessage, HttpStatusCode } from "../../exceptions";
 
-export const ValidateSchema = (schema: Joi.ObjectSchema) => {
+export const ValidateObjectData = (schema: Joi.ObjectSchema) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       await schema.validateAsync(req.body);
@@ -17,7 +17,7 @@ export const ValidateSchema = (schema: Joi.ObjectSchema) => {
   };
 };
 
-export const ValidateSchemas = (schemas: Joi.ObjectSchema[]) => {
+export const ValidateObjectDataArray = (schemas: Joi.ObjectSchema[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       for (const obj of req.body) {
