@@ -14,11 +14,25 @@ export const ValidateSchema = (schema: Joi.ObjectSchema) => {
     }
   };
 };
+export const ValidateSearchInput = (schema: Joi.ObjectSchema) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      await schema.validateAsync(req.body);
+      next();
+    } catch (error) {
+      console.log(error, "error with validation");
+      return res.status(HttpStatusCode.UNPROCESSABLE_ENTITY).json({ message:HttpErrorMessage.UNPROCESSABLE_ENTITY,error });
+    }
+  };
+};
 export const ValidateSchemas = (schemas: Joi.ObjectSchema[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      for (const schema of schemas) {
-        await schema.validateAsync(req.body);
+      for (const obj of req.body) {
+        const schema = schemas[req.body.indexOf(obj)];
+        if (schema) {
+          await schema.validateAsync(obj);
+        }
       }
       next();
     } catch (error) {
@@ -35,7 +49,9 @@ export const Schemas = {
       fullName: Joi.string().required(),
       image: Joi.string().required(),
       description: Joi.string().required(),
-      weekChef: Joi.boolean().required(),
+      weekChef: Joi.boolean().default(false),
+      newChef: Joi.boolean().default(false),
+      viewed :Joi.number().required(),
     }),
     update: Joi.object<IChef>({
       fName: Joi.string(),
@@ -44,6 +60,8 @@ export const Schemas = {
       image: Joi.string(),
       description: Joi.string(),
       weekChef: Joi.boolean(),
+      newChef: Joi.boolean(),
+      viewed :Joi.number()
     }),
   },
   restaurant: {
