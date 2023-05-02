@@ -1,1 +1,1 @@
-export { Schemas, ValidateSchema, ValidateSchemas } from "./ValidateData";
+export { ValidateSchema, ValidateSchemas,ValidationSchemas } from "./Validation";
