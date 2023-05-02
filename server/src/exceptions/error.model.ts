@@ -14,6 +14,7 @@ export enum HttpStatusCode {
   REQUEST_TIMEOUT = 408,
   PAYLOAD_TOO_LARGE = 413,
   UNSUPPORTED_MEDIA_TYPE = 415,
+  UNPROCESSABLE_ENTITY = 422, 
   INTERNAL_SERVER_ERROR = 500,
   BAD_GATEWAY = 502,
   SERVICE_UNAVAILABLE = 503,
@@ -36,11 +37,13 @@ export enum HttpErrorMessage {
   REQUEST_TIMEOUT = "The server timed out waiting for the request",
   PAYLOAD_TOO_LARGE = "The request is larger than the server is willing or able to process",
   UNSUPPORTED_MEDIA_TYPE = "The request entity has a media type which the server or resource does not support",
+  UNPROCESSABLE_ENTITY = "The request was well-formed but was unable to be followed due to semantic errors",
   INTERNAL_SERVER_ERROR = "A generic error message, given when an unexpected condition was encountered and no more specific message is suitable",
   BAD_GATEWAY = "The server was acting as a gateway or proxy and received an invalid response from the upstream server",
   SERVICE_UNAVAILABLE = "The server is currently unable to handle the request due to a temporary overload or maintenance of the server",
   GATEWAY_TIMEOUT = "The server was acting as a gateway or proxy and did not receive a timely response from the upstream server",
 }
+
 
 
 export interface HttpErrorArgs {

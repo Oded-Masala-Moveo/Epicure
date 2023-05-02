@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // API routes
 app.use("/api", apiRouter);
 
-// API handle Error in the app
+// API handle Error in the server
 app.use(ErrorHandler.handleError);
 
 const port = process.env.PORT || 3000;

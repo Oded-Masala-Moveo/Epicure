@@ -1,5 +1,5 @@
 import { ErrorHandler, HttpStatusCode, HttpErrorMessage, } from "../exceptions";
-import { Restaurants, Restaurant } from "../models";
+import { Restaurants, IRestaurant } from "../models";
 import { Types } from "mongoose";
 
 export default class RestaurantHandler {
@@ -45,9 +45,9 @@ static async getRestaurantByChefId(id: string) {
     }
   }
 
-  static async addManyRestaurants(restaurants: Restaurant[]) {
+  static async addManyRestaurants(restaurants: IRestaurant[]) {
     try {
-      const restaurantInstances: Restaurant[] = [];
+      const restaurantInstances: IRestaurant[] = [];
 
       for (const restaurant of restaurants) {
         const existingRestaurant = await Restaurants.findOne({
@@ -90,7 +90,7 @@ static async getRestaurantByChefId(id: string) {
     }
   }
 
-  static async addRestaurant(obj: Restaurant) {
+  static async addRestaurant(obj: IRestaurant) {
     try {
       obj.chefId = obj.chefId.toString();
       const existingRestaurant = await Restaurants.findOne({
