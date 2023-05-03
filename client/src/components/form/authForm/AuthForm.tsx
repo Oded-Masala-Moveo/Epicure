@@ -1,27 +1,19 @@
 import React from 'react'
-import "./login.scss"
+import * as Yup from "yup";   
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-const Login :React.FC = () => {
+import "./auth.scss"
+
+const AuthForm:React.FC = () => {
+ 
     const loginSchema = Yup.object().shape({
         email: Yup.string().email("Invalid email").required("Required"),
         password: Yup.string().required("Required"),
       });
-      
   return (
     <>
-    <div className='login-container'>
-        <h2>sing in</h2>
-        <p>To continue the order, please sign in</p>
-        
-    </div>
+    <div>AuthForm</div>
     </>
   )
 }
 
-
-
-
-
-
-export default Login
+export default AuthForm

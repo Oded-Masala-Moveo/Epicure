@@ -1,21 +1,54 @@
 @import "../../assets/styles/animation",
-  "../../assets/styles/mixin/display-mixin",
-  "../../assets/styles/variable",
+  "../../assets/styles/mixin/display-mixin", "../../assets/styles/variable",
   "../../assets/styles/mixin/media-queries";
 
 .user-nav-container {
-    @include Appeared();
-    position: absolute;
-    top: 46px;
-    left: 0px;
+  @include Appeared();
+  position: absolute;
+  top: 46px;
+  left: 0px;
+  background-color: white;
+  z-index: 998;
+  @include flex-container(column, center, center);
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @include desktop() {
+    top: 64px;
+    left: 1050px;
+  }
+  .user-auth-container {
+    position: relative;
+    @include flex-container(column, start, center);
     background-color: white;
-    z-index: 998;
-    @include flex-container(column, center, center);
-    -webkit-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
+    width: 375px;
+    height: 590px;
     @include desktop() {
-      top: 64px;
-      left: 1050px;
+      width: 497px;
+      height: 778px;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+    p {
+      margin-top: 18px;
+    }
+    .auth-container {
+      margin-top: 40px;
+    }
+    .switch-form-bar {
+      margin-top: 40px;
+      @include flex-container(row, start, center,12px);
+      .line {
+        width: 126.5px;
+        height: 0px;
+
+        border: 0.5px solid $primary-light;
+      }
+    }
+    .switch-form-btn {
+      margin-top: 54px;
     }
   }
+}

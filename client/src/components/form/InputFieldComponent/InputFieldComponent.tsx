@@ -9,13 +9,7 @@ interface InputFieldProp {
   formikProps: FormikProps<MyFormValues>;
 }
 
-const InputFieldComponent: React.FC<InputFieldProp> = ({
-  labelName,
-  inputName,
-  inputPlaceholder,
-  formikProps,
-  inputType,
-}) => {
+const InputFieldComponent: React.FC<InputFieldProp> = ({ labelName, inputName, inputPlaceholder, formikProps, inputType, }) => {
   const { touched, errors } = formikProps;
   const hasError = touched[inputName] && errors[inputName];
 
