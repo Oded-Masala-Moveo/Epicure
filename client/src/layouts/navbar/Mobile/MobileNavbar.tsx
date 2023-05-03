@@ -35,40 +35,41 @@ const MobileNavbar: React.FC = () => {
     setIsMenuOpen(!closeNow);
     setIsSearchOpen(false);
     setIsBagOpen(false);
+    setIsUserOpen(false);
     dispatch(closeAllNavbar(!closeNow));
   };
   const toggleSearch = (): void => {
     setIsSearchOpen(!closeNow);
     setIsBagOpen(false);
+    setIsUserOpen(false);
     dispatch(closeAllNavbar(!closeNow));
   };
   const toggleBag = (): void => {
     setIsBagOpen(!closeNow);
     setIsSearchOpen(false);
     setIsMenuOpen(false);
+    setIsUserOpen(false);
     dispatch(closeAllNavbar(!closeNow));
   };
   const toggleUser = (): void => {
     setIsUserOpen(!closeNow);
     setIsSearchOpen(false);
     setIsBagOpen(false);
+    setIsMenuOpen(false);
     dispatch(closeAllNavbar(!closeNow));
   }
   useEffect(() => {
     setIsMenuOpen(false);
     setIsSearchOpen(false);
     setIsBagOpen(false);
+    setIsUserOpen(false);
   }, [location.pathname]);
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setIsSearchOpen(false);
-    setIsBagOpen(false);
-  }, []);
   useEffect(() => {
     return (): void => {
       setIsMenuOpen(false);
       setIsSearchOpen(false);
       setIsBagOpen(false);
+      setIsUserOpen(false);
       dispatch(closeAllNavbar(false));
     };
   }, []);
@@ -80,7 +81,7 @@ const MobileNavbar: React.FC = () => {
         }
       >
         <div className="right-navbar">
-          {(isMenuOpen && closeNow) || (isSearchOpen && closeNow) ? (
+          {(isMenuOpen && closeNow) || (isSearchOpen && closeNow) || (isUserOpen && closeNow)? (
             <div onClick={isMenuOpen ? toggleMenu : toggleSearch}>
               <X_dark className="hamburger-icon" />
             </div>
@@ -90,7 +91,7 @@ const MobileNavbar: React.FC = () => {
             </div>
           )}
         </div>
-        {!isMenuOpen && !isSearchOpen || !closeNow ? (
+        {!isMenuOpen && !isSearchOpen && !isUserOpen || !closeNow ? (
           <div className={"left-navbar"}>
             <div>
               <Link to={"/"}>

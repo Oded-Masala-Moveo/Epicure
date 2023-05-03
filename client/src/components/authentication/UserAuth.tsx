@@ -1,9 +1,13 @@
 import React from "react";
 import "./userAuth.scss"
+import Login from "./login/Login";
 const UserAuth: React.FC = () => {
   return (
     <>
-      <div>UserAuth</div>
+      <div className="user-nav-container">UserAuth
+      <Login />
+      </div>
+     
     </>
   );
 };

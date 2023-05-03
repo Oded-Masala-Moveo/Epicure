@@ -9,8 +9,8 @@ import {
   FormikErrors,
 } from "formik";
 import * as Yup from "yup";
-import { MyFormValues } from "../../models";
-import { ClickButton, InputFieldComponent } from "..";
+import { MyFormValues } from "../../../models";
+import { ClickButton, InputFieldComponent } from "../..";
 import "./CheckOutForm.scss";
 const cvcRegex = /^\d{3,4}$/;
 const expiryDateRegex = /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/;

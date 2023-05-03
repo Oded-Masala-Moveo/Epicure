@@ -3,7 +3,7 @@
   "../../assets/styles/variable",
   "../../assets/styles/mixin/media-queries";
 
-.mobile-bag-nav {
+.user-nav-container {
     @include Appeared();
     position: absolute;
     top: 46px;
@@ -11,9 +11,9 @@
     background-color: white;
     z-index: 998;
     @include flex-container(column, center, center);
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
     @include desktop() {
       top: 64px;
       left: 1050px;
