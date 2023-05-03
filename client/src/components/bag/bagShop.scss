@@ -2,7 +2,7 @@
   "../../assets/styles/mixin/display-mixin", "../../assets/styles/variable",
   "../../assets/styles/mixin/media-queries";
 
-.mobile-bag-nav {
+.nav-bag-container {
   @include Appeared();
   position: absolute;
   top: 46px;
@@ -18,7 +18,7 @@
     left: 1050px;
   }
 }
-.mobile-bag-nav > * {
+.nav-bag-container > * {
   width: 380px;
 }
 .empty-bag-container {

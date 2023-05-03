@@ -10,7 +10,7 @@ import {
 } from "../../../assets/icons";
 import "./MobileNavbar.scss";
 import { Link, useLocation } from "react-router-dom";
-import { BagShop } from "../../../components/";
+import { BagShop, UserAuth } from "../../../components/";
 import { InputSearch } from "../../../components";
 import {
   selectCloseNow,
@@ -24,6 +24,7 @@ const MobileNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBagOpen, setIsBagOpen] = useState(false);
+  const [isUserOpen, setIsUserOpen] = useState(false);
   const location = useLocation();
   const closeNow = useAppSelector(selectCloseNow);
   const BagDishes = useAppSelector(selectBagDishes);
@@ -47,7 +48,12 @@ const MobileNavbar: React.FC = () => {
     setIsMenuOpen(false);
     dispatch(closeAllNavbar(!closeNow));
   };
-
+  const toggleUser = (): void => {
+    setIsUserOpen(!closeNow);
+    setIsSearchOpen(false);
+    setIsBagOpen(false);
+    dispatch(closeAllNavbar(!closeNow));
+  }
   useEffect(() => {
     setIsMenuOpen(false);
     setIsSearchOpen(false);
@@ -95,7 +101,7 @@ const MobileNavbar: React.FC = () => {
               <div onClick={toggleSearch}>
                 <Search className="icon" />
               </div>
-              <div>
+              <div onClick={toggleUser}>
                 <User className="icon" />
               </div>
               <div onClick={toggleBag}>
@@ -119,6 +125,7 @@ const MobileNavbar: React.FC = () => {
         {isMenuOpen && closeNow && <MenuNav setMenu={toggleMenu} />}
         {isBagOpen && closeNow && <BagShop />}
         {isSearchOpen && closeNow && <MobileSearchNav />}
+        {isUserOpen && closeNow && <UserAuth />}
       </div>
     </>
   );

@@ -1,29 +1,19 @@
 import React from "react";
-import { Bag, Shekel } from "../../assets/icons";
+import { Bag } from "../../assets/icons";
 import "./bagShop.scss";
-import {
-  selectBag,
-  selectBagDishes,
-  useAppSelector,
-  selectBagRestaurant,
-  BagDish,
-  selectBagTotal,
-} from "../../store";
-import ClickButton from "../buttons/clickButton/ClickButton";
-import useWindowSize, { desktop } from "../../hooks/useWindowSize";
-import { BagDishCard } from "./bagDishCard/BagDishCard";
+import { selectBagDishes, useAppSelector } from "../../store";
 import { ActiveBagComponent } from "./activeBag/ActiveBag";
 const BagShop: React.FC<{ width?: string }> = ({ width }) => {
   const shopBag = useAppSelector(selectBagDishes);
 
   if (shopBag.length)
     return (
-      <div className="mobile-bag-nav">
+      <div className="nav-bag-container">
         <ActiveBagComponent />
       </div>
     );
   return (
-    <div className="mobile-bag-nav">
+    <div className="nav-bag-container">
       <EmptyBag />
     </div>
   );
