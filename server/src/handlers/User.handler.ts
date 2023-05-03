@@ -1,53 +1,8 @@
 import { ErrorHandler, HttpStatusCode, HttpErrorMessage } from "../exceptions";
 import { IUser, Users } from "../models";
 import bcrypt from "bcrypt";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 export default class UserHandler {
-  static async getAllUsers() {
-    try {
-      return await Users.find({});
-    } catch (error) {
-      console.error(`Error in getAllUsers method: ${error}`);
-      throw error;
-    }
-  }
-
-  static async getUserById(id: string) {
-    try {
-      return await Users.findById(id);
-    } catch (error) {
-      console.error(`Error in getUserById method: ${error}`);
-      throw error;
-    }
-  }
-
-  static async getUserByEmail(email: string) {
-    try {
-      return await Users.findOne({ email: email });
-    } catch (error) {
-      console.error(`Error in getUserByEmail method: ${error}`);
-      throw error;
-    }
-  }
-
-  static async updateUser(id: string, obj: any) {
-    try {
-      return await Users.findByIdAndUpdate(id, obj);
-    } catch (error) {
-      console.error(`Error in updateUser method: ${error}`);
-      throw error;
-    }
-  }
-
-  static async deleteUser(id: string) {
-    try {
-      return await Users.findByIdAndRemove(id);
-    } catch (error) {
-      console.error(`Error in deleteUser method: ${error}`);
-      throw error;
-    }
-  }
-
   static async registerUser(obj: IUser) {
     try {
       const existingUser = await Users.findOne({ email: obj.email });
@@ -74,10 +29,10 @@ export default class UserHandler {
       const savedUser = await newUser.save();
 
       const token = jwt.sign(
-        { userId: savedUser._id },
+        { userId: savedUser._id ,isAdmin: savedUser.isAdmin },
         process.env.JWT_SECRET,
         {
-          expiresIn: '1d',
+          expiresIn: "1d",
         }
       );
 
@@ -106,15 +61,68 @@ export default class UserHandler {
           HttpErrorMessage.UNAUTHORIZED
         );
       }
-
       // create a token for the logged in user
-      const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-        expiresIn: '1d',
+      const token = jwt.sign( { userId: user._id ,isAdmin: user.isAdmin }, process.env.JWT_SECRET, {
+        expiresIn: "1d",
       });
 
       return { user, token };
     } catch (error) {
       console.error(`Error in loginUser method: ${error}`);
+      throw error;
+    }
+  }
+  static async getAllUsers() {
+    try {
+      return await Users.find({});
+    } catch (error) {
+      console.error(`Error in getAllUsers method: ${error}`);
+      throw error;
+    }
+  }
+
+  static async getUserByEmail(email: string) {
+    try {
+      return await Users.findOne({ email: email });
+    } catch (error) {
+      console.error(`Error in getUserByEmail method: ${error}`);
+      throw error;
+    }
+  }
+
+  static async updateUserByEmail(email: string, obj: any) {
+    try {
+      const emailRegex = /\S+@\S+\.\S+/;
+      if (!emailRegex.test(email)) {
+        throw new Error("Invalid email format");
+      }
+      if(obj.password) throw ErrorHandler.createHttpError(HttpStatusCode.BAD_REQUEST, HttpErrorMessage.BAD_REQUEST);
+      return await Users.findOneAndUpdate({ email }, obj);
+    } catch (error) {
+      console.error(`Error in updateUserByEmail method: ${error}`);
+      throw error;
+    }
+  }
+  static async updatePasswordUserByEmail(email: string, obj: any) {
+    try {
+      const emailRegex = /\S+@\S+\.\S+/;
+      if (!emailRegex.test(email)) {
+        throw new Error("Invalid email format");
+      }
+      const hashedPassword = await bcrypt.hash(obj.password, 10);
+      obj.password = hashedPassword
+      return await Users.findOneAndUpdate({ email }, obj);
+    } catch (error) {
+      console.error(`Error in updateUserByEmail method: ${error}`);
+      throw error;
+    }
+  }
+
+  static async deleteUser(email: string) {
+    try {
+      return await Users.findOneAndDelete({ email: email });
+    } catch (error) {
+      console.error(`Error in deleteUser method: ${error}`);
       throw error;
     }
   }

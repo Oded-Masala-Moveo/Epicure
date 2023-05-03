@@ -6,15 +6,19 @@ import { IUser } from "../models";
 export default class UserController {
   static async getAllUsers(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await UserHandler.getAllUsers();
-      res.status(HttpStatusCode.OK).send(data);
+      const users = await UserHandler.getAllUsers();
+      const usersWithoutPassword = users.map(user => {
+        const { password, ...userWithoutPassword } = user.toObject();
+        return userWithoutPassword;
+      });
+      res.status(HttpStatusCode.OK).send(usersWithoutPassword);
     } catch (err) {
       next(err);
     }
   }
   static async getUserByEmail(req: Request, res: Response, next: NextFunction) {
     try {
-      const email = req.params.email;
+      const email = req.body.email;
       const user = await UserHandler.getUserByEmail(email);
       if (!user) {
         throw ErrorHandler.createHttpError(
@@ -22,29 +26,34 @@ export default class UserController {
           HttpErrorMessage.NOT_FOUND
         );
       }
-      res.status(HttpStatusCode.OK).send(user);
+      const { password, isAdmin, ...userData } = user.toObject();
+      res.status(HttpStatusCode.OK).send(userData);
     } catch (err) {
       next(err);
     }
   }
-  static async getUserById(req: Request, res: Response, next: NextFunction) {
+  static async updateUserByEmail(req: Request, res: Response, next: NextFunction) {
     try {
-      const id = req.params.id;
-      const user = await UserHandler.getUserById(id);
-      if (!user) {
+      const {email,...changeData} = req.body
+      const data = await UserHandler.updateUserByEmail(email , changeData);
+      if (!data) {
         throw ErrorHandler.createHttpError(
           HttpStatusCode.NOT_FOUND,
           HttpErrorMessage.NOT_FOUND
         );
       }
-      res.status(HttpStatusCode.OK).send(user);
+      res.status(HttpStatusCode.OK).send({
+        res_message: HttpErrorMessage.OK,
+        data,
+      });
     } catch (err) {
       next(err);
     }
   }
-  static async updateUser(req: Request, res: Response, next: NextFunction) {
+  static async updatePasswordUserByEmail(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await UserHandler.updateUser(req.params.id, req.body);
+      const {email,...changeData} = req.body
+      const data = await UserHandler.updatePasswordUserByEmail(email , changeData);
       if (!data) {
         throw ErrorHandler.createHttpError(
           HttpStatusCode.NOT_FOUND,
@@ -80,7 +89,7 @@ export default class UserController {
     try {
       const { token, user } = await UserHandler.registerUser(req.body as IUser);
   
-      // store user data in session
+      const { password, isAdmin, ...userData } = user.toObject();
       req.session.user = user;
   
       res
@@ -88,7 +97,7 @@ export default class UserController {
         .header("Authorization", `Bearer ${token}`)
         .send({
           res_message: HttpErrorMessage.CREATED,
-          user,
+          userData,
         });
     } catch (err) {
       next(err);
@@ -97,18 +106,19 @@ export default class UserController {
   static async loginUser(req: Request, res: Response, next: NextFunction) {
     try {
       const email = req.body.email;
-      const password = req.body.password;
-      const { token, user } = await UserHandler.loginUser(email, password);
-  
+      const reqPassword = req.body.password;
+      const { token, user } = await UserHandler.loginUser(email, reqPassword);
+      const { password, isAdmin, ...userData } = user.toObject();
+
       // store user data in session
       req.session.user = user;
-  
+    
       res
         .status(HttpStatusCode.OK)
         .header("Authorization", `Bearer ${token}`)
         .send({
           res_message: HttpErrorMessage.OK,
-          user,
+          userData,
         });
     } catch (err) {
       next(err);
