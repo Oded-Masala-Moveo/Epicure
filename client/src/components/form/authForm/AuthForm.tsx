@@ -6,7 +6,7 @@ import { MyFormValues } from "../../../models";
 import InputFieldComponent from "../InputFieldComponent/InputFieldComponent";
 import ClickButton from "../../buttons/clickButton/ClickButton";
 import { loginUser } from "../../../services/requestsApiServices";
-import {useAppDispatch,closeAllNavbar} from "../../../store"
+import {useAppDispatch,closeAllNavbar,login} from "../../../store"
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex =
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[_!@#$%^&*]).{8,16}$/;
@@ -61,9 +61,13 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
             let sendLoginRequest = () => {
               if (values.email && values.password)
                 loginUser(values.email, values.password).then((res) => {
-                  console.log(res);
+                  if (res?._id && res.email && res.userName) {
+                    dispatch(login({email:res?.email,_id:res?._id,userName:res?.userName}));
+                  }
+                 
                 }).then(() => {
                   dispatch(closeAllNavbar(false))
+                  
                 })
             };
            

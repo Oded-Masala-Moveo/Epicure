@@ -52,3 +52,31 @@
     }
   }
 }
+.user-logged-container{
+  @include Appeared();
+  position: absolute;
+  top: 46px;
+  left: 0px;
+  background-color: white;
+  z-index: 995;
+  @include flex-container(column, center, center);
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @include desktop() {
+    top: 64px;
+    left: 1050px;
+
+  }
+  .title-logged-container{
+    position: relative;
+    @include flex-container(column, start, center);
+    background-color: white;
+    width: 375px;
+    height: 100px;
+    @include desktop() {
+      width: 497px;
+      height: 778px;
+    }
+  }
+}
