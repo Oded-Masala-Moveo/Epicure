@@ -12,11 +12,15 @@
     outline: none;
     padding-bottom: 8px;
   }
+  .auth-input-change{
+    font-size: 14px;
+  }
   .has-error{
-    border-bottom:  0.5px solid #cd0909;
+    // border-bottom:  0.5px solid #863535;
    
   }
   .error-message{
-    color: #cd0909;
+    color: #a30606;
+    font-size: 11px;
   }
 }

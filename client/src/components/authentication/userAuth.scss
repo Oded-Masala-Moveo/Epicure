@@ -28,10 +28,10 @@
       height: 778px;
     }
 
-    h2 {
+    .title-auth-container {
       margin-top: 40px;
     }
-    p {
+    .sub-title-auth-container {
       margin-top: 18px;
     }
     .auth-container {
@@ -39,7 +39,7 @@
     }
     .switch-form-bar {
       margin-top: 40px;
-      @include flex-container(row, start, center,12px);
+      @include flex-container(row, center, center,12px);
       .line {
         width: 126.5px;
         height: 0px;
