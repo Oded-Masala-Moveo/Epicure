@@ -1,11 +1,12 @@
 import React from "react";
 import * as Yup from "yup";
-import { Formik, Form, Field, ErrorMessage, FormikErrors } from "formik";
+import { Formik, Form, FormikErrors } from "formik";
 import "./auth.scss";
 import { MyFormValues } from "../../../models";
 import InputFieldComponent from "../InputFieldComponent/InputFieldComponent";
 import ClickButton from "../../buttons/clickButton/ClickButton";
-
+import { loginUser } from "../../../services/requestsApiServices";
+import {useAppDispatch,closeAllNavbar} from "../../../store"
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex =
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[_!@#$%^&*]).{8,16}$/;
@@ -33,6 +34,7 @@ const validateFunction = (values: MyFormValues) => {
     });
 };
 const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
+  const dispatch = useAppDispatch();
   const initialValues: MyFormValues = {
     email: "",
     password: "",
@@ -56,7 +58,16 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
           initialValues={initialValues}
           validate={validateFunction}
           onSubmit={(values) => {
-            console.log(values);
+            let sendLoginRequest = () => {
+              if (values.email && values.password)
+                loginUser(values.email, values.password).then((res) => {
+                  console.log(res);
+                }).then(() => {
+                  dispatch(closeAllNavbar(false))
+                })
+            };
+           
+            sendLoginRequest()
           }}
         >
           {({ touched, errors, handleSubmit, ...Formik }) => (
@@ -77,7 +88,11 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
                   inputPlaceholder={fieldFill.password.placeholder}
                 />
                 <div>
-                  <ClickButton type="submit" onClick={handleSubmit} primaryBlack={true}>
+                  <ClickButton
+                    type="submit"
+                    onClick={handleSubmit}
+                    primaryBlack={true}
+                  >
                     {!register ? "Login" : "Register"}
                   </ClickButton>
                 </div>

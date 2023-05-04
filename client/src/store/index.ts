@@ -14,9 +14,9 @@ export {
   selectBagTotalQuantity,
   selectCloseNow,
   selectComment
-} from "./dishCartSlice/dishSlice";
-export type { BagDish } from "./dishCartSlice/dishSlice";
+} from "./dishCartSlice/bagSlice";
+export type { BagDish } from "./dishCartSlice/bagSlice";
 export { useAppDispatch, useAppSelector } from "./hook";
-import bagReducer from "./dishCartSlice/dishSlice";
+import bagReducer from "./dishCartSlice/bagSlice";
 
 export default bagReducer;

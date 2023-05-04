@@ -31,7 +31,7 @@ const RestaurantsPage: React.FC = () => {
   useEffect(() => {
     fetchAllRestaurants()
       .then((restaurants) => {
-        setRestaurants(restaurants);
+        restaurants && setRestaurants(restaurants);
       })
       .catch((error) => {
         console.log(error);
