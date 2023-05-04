@@ -15,7 +15,6 @@ import { Footer } from "../../layouts";
 
 const CheckOut: React.FC = () => {
   const { width } = useWindowSize();
-  const refInput = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const currentBagDishes = useAppSelector(selectBagDishes);
   const currentTotal = useAppSelector(selectBagTotal);
