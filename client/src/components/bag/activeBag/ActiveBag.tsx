@@ -25,7 +25,6 @@ export const ActiveBagComponent: React.FC = () => {
   const total = useAppSelector(selectBagTotal);
   const dispatch = useAppDispatch();
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const [commentText, setCommentText] = useState<string>("");
   const navigate = useNavigate();
 
   const goToCheckOut = () => () => {

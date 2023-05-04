@@ -1,9 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import bagReducer from './index';
+import {userReducer, bagReducer} from "./index"
 
 export const store = configureStore({
   reducer: {
     bag: bagReducer,
+    user:userReducer
   },
 });
 

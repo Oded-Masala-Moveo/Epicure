@@ -2,7 +2,7 @@
   "../../assets/styles/mixin/display-mixin", "../../assets/styles/variable",
   "../../assets/styles/mixin/media-queries";
 
-.mobile-bag-nav {
+.nav-bag-container {
   @include Appeared();
   position: absolute;
   top: 46px;
@@ -10,15 +10,12 @@
   background-color: white;
   z-index: 998;
   @include flex-container(column, center, center);
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
   @include desktop() {
     top: 64px;
     left: 1050px;
   }
 }
-.mobile-bag-nav > * {
+.nav-bag-container > * {
   width: 380px;
 }
 .empty-bag-container {

@@ -6,6 +6,6 @@ export { default as InputSearch } from "./inputSearch/InputSearch";
 export { default as ClickButton } from "./buttons/clickButton/ClickButton";
 export { default as PopUp } from "./popUp/PopUp";
 export { default as DishComponent } from "./dish/Dish";
-export { default as InputFieldComponent } from "./form/InputFieldComponent/InputFieldComponent";
-export { default as CheckOutForm } from "./form/CheckOutForm";
+export { InputFieldComponent ,AuthForm, CheckOutForm } from "./form";
+export { default as UserAuth } from "./authentication/UserAuth";
 export { DistanceComponent,PriceComponent,RatingComponent } from "./range/RangeComponents";

@@ -1,6 +1,5 @@
 import Joi from "joi";
 import { Request, Response, NextFunction } from "express";
-import { IRestaurant, IDish, Address, IChef } from "../../models";
 import { HttpErrorMessage, HttpStatusCode } from "../../exceptions";
 
 export const ValidateObjectData = (schema: Joi.ObjectSchema) => {
