@@ -1,17 +1,10 @@
-import React from "react";
-import {
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  Field,
-  FieldProps,
-  FormikErrors,
-} from "formik";
+import React, { RefObject } from "react";
+import { Formik, FormikProps, Form, FormikErrors, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { MyFormValues } from "../../../models";
-import { ClickButton, InputFieldComponent } from "../..";
+import { InputFieldComponent } from "../..";
 import "./CheckOutForm.scss";
+import { useNavigate } from "react-router-dom";
 const cvcRegex = /^\d{3,4}$/;
 const expiryDateRegex = /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/;
 const phoneRegex = /^((\+|00)?972\-?|0)([234578]\d|\d{2})\-?\d{7}$/;
@@ -56,7 +49,10 @@ const validateFunction = (values: MyFormValues) => {
     });
 };
 
-const CheckOutForm: React.FC = () => {
+const CheckOutForm: React.FC<{
+  formRef: RefObject<FormikProps<MyFormValues>>;
+}> = ({ formRef }) => {
+  const navigate = useNavigate();
   const initialValues: MyFormValues = {
     fullName: "",
     address: "",
@@ -100,14 +96,15 @@ const CheckOutForm: React.FC = () => {
       placeholder: "Expiry Date",
     },
   };
-
+  const backToHome = () => navigate("/");
+  const onSubmit = (values: MyFormValues, { setSubmitting }: FormikHelpers<MyFormValues>) => {
+    console.log("Form submitted with values: ", values);
+    setSubmitting(false);
+    backToHome()
+  };
   return (
     <div>
-      <Formik
-        initialValues={initialValues}
-        validate={validateFunction}
-        onSubmit={() => {}}
-      >
+      <Formik initialValues={initialValues} validate={validateFunction} innerRef={formRef} onSubmit={onSubmit} >
         {({ touched, errors, ...Formik }) => (
           <Form>
             <div className="checkout-form-inputs-top">
@@ -135,14 +132,13 @@ const CheckOutForm: React.FC = () => {
             </div>
             <div className="checkout-form-inputs-bottom">
               <h2>payment details</h2>
-            
               <InputFieldComponent
                 formikProps={{ touched, errors, ...Formik }}
                 inputName={fieldFill.cardNumber.name as keyof MyFormValues}
                 inputType="text"
                 inputPlaceholder={fieldFill.cardNumber.placeholder}
               />
-                <InputFieldComponent
+              <InputFieldComponent
                 formikProps={{ touched, errors, ...Formik }}
                 inputName={fieldFill.nameOnCard.name as keyof MyFormValues}
                 inputType="text"

@@ -21,6 +21,7 @@
     }
   }
   .close-checkout-nav {
+    cursor: pointer;
     .logo {
       width: 24px;
       height: 24px;
@@ -112,6 +113,17 @@
         margin-bottom: 0px;
       }
       margin-bottom: 40px;
+      .checkout-btn-title{
+        @include flex-container(row, center, center);
+        
+        .total-price-checkout {
+          margin-left: 180px;
+          @include flex-container(row, center, center,5px);
+          .shekel-checkout{
+            width: 12px;
+          }
+        }
+      }
     }
   }
 }
