@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { IOrderItem } from "../models";
+import { IOrderData, IOrderItem } from "../models";
 
 const BASE_URL = import.meta.env.PROD
   ? import.meta.env.VITE_PRODUCTION_SERVER_API_URL
@@ -73,8 +73,21 @@ export const updateOrder = async (id: string, orderData: IOrderItem) => {
   }
 };
 
-export const addOrder = async (orderData: IOrderItem) => {
+export const addOrder = async (orderData: IOrderData) => {
   try {
+    const { user, restaurant, dishes, totalAmount, address, status } = orderData;
+    if (
+      !user ||
+      !restaurant ||
+      !dishes ||
+      !Array.isArray(dishes) ||
+      !totalAmount ||
+      !address ||
+      !status
+    ) {
+      return false;
+    }
+  
     const token = Cookies.get("token");
     if (token) {
       const response = await axios.post(`${BASE_URL}/order`, orderData, {

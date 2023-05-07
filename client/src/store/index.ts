@@ -8,6 +8,7 @@ export {
   closeAllNavbar,
   addCommentToBag,
   clearCommentFromBag,
+  toggleOrderPlaced,
   selectBag,
   selectBagDishes,
   selectBagRestaurant,
@@ -17,7 +18,6 @@ export {
   selectComment
 } from "./dishCartSlice/bagSlice";
 export {login,logout,selectUser,selectUserEmail,selectUserName,userReducer} from "./userSlice/userSlice"
-export type { BagDish } from "./dishCartSlice/bagSlice";
 export { useAppDispatch, useAppSelector } from "./hook";
 
 

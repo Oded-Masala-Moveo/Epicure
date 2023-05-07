@@ -1,23 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { Dish, Restaurant } from "../../models";
+import { BagState, Dish, Restaurant } from "../../models";
 
-export interface BagDish {
-  dish: Dish;
-  quantity: number;
-  sides: string[];
-  changes: string[];
-}
-
-interface BagState {
-  total: number;
-  totalQuantity: number;
-  restaurant: Restaurant | null;
-  bagDishes: BagDish[];
-  limitPurchase: boolean;
-  closeNow: boolean;
-  orderComment: string;
-}
 
 const initialState: BagState = {
   total: 0,
@@ -25,6 +9,7 @@ const initialState: BagState = {
   restaurant: null,
   bagDishes: [],
   limitPurchase: false,
+  isOrderPlaced : false,
   closeNow: false,
   orderComment: "",
 };
@@ -97,6 +82,9 @@ export const bagSlice = createSlice({
       state.bagDishes = [];
       state.limitPurchase = false;
     },
+    toggleOrderPlaced: (state, action: PayloadAction<boolean>) => {
+      state.isOrderPlaced = action.payload;
+    },
     closeAllNavbar(state, action: PayloadAction<boolean>) {
       state.closeNow = action.payload;
     },
@@ -112,6 +100,7 @@ export const {
   closeAllNavbar,
   addCommentToBag,
   clearCommentFromBag,
+  toggleOrderPlaced
 } = bagSlice.actions;
 
 export const selectBag = (state: RootState) => state.bag;

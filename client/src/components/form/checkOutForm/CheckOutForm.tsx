@@ -5,6 +5,8 @@ import { MyFormValues } from "../../../models";
 import { InputFieldComponent } from "../..";
 import "./CheckOutForm.scss";
 import { useNavigate } from "react-router-dom";
+import { selectBag, selectUser, toggleOrderPlaced, useAppDispatch, useAppSelector } from "../../../store";
+import { addOrder } from "../../../services";
 const cvcRegex = /^\d{3,4}$/;
 const expiryDateRegex = /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/;
 const phoneRegex = /^((\+|00)?972\-?|0)([234578]\d|\d{2})\-?\d{7}$/;
@@ -53,6 +55,9 @@ const CheckOutForm: React.FC<{
   formRef: RefObject<FormikProps<MyFormValues>>;
 }> = ({ formRef }) => {
   const navigate = useNavigate();
+  const bag = useAppSelector(selectBag);
+  const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch()
   const initialValues: MyFormValues = {
     fullName: "",
     address: "",
@@ -96,14 +101,30 @@ const CheckOutForm: React.FC<{
       placeholder: "Expiry Date",
     },
   };
-  const backToHome = () => navigate("/");
   const onSubmit = (
     values: MyFormValues,
     { setSubmitting }: FormikHelpers<MyFormValues>
   ) => {
     console.log("Form submitted with values: ", values);
-    setSubmitting(false);
-    // backToHome()
+    let dishesForServer = bag.bagDishes.map((dish) => {
+      return {
+        dish:dish.dish._id,
+        quantity:dish.quantity,      
+      }
+    })
+    addOrder({
+      address: values.address,
+      dishes: dishesForServer,
+      restaurant: bag.restaurant?._id,
+      status: "Pending",
+      totalAmount: bag.total,
+      user: user._id,
+    }).then(res=>{
+      console.log(res);
+      dispatch(toggleOrderPlaced(true))
+      navigate("/");
+      setSubmitting(false)
+    });
   };
   return (
     <div>

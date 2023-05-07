@@ -1,3 +1,5 @@
+import { BagDish } from "./bag.model";
+
 export interface IOrderItem {
     dish:  string;
     quantity: number;
@@ -5,9 +7,9 @@ export interface IOrderItem {
   
   export interface IOrderData {
     user:  string;
-    restaurant: string;
+    restaurant?: string;
     dishes: IOrderItem[];
     totalAmount: number;
-    address: string;
+    address?: string;
     status: "Pending" | "In Progress" | "Completed" | "Cancelled";
   }
