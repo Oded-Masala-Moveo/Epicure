@@ -1,4 +1,5 @@
 export { filterChefs, filterDishes, filterRestaurants } from "./filterServices";
+export {logOutUser,loginUser } from "./authService";
 export {
   fetchAllRestaurants,
   fetchDishes,
@@ -6,4 +7,4 @@ export {
   fetchRestaurantByChefId,
   fetchRestaurantById,
   getChefs,
-} from "./requestsApiServices";
+} from "./pagesDataServices";
