@@ -15,8 +15,6 @@ import { BagShop, UserAuth } from "../../../components";
 const DesktopNavbar: React.FC = () => {
   const location = useLocation();
   const closeNow = useAppSelector(selectCloseNow);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBagOpen, setIsBagOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const BagDishes = useAppSelector(selectBagDishes);

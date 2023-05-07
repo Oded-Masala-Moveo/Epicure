@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./checkout.scss";
-import { Logo, X_dark } from "../../assets/icons";
+import { Logo, Shekel, X_dark } from "../../assets/icons";
 import { CheckOutForm, ClickButton } from "../../components";
 import {
   selectBag,
@@ -12,21 +12,31 @@ import {
 import { BagDishCard } from "../../components/bag/bagDishCard/BagDishCard";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 import { Footer } from "../../layouts";
+import { useNavigate } from "react-router-dom";
+import { FormikProps } from "formik";
+import { MyFormValues } from "../../models";
 
 const CheckOut: React.FC = () => {
   const { width } = useWindowSize();
-  const refInput = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const formRef = useRef<FormikProps<MyFormValues>>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const currentBagDishes = useAppSelector(selectBagDishes);
   const currentTotal = useAppSelector(selectBagTotal);
-  const dispatch = useAppDispatch();
+  const total = useAppSelector(selectBagTotal);
+  const handleSubmit = () => {
+    if (formRef.current) {
+      formRef.current.handleSubmit();
+    }
+  };
+  const backToHome = () => navigate("/");
   useEffect(() => {
-    console.log(currentBagDishes);
   }, []);
   return (
     <>
       <div className="checkout-mobile-navbar-container">
-        <div className="close-checkout-nav">
+        <div onClick={backToHome} className="close-checkout-nav">
           <X_dark className="logo" />
         </div>
         <div className="close-mobile-logo">
@@ -38,7 +48,7 @@ const CheckOut: React.FC = () => {
           <div className="checkout-title">
             <h2>delivery details</h2>
           </div>
-          <CheckOutForm />
+          <CheckOutForm formRef={formRef} />
         </div>
         <div>
           <div className="order-details-container">
@@ -67,8 +77,24 @@ const CheckOut: React.FC = () => {
               <p>TOTAL - {currentTotal}</p>
             </div>
             <div className="submit-button-container">
-              <ClickButton icon={true} width="335px">
-                Complete payment
+              <ClickButton type="submit" onClick={()=> handleSubmit()} icon={true} width="335px">
+                <div
+                  className={width > desktop - 1 ? "checkout-btn-title" : ""}
+                >
+                  {width > desktop - 1 ? (
+                    <>
+                      <p>pay</p>
+                      <p className="total-price-checkout">
+                        <div className="shekel-checkout">
+                          <Shekel stroke="black" />
+                        </div>
+                        {total}
+                      </p>
+                    </>
+                  ) : (
+                    "Complete payment"
+                  )}
+                </div>
               </ClickButton>
             </div>
           </div>
