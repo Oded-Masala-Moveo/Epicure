@@ -12,6 +12,8 @@ interface ButtonProps {
   secondary?: boolean;
   secondaryBlack?: boolean;
   icon?: boolean;
+  backGroundColor?: string;
+  borderRadius?: string;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
 }
@@ -26,6 +28,8 @@ const ClickButton: React.FC<ButtonProps> = ({
   secondaryBlack,
   width,
   type,
+  backGroundColor,
+  borderRadius,
   disabled=false,
   onClick,
 }) => {
@@ -36,7 +40,7 @@ const ClickButton: React.FC<ButtonProps> = ({
   const iconClass = icon ? "icon-btn" : "";
   const disabledBtn = disabled ? "disabled" : "";
   return (
-    <button type={type} disabled={disabled} className={`click-btn ${disabledBtn} ${primaryBlackClass} ${primaryGrayClass} ${secondaryClass} ${secondaryBlackClass} ${iconClass}`} style={{ width: width, height: height }} onClick={onClick} >
+    <button type={type} disabled={disabled} className={`click-btn ${disabledBtn} ${primaryBlackClass} ${primaryGrayClass} ${secondaryClass} ${secondaryBlackClass} ${iconClass}`} style={{ borderRadius:borderRadius,backgroundColor:backGroundColor,width: width, height: height }} onClick={onClick} >
       <div className="icon-container">
         <Lock />
       </div>
