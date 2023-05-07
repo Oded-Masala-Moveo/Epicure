@@ -15,7 +15,8 @@ export {
   selectBagTotal,
   selectBagTotalQuantity,
   selectCloseNow,
-  selectComment
+  selectComment,
+  selectIsOrderPlaced
 } from "./dishCartSlice/bagSlice";
 export {login,logout,selectUser,selectUserEmail,selectUserName,userReducer} from "./userSlice/userSlice"
 export { useAppDispatch, useAppSelector } from "./hook";

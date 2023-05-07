@@ -110,5 +110,6 @@ export const selectBagTotalQuantity = (state: RootState) => state.bag.totalQuant
 export const selectBagRestaurant = (state: RootState) => state.bag.restaurant;
 export const selectCloseNow = (state: RootState) => state.bag.closeNow;
 export const selectComment = (state: RootState) => state.bag.orderComment;
+export const selectIsOrderPlaced = (state: RootState) => state.bag.isOrderPlaced;
 
 export const bagReducer = bagSlice.reducer ;

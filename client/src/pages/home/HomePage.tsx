@@ -6,7 +6,7 @@ import {
   RestSection,
   SignatureSection,
 } from "../../layouts";
-import { Hero } from "../../components";
+import { Hero, OrderSuccess, PopUp } from "../../components";
 import { closeAllNavbar, useAppDispatch } from "../../store";
 const HomePage: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -14,6 +14,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <div onClick={sendCloseNavbar()}>
+         {/* <OrderSuccess/> */}
         <Hero />
         <RestSection />
         <DishSection />

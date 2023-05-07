@@ -8,4 +8,5 @@ export { default as PopUp } from "./popUp/PopUp";
 export { default as DishComponent } from "./dish/Dish";
 export { InputFieldComponent ,AuthForm, CheckOutForm } from "./form";
 export { default as UserAuth } from "./authentication/UserAuth";
+export { default as OrderSuccess } from "./orderSuccess/OrderSuccess";
 export { DistanceComponent,PriceComponent,RatingComponent } from "./range/RangeComponents";
