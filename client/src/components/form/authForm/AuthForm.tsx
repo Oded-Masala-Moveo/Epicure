@@ -5,7 +5,7 @@ import "./auth.scss";
 import { MyFormValues } from "../../../models";
 import InputFieldComponent from "../InputFieldComponent/InputFieldComponent";
 import ClickButton from "../../buttons/clickButton/ClickButton";
-import { loginUser } from "../../../services/requestsApiServices";
+import { loginUser } from "../../../services";
 import {useAppDispatch,closeAllNavbar,login} from "../../../store"
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex =

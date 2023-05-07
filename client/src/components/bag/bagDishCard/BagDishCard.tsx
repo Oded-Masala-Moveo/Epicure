@@ -1,9 +1,12 @@
+import { useId } from "react";
 import { Shekel } from "../../../assets/icons";
-import { BagDish } from "../../../store";
-
 import "./bagDishCard.scss";
+import { BagDish } from "../../../models";
 
 export const BagDishCard: React.FC<{ item: BagDish }> = ({ item }) => {
+
+
+  
   return (
     <>
       <div className="bag-dish-card-container">
@@ -17,11 +20,11 @@ export const BagDishCard: React.FC<{ item: BagDish }> = ({ item }) => {
           </div>
           <div className="side-change">
             <p>
-              {item.sides.map((c) => c)}
+              {item.sides.map((c) => <span key={useId()}>{c}</span> )}{" "}
               {item.sides.length > 0 && item.changes.length > 0 && (
                 <span>|</span>
-              )}
-              {item.changes.map((c) => c)}
+              )}{" "}
+              {item.changes.map((c) => <span key={useId()}>{c}</span> )}
             </p>
           </div>
         </div>

@@ -48,6 +48,6 @@
   }
 }
 .disabled {
-  background-color: #c3b1b1;
-  cursor: default;
+  background-color: $secondary-gray;
+  cursor: no-drop;
 }

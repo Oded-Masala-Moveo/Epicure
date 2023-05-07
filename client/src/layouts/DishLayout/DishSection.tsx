@@ -13,7 +13,7 @@ const DishSection: React.FC = () => {
   useEffect(() => {
     fetchDishes()
       .then((res) => {
-        setDishes(res);
+       if(res) setDishes(res);
       })
       .catch((err) => console.log(err));
   });

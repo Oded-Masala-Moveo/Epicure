@@ -10,7 +10,7 @@ const ChefOfTehWeekSection: React.FC = () => {
   useEffect(() => {
     getChefs()
       .then((chefs) => {
-        setChef(chefs.find((chef) => chef.weekChef === true));
+        if(chefs) setChef(chefs.find((chef) => chef.weekChef === true));
       })
       .catch((error) => console.log(error));
   }, []);
@@ -18,7 +18,7 @@ const ChefOfTehWeekSection: React.FC = () => {
     if (chef) {
       fetchRestaurantByChefId(chef._id)
         .then((restaurants) => {
-          setRestaurants(restaurants);
+          if (restaurants) setRestaurants(restaurants);
         })
         .catch((error) => console.log(error));
     }

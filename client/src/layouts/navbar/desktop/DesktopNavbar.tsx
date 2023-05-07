@@ -7,6 +7,7 @@ import {
   selectBagDishes,
   selectBagTotalQuantity,
   selectCloseNow,
+  selectIsOrderPlaced,
   useAppDispatch,
   useAppSelector,
 } from "../../../store";
@@ -18,6 +19,7 @@ const DesktopNavbar: React.FC = () => {
   const [isBagOpen, setIsBagOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const BagDishes = useAppSelector(selectBagDishes);
+  const IsOrderPlaced = useAppSelector(selectIsOrderPlaced);
   const TotalQuantity = useAppSelector(selectBagTotalQuantity);
   const dispatch = useAppDispatch();
   const toggleBag = (): void => {
@@ -76,7 +78,7 @@ const DesktopNavbar: React.FC = () => {
               <User className="logo" />
             </div>
             <div className="Bag-container" onClick={toggleBag}>
-              {BagDishes.length ? (
+              {BagDishes.length && !IsOrderPlaced  ? (
                 <ActiveBag className="logo-bag" quantity={TotalQuantity} />
               ) : (
                 <Bag className="logo" />

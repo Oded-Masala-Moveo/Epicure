@@ -12,10 +12,12 @@ const ChefPage: React.FC = () => {
   const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
   useEffect(() => {
     getChefs()
-      .then((chefs) => setChefs(chefs))
+      .then((chefs) => {
+        if (chefs) setChefs(chefs);
+      })
       .catch((err) => console.log(err));
   }, []);
-  useEffect(() => {    
+  useEffect(() => {
     setDisplayChefs(filterChefs(chefs, chefsCategory));
   }, [chefs, chefsCategory]);
   return (
@@ -25,13 +27,28 @@ const ChefPage: React.FC = () => {
           <h2>CHEFS</h2>
         </div>
         <ul className="chef-category">
-          <li onClick={() => setChefsCategory(ChefCategory.All)} className={ chefsCategory == ChefCategory.All ? "selected" : "category" } >
+          <li
+            onClick={() => setChefsCategory(ChefCategory.All)}
+            className={
+              chefsCategory == ChefCategory.All ? "selected" : "category"
+            }
+          >
             <p>{ChefCategory.All}</p>
           </li>
-          <li onClick={() => setChefsCategory(ChefCategory.new)} className={ chefsCategory == ChefCategory.new ? "selected" : "category" } >
+          <li
+            onClick={() => setChefsCategory(ChefCategory.new)}
+            className={
+              chefsCategory == ChefCategory.new ? "selected" : "category"
+            }
+          >
             <p>{ChefCategory.new}</p>
           </li>
-          <li onClick={() => setChefsCategory(ChefCategory.Viewed)} className={ chefsCategory == ChefCategory.Viewed ? "selected" : "category" } >
+          <li
+            onClick={() => setChefsCategory(ChefCategory.Viewed)}
+            className={
+              chefsCategory == ChefCategory.Viewed ? "selected" : "category"
+            }
+          >
             <p>{ChefCategory.Viewed}</p>
           </li>
         </ul>

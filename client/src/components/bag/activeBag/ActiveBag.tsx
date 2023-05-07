@@ -14,7 +14,7 @@ import { desktop } from "../../../hooks/useWindowSize";
 import { Shekel } from "../../../assets/icons";
 import ClickButton from "../../buttons/clickButton/ClickButton";
 import "./activeBag.scss";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ActiveBagComponent: React.FC = () => {
@@ -38,7 +38,7 @@ export const ActiveBagComponent: React.FC = () => {
       <p className="rest-title">{restaurant?.name}</p>
       <div className="bag-item-list-container">
         {shopBag.map((shopBagItem) => (
-          <BagDishCard item={shopBagItem} />
+          <BagDishCard key={shopBagItem.dish._id} item={shopBagItem} />
         ))}
       </div>
       {width < desktop && (

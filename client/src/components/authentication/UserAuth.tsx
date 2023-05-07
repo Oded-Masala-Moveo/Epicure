@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import "./userAuth.scss";
 import { AuthForm } from "../form";
 import ClickButton from "../buttons/clickButton/ClickButton";
-import { useAppSelector, selectUser, useAppDispatch } from "../../store";
+import { useAppSelector, selectUser, useAppDispatch, logout, closeAllNavbar,clearBag } from "../../store";
+import { logoutUser } from "../../services";
 const UserAuth: React.FC = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const onLogOut = () => {
-  }
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+    logoutUser().then((res) => {
+      if (res === 200) {
+        dispatch(logout())
+        dispatch(clearBag())
+        dispatch(closeAllNavbar(false))
+      }
+    });
+  };
   return (
     <>
       <div className="user-nav-container">
@@ -40,7 +45,12 @@ const UserAuth: React.FC = () => {
           <div className="user-logged-container">
             <div className="title-logged-container">
               <p>Hi {user.userName}, enjoy your meal</p>
-              <ClickButton borderRadius="10px" backGroundColor="#7e2121" width="100px">
+              <ClickButton
+                onClick={onLogOut}
+                borderRadius="10px"
+                backGroundColor="#7e2121"
+                width="100px"
+              >
                 logout
               </ClickButton>
             </div>

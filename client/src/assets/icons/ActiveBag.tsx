@@ -1,6 +1,8 @@
 import React from "react";
+import { selectIsOrderPlaced, useAppSelector } from "../../store";
 
 export const ActiveBag: React.FC<{ quantity: number,className?:string}> = ({ quantity ,className}) => {
+  const IsOrderPlaced = useAppSelector(selectIsOrderPlaced);
   return (
     <>
       <svg
@@ -28,7 +30,7 @@ export const ActiveBag: React.FC<{ quantity: number,className?:string}> = ({ qua
           strokeLinejoin="round"
         />
         <circle cx="8" cy="8" r="8" fill="black" />
-        <svg>
+       { <svg>
           <rect width="30" height="30" fill="" />
           <foreignObject x="2" y="0" width="30" height="30">
             <div
@@ -42,10 +44,10 @@ export const ActiveBag: React.FC<{ quantity: number,className?:string}> = ({ qua
                 justifyContent: "center",
               }}
             >
-              {quantity}
+              { quantity}
             </div>
           </foreignObject>
-        </svg>
+        </svg>}
       </svg>
     </>
   );

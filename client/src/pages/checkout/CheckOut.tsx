@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./checkout.scss";
 import { Logo, Shekel, X_dark } from "../../assets/icons";
 import { CheckOutForm, ClickButton } from "../../components";
@@ -20,6 +20,7 @@ const CheckOut: React.FC = () => {
   const { width } = useWindowSize();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [isFormReady, setIsFormReady] = useState(false);
   const formRef = useRef<FormikProps<MyFormValues>>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const currentBagDishes = useAppSelector(selectBagDishes);
@@ -31,8 +32,6 @@ const CheckOut: React.FC = () => {
     }
   };
   const backToHome = () => navigate("/");
-  useEffect(() => {
-  }, []);
   return (
     <>
       <div className="checkout-mobile-navbar-container">
@@ -54,7 +53,9 @@ const CheckOut: React.FC = () => {
           <div className="order-details-container">
             <h2>My order</h2>
             {currentBagDishes.length > 0 &&
-              currentBagDishes.map((dish) => <BagDishCard item={dish} />)}
+              currentBagDishes.map((dish) => (
+                <BagDishCard key={dish.dish._id} item={dish} />
+              ))}
             {width > desktop && (
               <>
                 <div className="top-comment-line"></div>
@@ -77,19 +78,25 @@ const CheckOut: React.FC = () => {
               <p>TOTAL - {currentTotal}</p>
             </div>
             <div className="submit-button-container">
-              <ClickButton type="submit" onClick={()=> handleSubmit()} icon={true} width="335px">
+              <ClickButton
+                primaryBlack={true}
+                type="submit"
+                onClick={handleSubmit}
+                icon={true}
+                width="335px"
+              >
                 <div
                   className={width > desktop - 1 ? "checkout-btn-title" : ""}
                 >
                   {width > desktop - 1 ? (
                     <>
-                      <p>pay</p>
-                      <p className="total-price-checkout">
+                      <span>pay</span>
+                      <span className="total-price-checkout">
                         <div className="shekel-checkout">
                           <Shekel stroke="black" />
                         </div>
                         {total}
-                      </p>
+                      </span>
                     </>
                   ) : (
                     "Complete payment"
