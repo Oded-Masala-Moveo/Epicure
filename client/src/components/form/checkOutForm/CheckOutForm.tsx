@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React, { RefObject, useId } from "react";
 import { Formik, FormikProps, Form, FormikErrors, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { MyFormValues } from "../../../models";
@@ -97,18 +97,27 @@ const CheckOutForm: React.FC<{
     },
   };
   const backToHome = () => navigate("/");
-  const onSubmit = (values: MyFormValues, { setSubmitting }: FormikHelpers<MyFormValues>) => {
+  const onSubmit = (
+    values: MyFormValues,
+    { setSubmitting }: FormikHelpers<MyFormValues>
+  ) => {
     console.log("Form submitted with values: ", values);
     setSubmitting(false);
-    backToHome()
+    // backToHome()
   };
   return (
     <div>
-      <Formik initialValues={initialValues} validate={validateFunction} innerRef={formRef} onSubmit={onSubmit} >
+      <Formik
+        initialValues={initialValues}
+        validate={validateFunction}
+        innerRef={formRef}
+        onSubmit={onSubmit}
+      >
         {({ touched, errors, ...Formik }) => (
           <Form>
             <div className="checkout-form-inputs-top">
               <InputFieldComponent
+                key={useId()}
                 formikProps={{ touched, errors, ...Formik }}
                 labelName={fieldFill.fullName.labelName}
                 inputName={fieldFill.fullName.name as keyof MyFormValues}
@@ -116,6 +125,7 @@ const CheckOutForm: React.FC<{
                 inputPlaceholder={fieldFill.fullName.placeholder}
               />
               <InputFieldComponent
+                key={useId()}
                 formikProps={{ touched, errors, ...Formik }}
                 labelName={fieldFill.address.labelName}
                 inputName={fieldFill.address.name as keyof MyFormValues}
@@ -123,6 +133,7 @@ const CheckOutForm: React.FC<{
                 inputPlaceholder={fieldFill.address.placeholder}
               />
               <InputFieldComponent
+                key={useId()}
                 formikProps={{ touched, errors, ...Formik }}
                 labelName={fieldFill.phone.labelName}
                 inputName={fieldFill.phone.name as keyof MyFormValues}
@@ -133,24 +144,28 @@ const CheckOutForm: React.FC<{
             <div className="checkout-form-inputs-bottom">
               <h2>payment details</h2>
               <InputFieldComponent
+                key={useId()}
                 formikProps={{ touched, errors, ...Formik }}
                 inputName={fieldFill.cardNumber.name as keyof MyFormValues}
                 inputType="text"
                 inputPlaceholder={fieldFill.cardNumber.placeholder}
               />
               <InputFieldComponent
+                key={useId()}
                 formikProps={{ touched, errors, ...Formik }}
                 inputName={fieldFill.nameOnCard.name as keyof MyFormValues}
                 inputType="text"
                 inputPlaceholder={fieldFill.nameOnCard.placeholder}
               />
               <InputFieldComponent
+                key={useId()}
                 formikProps={{ touched, errors, ...Formik }}
                 inputName={fieldFill.cvc.name as keyof MyFormValues}
                 inputType="text"
                 inputPlaceholder={fieldFill.cvc.placeholder}
               />
               <InputFieldComponent
+                key={useId()}
                 formikProps={{ touched, errors, ...Formik }}
                 inputName={fieldFill.expiryDate.name as keyof MyFormValues}
                 inputType="text"

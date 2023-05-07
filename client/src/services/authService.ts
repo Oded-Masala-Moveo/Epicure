@@ -16,13 +16,6 @@ const BASE_URL = import.meta.env.PROD
       console.log(e);
     }
   };
-  export const logOutUser = async () => {
-    try{
-      Cookies.remove('token');
-    }catch(e){
-      console.log(e);
-    }
-  }
   export const logoutUser = async () => {
     try {
       const token = Cookies.get('token');
@@ -37,7 +30,7 @@ const BASE_URL = import.meta.env.PROD
         Cookies.remove('token');
       }
   
-      return response.data;
+      return (response.status);
     } catch (e) {
       console.log(e);
     }

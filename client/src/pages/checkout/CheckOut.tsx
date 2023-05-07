@@ -54,7 +54,7 @@ const CheckOut: React.FC = () => {
           <div className="order-details-container">
             <h2>My order</h2>
             {currentBagDishes.length > 0 &&
-              currentBagDishes.map((dish) => <BagDishCard item={dish} />)}
+              currentBagDishes.map((dish) => <BagDishCard key={dish.dish._id} item={dish} />)}
             {width > desktop && (
               <>
                 <div className="top-comment-line"></div>
@@ -83,13 +83,13 @@ const CheckOut: React.FC = () => {
                 >
                   {width > desktop - 1 ? (
                     <>
-                      <p>pay</p>
-                      <p className="total-price-checkout">
+                      <span>pay</span>
+                      <span className="total-price-checkout">
                         <div className="shekel-checkout">
                           <Shekel stroke="black" />
                         </div>
                         {total}
-                      </p>
+                      </span>
                     </>
                   ) : (
                     "Complete payment"
