@@ -17,9 +17,6 @@ const UserAuth: React.FC = () => {
       }
     });
   };
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <>
       <div className="user-nav-container">

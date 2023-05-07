@@ -9,9 +9,7 @@ const BASE_URL = import.meta.env.PROD
 export const fetchAllRestaurants = async () => {
   try {
     let res = await axios.get<Restaurant[]>(`${BASE_URL}/restaurant`);
-    const token = Cookies.get('token');
-    console.log(token);
-    
+    const token = Cookies.get('token');    
     return res.data;
   } catch (e) {
     console.log(e);

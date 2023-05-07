@@ -12,7 +12,9 @@ const RestSection: React.FC = () => {
 
   useEffect(() => {
     fetchAllRestaurants()
-      .then(setRestaurants)
+      .then((res) => {
+        if(res)setRestaurants(res);
+      })
       .catch((error) => console.log(error));
   }, []);
   return (
