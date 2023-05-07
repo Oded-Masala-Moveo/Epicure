@@ -23,3 +23,23 @@ const BASE_URL = import.meta.env.PROD
       console.log(e);
     }
   }
+  export const logoutUser = async () => {
+    try {
+      const token = Cookies.get('token');
+      const response = await axios.post(`${BASE_URL}/user/logout`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true
+      });
+  
+      if (response.status === 200) {
+        Cookies.remove('token');
+      }
+  
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  
