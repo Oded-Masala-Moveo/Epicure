@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AboutSection,
   ChefOfTehWeekSection,
@@ -7,14 +7,30 @@ import {
   SignatureSection,
 } from "../../layouts";
 import { Hero, OrderSuccess, PopUp } from "../../components";
-import { closeAllNavbar, useAppDispatch } from "../../store";
+import {
+  closeAllNavbar,
+  selectIsOrderPlaced,
+  toggleOrderPlaced,
+  useAppDispatch,
+  useAppSelector,
+} from "../../store";
+import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 const HomePage: React.FC = () => {
-  const dispatch = useAppDispatch()
-  const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
+  const dispatch = useAppDispatch();
+  const { width } = useWindowSize();
+  const IsOrderPlaced = useAppSelector(selectIsOrderPlaced);
+  const sendCloseNavbar = ():void => {
+    dispatch(closeAllNavbar(false));
+  };
+
   return (
     <>
-      <div onClick={sendCloseNavbar()}>
-         {/* <OrderSuccess/> */}
+      {IsOrderPlaced && width > desktop - 1 && (
+         <PopUp>
+          <OrderSuccess isPopUp={true}/>
+        </PopUp>
+      )}
+      <div onClick={sendCloseNavbar}>
         <Hero />
         <RestSection />
         <DishSection />

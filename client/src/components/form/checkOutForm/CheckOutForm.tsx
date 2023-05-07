@@ -1,11 +1,24 @@
-import React, { RefObject, useId } from "react";
-import { Formik, FormikProps, Form, FormikErrors, FormikHelpers } from "formik";
+import React, { RefObject, useEffect, useId } from "react";
+import {
+  Formik,
+  FormikProps,
+  Form,
+  FormikErrors,
+  FormikHelpers,
+  useFormikContext,
+} from "formik";
 import * as Yup from "yup";
 import { MyFormValues } from "../../../models";
 import { InputFieldComponent } from "../..";
 import "./CheckOutForm.scss";
 import { useNavigate } from "react-router-dom";
-import { selectBag, selectUser, toggleOrderPlaced, useAppDispatch, useAppSelector } from "../../../store";
+import {
+  selectBag,
+  selectUser,
+  toggleOrderPlaced,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../store";
 import { addOrder } from "../../../services";
 const cvcRegex = /^\d{3,4}$/;
 const expiryDateRegex = /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/;
@@ -57,7 +70,7 @@ const CheckOutForm: React.FC<{
   const navigate = useNavigate();
   const bag = useAppSelector(selectBag);
   const user = useAppSelector(selectUser);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const initialValues: MyFormValues = {
     fullName: "",
     address: "",
@@ -108,10 +121,10 @@ const CheckOutForm: React.FC<{
     console.log("Form submitted with values: ", values);
     let dishesForServer = bag.bagDishes.map((dish) => {
       return {
-        dish:dish.dish._id,
-        quantity:dish.quantity,      
-      }
-    })
+        dish: dish.dish._id,
+        quantity: dish.quantity,
+      };
+    });
     addOrder({
       address: values.address,
       dishes: dishesForServer,
@@ -119,11 +132,10 @@ const CheckOutForm: React.FC<{
       status: "Pending",
       totalAmount: bag.total,
       user: user._id,
-    }).then(res=>{
-      console.log(res);
-      dispatch(toggleOrderPlaced(true))
+    }).then((res) => {
+      dispatch(toggleOrderPlaced(true));
       navigate("/");
-      setSubmitting(false)
+      setSubmitting(false);
     });
   };
   return (

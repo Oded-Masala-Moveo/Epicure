@@ -131,10 +131,11 @@ const MobileNavbar: React.FC = () => {
         {isBagOpen && closeNow && <BagShop />}
         {isSearchOpen && closeNow && <MobileSearchNav />}
         {isUserOpen && closeNow && <UserAuth />}
-        {IsOrderPlaced && <OrderSuccess />}
-        <div className="nav-bag-container">
-          <OrderSuccess />
-        </div>
+        {IsOrderPlaced && (
+          <div className="nav-bag-container">
+            <OrderSuccess />
+          </div>
+        )}
       </div>
     </>
   );
