@@ -1,8 +1,7 @@
-import { useEffect, useId } from "react";
+import { useId } from "react";
 import { Shekel } from "../../../assets/icons";
-import { BagDish } from "../../../store";
-
 import "./bagDishCard.scss";
+import { BagDish } from "../../../models";
 
 export const BagDishCard: React.FC<{ item: BagDish }> = ({ item }) => {
 
