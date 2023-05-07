@@ -67,13 +67,13 @@
  
   .title-logged-container{
     position: relative;
-    @include flex-container(column, start, center);
+    @include flex-container(column, start, center,15px);
     background-color: white;
     width: 375px;
     height: 50px;
     @include desktop() {
       width: 350px;
-      height: 50px;
+      height: 100px;
     }
   }
 }

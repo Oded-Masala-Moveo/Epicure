@@ -41,6 +41,13 @@ export const loginUser = async (email: string, password: string) => {
     console.log(e);
   }
 };
+export const logOutUser = async () => {
+  try{
+    Cookies.remove('token');
+  }catch(e){
+    console.log(e);
+  }
+}
 export const fetchRestaurantById = async (id: string) => {
   try {
     let res = await axios.get<Restaurant>(`${BASE_URL}/restaurant/${id}`);
