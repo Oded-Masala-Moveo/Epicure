@@ -36,11 +36,10 @@
   }
   .checkout-form-container {
     @include desktop() {
-      @include flex-container(column, center, center);
+      @include flex-container(column, "", center);
       width: 408px;
       height: 708px;
       background: #ffffff;
-      padding-top: 20px;
       box-shadow: 2px 4px 10px rgba(175, 175, 175, 0.25);
     }
     .checkout-title {

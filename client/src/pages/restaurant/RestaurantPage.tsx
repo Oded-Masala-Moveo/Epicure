@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./RestaurantPage.scss";
 import { useParams } from "react-router-dom";
-import {
-  filterDishes,
-  fetchDishesByRestId,
-  fetchRestaurantById,
-} from "../../services";
+import { filterDishes, fetchDishesByRestId, fetchRestaurantById, } from "../../services";
 import { Dish, DishMealTime, Restaurant } from "../../models";
 import { Clock } from "../../assets/icons";
 import { Card } from "../../components";
-import {
-  closeAllNavbar,
-  useAppSelector,
-  setBagRestaurant,
-  useAppDispatch,
-  selectBag,
-  clearBagRestaurant,
-  selectCloseNow,
-} from "../../store";
+import { closeAllNavbar, setBagRestaurant, useAppDispatch, clearBagRestaurant } from "../../store";
 const RestaurantPage: React.FC = () => {
-  const closeNav = useAppSelector(selectCloseNow);
   const { restId } = useParams();
   const dispatch = useAppDispatch();
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([]);
@@ -28,9 +15,7 @@ const RestaurantPage: React.FC = () => {
   const [dishCategory, setDishCategory] = useState<string>(
     DishMealTime.Breakfast
   );
-
   const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
-
   useEffect(() => {
     if (restId) {
       fetchRestaurantById(restId)
@@ -42,37 +27,31 @@ const RestaurantPage: React.FC = () => {
         });
     }
   }, []);
-
   useEffect(() => {
     if (restId) {
       fetchDishesByRestId(restId)
         .then((dishes) => {
-          setDishes(dishes);
+          if(dishes) setDishes(dishes);
         })
         .catch((error) => {
           console.log(error);
         });
     }
   }, []);
-
   useEffect(() => {
     setDisplayDishes(filterDishes(dishes, dishCategory));
   }, [dishes, dishCategory]);
-
   useEffect(() => {
     if (restaurant) dispatch(setBagRestaurant(restaurant));
     return () => {
       if (restaurant) dispatch(clearBagRestaurant());
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurant]);
   return (
-    <>
       <div onClick={sendCloseNavbar()}>
         <div className="restaurant-image-container">
           <img src={restaurant?.image} alt={restaurant?.name} className="restaurant-image" />
         </div>
-
         <section className="restaurant-section">
           <div className="restaurant-detail">
             <h3 className="restaurant-name">{restaurant?.name}</h3>
@@ -98,7 +77,6 @@ const RestaurantPage: React.FC = () => {
           </div>
         </section>
       </div>
-    </>
   );
 };
 

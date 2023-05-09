@@ -27,7 +27,6 @@ const RestaurantsPage: React.FC = () => {
     if (condition) setDisplayRestaurants( filterRestaurants(restaurants, selectedCategory, rating, values) );
     if (restaurants && !condition) setDisplayRestaurants(filterRestaurants(restaurants, selectedCategory));
   };
-
   useEffect(() => {
     fetchAllRestaurants()
       .then((restaurants) => {

@@ -1,14 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./checkout.scss";
 import { Logo, Shekel, X_dark } from "../../assets/icons";
 import { CheckOutForm, ClickButton } from "../../components";
-import {
-  selectBag,
-  selectBagDishes,
-  selectBagTotal,
-  useAppDispatch,
-  useAppSelector,
-} from "../../store";
+import { selectBagDishes, selectBagTotal, useAppSelector, } from "../../store";
 import { BagDishCard } from "../../components/bag/bagDishCard/BagDishCard";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 import { Footer } from "../../layouts";
@@ -19,8 +13,6 @@ import { MyFormValues } from "../../models";
 const CheckOut: React.FC = () => {
   const { width } = useWindowSize();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const [isFormReady, setIsFormReady] = useState(false);
   const formRef = useRef<FormikProps<MyFormValues>>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const currentBagDishes = useAppSelector(selectBagDishes);
@@ -52,10 +44,7 @@ const CheckOut: React.FC = () => {
         <div>
           <div className="order-details-container">
             <h2>My order</h2>
-            {currentBagDishes.length > 0 &&
-              currentBagDishes.map((dish) => (
-                <BagDishCard key={dish.dish._id} item={dish} />
-              ))}
+            {currentBagDishes.length > 0 && currentBagDishes.map((dish) => ( <BagDishCard key={dish.dish._id} item={dish} /> ))}
             {width > desktop && (
               <>
                 <div className="top-comment-line"></div>
@@ -64,12 +53,7 @@ const CheckOut: React.FC = () => {
                     <h1>Add A Comment</h1>
                   </div>
                   <div className="comment-input">
-                    <textarea
-                      ref={textAreaRef}
-                      placeholder="Special requests, allergies, detary restrictions, etc."
-                      cols={30}
-                      rows={10}
-                    />
+                    <textarea ref={textAreaRef} placeholder="Special requests, allergies, detary restrictions, etc." cols={30} rows={10} />
                   </div>
                 </div>
               </>
@@ -78,23 +62,13 @@ const CheckOut: React.FC = () => {
               <p>TOTAL - {currentTotal}</p>
             </div>
             <div className="submit-button-container">
-              <ClickButton
-                primaryBlack={true}
-                type="submit"
-                onClick={handleSubmit}
-                icon={true}
-                width="335px"
-              >
-                <div
-                  className={width > desktop - 1 ? "checkout-btn-title" : ""}
-                >
+              <ClickButton primaryBlack={true} type="submit" onClick={handleSubmit} icon={true} width="335px" >
+                <div className={width > desktop - 1 ? "checkout-btn-title" : ""} >
                   {width > desktop - 1 ? (
                     <>
                       <span>pay</span>
                       <span className="total-price-checkout">
-                        <div className="shekel-checkout">
-                          <Shekel stroke="black" />
-                        </div>
+                        <div className="shekel-checkout"> <Shekel stroke="black" /> </div>
                         {total}
                       </span>
                     </>
