@@ -5,7 +5,7 @@ import {
   DishSection,
   RestSection,
   SignatureSection,
-} from "../../layouts";
+} from "../../components";
 import { Hero, OrderSuccess, PopUp } from "../../components";
 import {
   closeAllNavbar,
