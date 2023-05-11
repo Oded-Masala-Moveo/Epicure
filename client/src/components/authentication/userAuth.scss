@@ -24,8 +24,8 @@
     width: 375px;
     height: 590px;
     @include desktop() {
-      width: 497px;
-      height: 678px;
+      width: 573px;
+      height: 626px;
     }
 
     .title-auth-container {
@@ -75,5 +75,27 @@
       width: 350px;
       height: 100px;
     }
+  }
+}
+.popup-auth-container {
+  @include flex-container(column, center, center);
+  height: 100%;
+  .close-container {
+    width: 376px;
+    margin-bottom: 8px;
+    .x-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .popup-auth-close-container{
+    @include flex-container(column, center, flex-start);
+    width: 573px;
+    margin-bottom: 9px;
+    .close-icon{
+      width: 20px;
+      height: 20px;
+    }
+  
   }
 }

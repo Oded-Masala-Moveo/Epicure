@@ -30,20 +30,20 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
             sendLoginRequest()
           }}
         >
-          {({ touched, errors, handleSubmit, ...Formik }) => (
+          {({ touched, errors, handleSubmit, dirty,isValid, ...Formik }) => (
             <Form>
               <div className="auth-form-inputs-container">
                   {Object.keys(authFieldFill).map((key) => (
                   <InputFieldComponent
                     authPage={true}
-                    formikProps={{ touched, errors, handleSubmit, ...Formik }}
+                    formikProps={{ touched, errors, handleSubmit, dirty,isValid, ...Formik }}
                     inputName={ authFieldFill[key as keyof AuthFelid].name as keyof MyFormValues }
                     inputType={ authFieldFill[key as keyof AuthFelid].type }
                     inputPlaceholder={ authFieldFill[key as keyof AuthFelid].placeholder }
                   />
                 ))}
                 <div>
-                  <ClickButton type="submit" onClick={handleSubmit} primaryBlack={true} >
+                  <ClickButton type="submit" onClick={handleSubmit} primaryBlack={dirty && isValid} >
                     {!register ? "Login" : "Register"}
                   </ClickButton>
                 </div>
