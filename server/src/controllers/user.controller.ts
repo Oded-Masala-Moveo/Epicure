@@ -126,8 +126,8 @@ export default class UserController {
   }
   static async logoutUser(req: Request, res: Response, next: NextFunction) {
     try {
-      req.session.destroy(); // destroy user session
-      res.header("Authorization", ""); // clear Authorization header
+      req.session.destroy(); 
+      res.header("Authorization", "");
       res.status(HttpStatusCode.OK).send({
         res_message: HttpErrorMessage.OK,
       });
