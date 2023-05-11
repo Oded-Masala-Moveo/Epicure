@@ -1,5 +1,5 @@
 import { ErrorHandler, HttpStatusCode, HttpErrorMessage } from "../exceptions";
-import { Orders, IOrder, Restaurants, Dishes, } from "../models";
+import { Orders, IOrder, Users, Restaurants, Dishes, } from "../models";
 import { Types } from "mongoose";
 
 function populateOrderFields(query) {
@@ -67,6 +67,16 @@ export default class OrderHandler {
 
   static async addOrder(obj: IOrder) {
     try {
+      const userPipeline = [
+        {
+          $match: {
+            _id:
+              typeof obj.user === "string"
+                ? new Types.ObjectId(obj.user)
+                : obj.user,
+          },
+        },
+      ];
       const restaurantPipeline = [
         {
           $match: {
@@ -90,10 +100,12 @@ export default class OrderHandler {
           },
         },
       ];
+      const userResults = await Users.aggregate(userPipeline);
       const restaurantResults = await Restaurants.aggregate(restaurantPipeline);
       const dishResults = await Dishes.aggregate(dishPipeline);
 
       if (
+        userResults.length !== 1 ||
         restaurantResults.length !== 1 ||
         dishResults.length !== obj.dishes.length
       ) {
