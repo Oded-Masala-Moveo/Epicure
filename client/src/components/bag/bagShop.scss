@@ -21,22 +21,35 @@
 .empty-bag-container {
   position: relative;
   background-color: white;
-  @include flex-container(column, center, center);
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 50px;
-  padding: 0px;
-  gap: 20px;
   @include desktop() {
     width: 497px;
-    height: 200px;
+    height: 586px;
   }
-  .bag-icon {
-    width: 55px;
-    height: 55px;
+  .top-empty-bag-container {
+    @include flex-container(column, center, center, 20px);
+    padding: 0px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    text-align: center;
+    @include desktop() {
+      margin-top: 243px;
+      margin-bottom: 148px;
+    }
+    .bag-icon {
+      width: 55px;
+      height: 55px;
+    }
+
+    h2 {
+      font-size: 16px;
+      line-height: 20px;
+      width: 145px;
+      @include desktop() {
+        width: 121px;
+      }
+    }
   }
-  h2{
-    width: 145px;
+  .bottom-empty-bag-container {
+    @include flex-container(row, center, center);
   }
 }
-

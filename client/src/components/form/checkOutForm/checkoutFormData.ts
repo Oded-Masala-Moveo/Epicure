@@ -1,6 +1,11 @@
-import { FormikErrors } from "formik";
+import { FormikErrors, FormikProps } from "formik";
 import { MyFormValues } from "../../../models";
 import * as Yup from "yup";
+import { RefObject } from "react";
+export interface CheckOutFormProps{
+  formRef: RefObject<FormikProps<MyFormValues>>;
+  setIsFormReady: (isReady: boolean) => void;
+}
 export interface CheckoutFelid {
   fullName: {
     name: string;

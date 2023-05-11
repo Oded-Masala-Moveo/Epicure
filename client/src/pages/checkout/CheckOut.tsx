@@ -1,18 +1,17 @@
-import React, { useRef } from "react";
+import React, {useRef, useState } from "react";
 import "./checkout.scss";
 import { Logo, Shekel, X_dark } from "../../assets/icons";
-import { CheckOutForm, ClickButton } from "../../components";
+import { CheckOutForm, ClickButton,BagDishCard } from "../../components";
 import { selectBagDishes, selectBagTotal, useAppSelector, } from "../../store";
-import { BagDishCard } from "../../components/bag/bagDishCard/BagDishCard";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 import { Footer } from "../../layouts";
 import { useNavigate } from "react-router-dom";
 import { FormikProps } from "formik";
 import { MyFormValues } from "../../models";
-
 const CheckOut: React.FC = () => {
   const { width } = useWindowSize();
   const navigate = useNavigate();
+  const [isFormReady, setIsFormReady] = useState(false);
   const formRef = useRef<FormikProps<MyFormValues>>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const currentBagDishes = useAppSelector(selectBagDishes);
@@ -39,7 +38,7 @@ const CheckOut: React.FC = () => {
           <div className="checkout-title">
             <h2>delivery details</h2>
           </div>
-          <CheckOutForm formRef={formRef} />
+          <CheckOutForm formRef={formRef} setIsFormReady={setIsFormReady}/>
         </div>
         <div>
           <div className="order-details-container">
@@ -62,7 +61,7 @@ const CheckOut: React.FC = () => {
               <p>TOTAL - {currentTotal}</p>
             </div>
             <div className="submit-button-container">
-              <ClickButton primaryBlack={true} type="submit" onClick={handleSubmit} icon={true} width="335px" >
+              <ClickButton primaryBlack={isFormReady} type="submit" onClick={handleSubmit} icon={true} width="335px" >
                 <div className={width > desktop - 1 ? "checkout-btn-title" : ""} >
                   {width > desktop - 1 ? (
                     <>

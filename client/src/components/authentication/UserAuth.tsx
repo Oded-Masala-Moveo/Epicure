@@ -14,6 +14,7 @@ import { logoutUser } from "../../services";
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { PopUp } from "..";
 import { X_white } from "../../assets/icons";
+import userImage from "../../assets/images/user.png";
 const UserAuth: React.FC = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const user = useAppSelector(selectUser);
@@ -30,7 +31,7 @@ const UserAuth: React.FC = () => {
   };
   const onCloseUserAuth = () => {
     dispatch(closeAllNavbar(false));
-  }
+  };
   return (
     <>
       <div className="user-nav-container">
@@ -38,24 +39,35 @@ const UserAuth: React.FC = () => {
         {!user.userName && width > desktop - 1 && (
           <PopUp>
             <div className="popup-auth-container">
-              <div className="popup-auth-close-container"><div className="close-icon" onClick={onCloseUserAuth}><X_white/></div></div>
-            <LoginAndRegisterComponent />
+              <div className="popup-auth-close-container">
+                <div className="close-icon" onClick={onCloseUserAuth}>
+                  <X_white />
+                </div>
+              </div>
+              <LoginAndRegisterComponent />
             </div>
           </PopUp>
         )}
         {user.userName && (
           <div className="user-logged-container">
+            <div className="image-container">
+              <img src={userImage} alt="" />
+            </div>
             <div className="title-logged-container">
-              <p>Hi {user.userName}, enjoy your meal</p>
-              <ClickButton
+              <p>Hi {user.userName},enjoy Epicure</p>
+              
+            </div>
+            <div className="logOut-btn">
+            <ClickButton
                 onClick={onLogOut}
                 borderRadius="10px"
-                backGroundColor="#7e2121"
+                backGroundColor="#d52a2adb"
                 width="100px"
               >
                 logout
               </ClickButton>
             </div>
+       
           </div>
         )}
       </div>
