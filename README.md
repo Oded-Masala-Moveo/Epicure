@@ -20,11 +20,11 @@ The user interface of the Epicure App was designed using Figma, a collaborative 
 The following environment variables are used in the Epicure App:
 
 ### Client-side (.env in the client folder)
-- **VITE_LOCAL_SERVER_API_URL:** The API URL for the local server. Set it to "http://localhost:8001/api/v1".
+- **VITE_LOCAL_SERVER_API_URL:** The API URL for the local server.
 - **VITE_PRODUCTION_SERVER_API_URL:** The API URL for the production server.
 
 ### Server-side (.env in the server folder)
-- **PORT:** The port on which the server should run. Set it to 8001.
+- **PORT:** The port on which the server should run. 
 - **MONGO_URL:** The URL for the MongoDB database. Set it to your MongoDB database URL.
 - **epicureDB:** The name of the MongoDB database. Set it to the name of your Epicure App database.
 - **JWT_SECRET:** The secret key used for JSON Web Token (JWT) generation and verification. Set it to a secure secret key of your choice.
@@ -64,13 +64,3 @@ If you would like to contribute to the Epicure App, please follow these steps:
 5. Submit a pull request to the main repository.
 
 Please ensure that your code adheres to the project's coding standards and includes appropriate documentation.
-
-## License
-
-The Epicure App is released under the MIT License. Feel free to use, modify, and distribute the code as per the terms of the license.
-
-## Contact
-
-If you have any questions or suggestions regarding the Epicure App, please contact us at epicureapp@example.com.
-
-Thank you for using the Epicure App! We hope you enjoy your culinary journey.
