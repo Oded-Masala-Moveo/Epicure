@@ -16,7 +16,7 @@ export interface IDish extends Document {
   updatedAt: Date;
 }
 
-const DishSchema: Schema = new Schema(
+const DishSchema: Schema = new Schema<IDish>(
   {
     restId: { type: Schema.Types.ObjectId, required: true, ref: "restaurants" },
     name: { type: String, required: true },

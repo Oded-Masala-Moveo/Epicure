@@ -12,10 +12,12 @@ const ChefPage: React.FC = () => {
   const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
   useEffect(() => {
     getChefs()
-      .then((chefs) => setChefs(chefs))
+      .then((chefs) => {
+        if (chefs) setChefs(chefs);
+      })
       .catch((err) => console.log(err));
   }, []);
-  useEffect(() => {    
+  useEffect(() => {
     setDisplayChefs(filterChefs(chefs, chefsCategory));
   }, [chefs, chefsCategory]);
   return (
@@ -36,9 +38,7 @@ const ChefPage: React.FC = () => {
           </li>
         </ul>
         <div className="chef-list">
-          {displayChefs.map((chef) => (
-            <Card key={chef._id} card={chef} />
-          ))}
+          {displayChefs.map((chef) => ( <Card key={chef._id} card={chef} /> ))}
         </div>
       </section>
     </>

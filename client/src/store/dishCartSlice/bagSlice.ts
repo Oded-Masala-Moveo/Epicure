@@ -1,23 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { Dish, Restaurant } from "../../models";
+import { BagState, Dish, Restaurant } from "../../models";
 
-export interface BagDish {
-  dish: Dish;
-  quantity: number;
-  sides: string[];
-  changes: string[];
-}
-
-interface BagState {
-  total: number;
-  totalQuantity: number;
-  restaurant: Restaurant | null;
-  bagDishes: BagDish[];
-  limitPurchase: boolean;
-  closeNow: boolean;
-  orderComment: string;
-}
 
 const initialState: BagState = {
   total: 0,
@@ -25,6 +9,7 @@ const initialState: BagState = {
   restaurant: null,
   bagDishes: [],
   limitPurchase: false,
+  isOrderPlaced : false,
   closeNow: false,
   orderComment: "",
 };
@@ -34,18 +19,19 @@ export const bagSlice = createSlice({
   initialState,
   reducers: {
     setBagRestaurant: (state, action: PayloadAction<Restaurant>) => {
-      if (!state.bagDishes.length) {
-        state.restaurant = action.payload;
-      }
+      if (!state.bagDishes.length) state.restaurant = action.payload;
     },
     clearBagRestaurant: (state) => {
-      if (!state.bagDishes.length) {
-        state.restaurant = null;
-      }
+      if (!state.bagDishes.length) state.restaurant = null;
     },
     addDishToBag: (
       state,
-      action: PayloadAction<{ dish: Dish; quantity: number; sides: string[]; changes: string[] }>
+      action: PayloadAction<{
+        dish: Dish;
+        quantity: number;
+        sides: string[];
+        changes: string[];
+      }>
     ) => {
       const { dish, quantity, sides, changes } = action.payload;
 
@@ -64,7 +50,10 @@ export const bagSlice = createSlice({
       state.totalQuantity += quantity;
       state.limitPurchase = false;
     },
-    removeDishFromBag: (state, action: PayloadAction<{ dish: Dish; sides: string[]; changes: string[] }>) => {
+    removeDishFromBag: (
+      state,
+      action: PayloadAction<{ dish: Dish; sides: string[]; changes: string[] }>
+    ) => {
       const { dish, sides, changes } = action.payload;
       const existingDish = state.bagDishes.find((d) => d.dish._id === dish._id);
       if (!existingDish) {
@@ -72,12 +61,15 @@ export const bagSlice = createSlice({
       }
       state.total -= existingDish.quantity * dish.price;
       state.totalQuantity -= existingDish.quantity;
-      state.bagDishes = state.bagDishes.filter((d) => d.dish._id !== dish._id || d.sides !== sides || d.changes !== changes);
+      state.bagDishes = state.bagDishes.filter(
+        (d) =>
+          d.dish._id !== dish._id || d.sides !== sides || d.changes !== changes
+      );
       if (!state.bagDishes.length) {
         state.restaurant = null;
       }
     },
-    addCommentToBag: (state, action: PayloadAction< string >) => {
+    addCommentToBag: (state, action: PayloadAction<string>) => {
       state.orderComment = action.payload;
     },
     clearCommentFromBag: (state) => {
@@ -90,9 +82,12 @@ export const bagSlice = createSlice({
       state.bagDishes = [];
       state.limitPurchase = false;
     },
-    closeAllNavbar(state,action: PayloadAction< boolean >){
+    toggleOrderPlaced: (state, action: PayloadAction<boolean>) => {
+      state.isOrderPlaced = action.payload;
+    },
+    closeAllNavbar(state, action: PayloadAction<boolean>) {
       state.closeNow = action.payload;
-    }
+    },
   },
 });
 
@@ -105,6 +100,7 @@ export const {
   closeAllNavbar,
   addCommentToBag,
   clearCommentFromBag,
+  toggleOrderPlaced
 } = bagSlice.actions;
 
 export const selectBag = (state: RootState) => state.bag;
@@ -114,5 +110,6 @@ export const selectBagTotalQuantity = (state: RootState) => state.bag.totalQuant
 export const selectBagRestaurant = (state: RootState) => state.bag.restaurant;
 export const selectCloseNow = (state: RootState) => state.bag.closeNow;
 export const selectComment = (state: RootState) => state.bag.orderComment;
+export const selectIsOrderPlaced = (state: RootState) => state.bag.isOrderPlaced;
 
-export default bagSlice.reducer;
+export const bagReducer = bagSlice.reducer ;

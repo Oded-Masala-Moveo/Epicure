@@ -1,4 +1,5 @@
 export {
+  bagReducer,
   addDishToBag,
   clearBag,
   clearBagRestaurant,
@@ -7,16 +8,17 @@ export {
   closeAllNavbar,
   addCommentToBag,
   clearCommentFromBag,
+  toggleOrderPlaced,
   selectBag,
   selectBagDishes,
   selectBagRestaurant,
   selectBagTotal,
   selectBagTotalQuantity,
   selectCloseNow,
-  selectComment
-} from "./dishCartSlice/dishSlice";
-export type { BagDish } from "./dishCartSlice/dishSlice";
+  selectComment,
+  selectIsOrderPlaced
+} from "./dishCartSlice/bagSlice";
+export {login,logout,selectUser,selectUserEmail,selectUserName,userReducer} from "./userSlice/userSlice"
 export { useAppDispatch, useAppSelector } from "./hook";
-import bagReducer from "./dishCartSlice/dishSlice";
 
-export default bagReducer;
+

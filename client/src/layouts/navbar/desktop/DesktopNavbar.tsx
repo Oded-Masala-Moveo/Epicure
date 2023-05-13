@@ -7,27 +7,35 @@ import {
   selectBagDishes,
   selectBagTotalQuantity,
   selectCloseNow,
+  selectIsOrderPlaced,
   useAppDispatch,
   useAppSelector,
 } from "../../../store";
-import { BagShop } from "../../../components";
+import { BagShop, UserAuth } from "../../../components";
 
 const DesktopNavbar: React.FC = () => {
   const location = useLocation();
   const closeNow = useAppSelector(selectCloseNow);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBagOpen, setIsBagOpen] = useState(false);
+  const [isUserOpen, setIsUserOpen] = useState(false);
   const BagDishes = useAppSelector(selectBagDishes);
+  const IsOrderPlaced = useAppSelector(selectIsOrderPlaced);
   const TotalQuantity = useAppSelector(selectBagTotalQuantity);
   const dispatch = useAppDispatch();
   const toggleBag = (): void => {
     setIsBagOpen(!closeNow);
+    setIsUserOpen(false);
     dispatch(closeAllNavbar(!closeNow));
   };
+  const toggleUser = (): void => {
+    setIsUserOpen(!closeNow);
+    setIsBagOpen(false);
+    dispatch(closeAllNavbar(!closeNow));
+  }
   useEffect(() => {
     return (): void => {
       setIsBagOpen(false);
+      setIsUserOpen(false);
       dispatch(closeAllNavbar(false));
     };
   },[]);
@@ -66,17 +74,18 @@ const DesktopNavbar: React.FC = () => {
             <div className="Search-container">
               <Search className="logo" />
             </div>
-            <div className="User-container">
+            <div className="User-container" onClick={toggleUser}>
               <User className="logo" />
             </div>
             <div className="Bag-container" onClick={toggleBag}>
-              {BagDishes.length ? (
+              {BagDishes.length && !IsOrderPlaced  ? (
                 <ActiveBag className="logo-bag" quantity={TotalQuantity} />
               ) : (
                 <Bag className="logo" />
               )}
             </div>
             {isBagOpen && closeNow && <BagShop />}
+            {isUserOpen && closeNow && <UserAuth />}
           </div>
         </div>
       </nav>

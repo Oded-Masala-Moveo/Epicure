@@ -1,6 +1,6 @@
 import { Date, Schema, model } from "mongoose";
 
-export interface IChef {
+export interface IChef  extends Document {
   fName: string;
   lName: string;
   fullName: string;

@@ -1,6 +1,7 @@
-import { ErrorHandler, HttpStatusCode, HttpErrorMessage, } from "../exceptions";
-import { Restaurants, IRestaurant } from "../models";
 import { Types } from "mongoose";
+import { Restaurants, IRestaurant } from "../models";
+import { ErrorHandler, HttpStatusCode, HttpErrorMessage, } from "../exceptions";
+
 
 export default class RestaurantHandler {
   static async getAllRestaurants() {

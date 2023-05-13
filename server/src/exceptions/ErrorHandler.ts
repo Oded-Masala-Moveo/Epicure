@@ -1,8 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { HttpErrorArgs, HttpErrorMessage, HttpStatusCode } from '../exceptions';
-
-
-
 export class HttpError extends Error {
   public readonly httpCode: HttpStatusCode;
   public readonly isOperational: boolean;
@@ -15,7 +12,6 @@ export class HttpError extends Error {
     this.isOperational = args.isOperational || false;
   }
 }
-
 export class ErrorHandler {
   public static handleError(error: Error, request: Request, response: Response, next: NextFunction): void {
     const statusCode = error instanceof HttpError ? error.httpCode : HttpStatusCode.INTERNAL_SERVER_ERROR;

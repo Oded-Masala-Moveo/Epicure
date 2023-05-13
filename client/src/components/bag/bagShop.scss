@@ -2,7 +2,7 @@
   "../../assets/styles/mixin/display-mixin", "../../assets/styles/variable",
   "../../assets/styles/mixin/media-queries";
 
-.mobile-bag-nav {
+.nav-bag-container {
   @include Appeared();
   position: absolute;
   top: 46px;
@@ -10,36 +10,46 @@
   background-color: white;
   z-index: 998;
   @include flex-container(column, center, center);
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
   @include desktop() {
     top: 64px;
     left: 1050px;
   }
 }
-.mobile-bag-nav > * {
+.nav-bag-container > * {
   width: 380px;
 }
 .empty-bag-container {
   position: relative;
   background-color: white;
-  @include flex-container(column, center, center);
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 50px;
-  padding: 0px;
-  gap: 20px;
   @include desktop() {
     width: 497px;
-    height: 200px;
+    height: 586px;
   }
-  .bag-icon {
-    width: 55px;
-    height: 55px;
+  .top-empty-bag-container {
+    @include flex-container(column, center, center, 20px);
+    padding: 0px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    text-align: center;
+    @include desktop() {
+      margin-top: 243px;
+      margin-bottom: 148px;
+    }
+    .bag-icon {
+      width: 55px;
+      height: 55px;
+    }
+
+    h2 {
+      font-size: 16px;
+      line-height: 20px;
+      width: 145px;
+      @include desktop() {
+        width: 121px;
+      }
+    }
   }
-  h2{
-    width: 145px;
+  .bottom-empty-bag-container {
+    @include flex-container(row, center, center);
   }
 }
-

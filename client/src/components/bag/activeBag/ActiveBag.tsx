@@ -8,6 +8,7 @@ import {
   useAppSelector,
   useAppDispatch,
   closeAllNavbar,
+  selectUser,
 } from "../../../store";
 import { BagDishCard } from "../bagDishCard/BagDishCard";
 import { desktop } from "../../../hooks/useWindowSize";
@@ -20,15 +21,19 @@ import { useNavigate } from "react-router-dom";
 export const ActiveBagComponent: React.FC = () => {
   const { width } = useWindowSize();
   const restaurant = useAppSelector(selectBagRestaurant);
-  const comment = useAppSelector(selectComment);
+  const user = useAppSelector(selectUser);
   const shopBag = useAppSelector(selectBagDishes);
   const total = useAppSelector(selectBagTotal);
   const dispatch = useAppDispatch();
+  const [userMassage, setUserMessage] = useState<string>("");
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const [commentText, setCommentText] = useState<string>("");
   const navigate = useNavigate();
-
-  const goToCheckOut = () => () => {
+  const goToCheckOut =() => {
+    if(!user._id) {
+      setUserMessage("Please login first");
+      return
+    } 
+    setUserMessage("");
     if (textAreaRef.current) dispatch(addCommentToBag(textAreaRef.current.value));
     dispatch(closeAllNavbar(true))
      navigate("/checkout")
@@ -39,7 +44,7 @@ export const ActiveBagComponent: React.FC = () => {
       <p className="rest-title">{restaurant?.name}</p>
       <div className="bag-item-list-container">
         {shopBag.map((shopBagItem) => (
-          <BagDishCard item={shopBagItem} />
+          <BagDishCard key={shopBagItem.dish._id} item={shopBagItem} />
         ))}
       </div>
       {width < desktop && (
@@ -69,7 +74,7 @@ export const ActiveBagComponent: React.FC = () => {
           </div>
         </>
       )}
-      <div onClick={goToCheckOut()} className="checkout-bag-btn">
+      <div onClick={goToCheckOut} className="checkout-bag-btn">
         <ClickButton width="220px" primaryBlack={true}>
           checkout
           {width > desktop && (
@@ -81,6 +86,7 @@ export const ActiveBagComponent: React.FC = () => {
             </div>
           )}
         </ClickButton>
+        <div className="user-not-log-massage"><p>{userMassage}</p></div>
         {width > desktop - 1 && (
           <ClickButton width="220px" secondary={true}>
             order history
