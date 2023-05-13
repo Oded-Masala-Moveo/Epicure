@@ -1,7 +1,8 @@
-import { ErrorHandler, HttpStatusCode, HttpErrorMessage } from "../exceptions";
 import { IUser, Users } from "../models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { ErrorHandler, HttpStatusCode, HttpErrorMessage } from "../exceptions";
+
 export default class UserHandler {
   static async registerUser(obj: IUser) {
     try {
@@ -61,7 +62,6 @@ export default class UserHandler {
           HttpErrorMessage.UNAUTHORIZED
         );
       }
-      // create a token for the logged in user
       const token = jwt.sign( { userId: user._id ,isAdmin: user.isAdmin }, process.env.JWT_SECRET, {
         expiresIn: "1d",
       });

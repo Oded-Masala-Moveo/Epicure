@@ -1,6 +1,7 @@
-import { ErrorHandler, HttpStatusCode, HttpErrorMessage } from "../exceptions";
 import { Dishes, IDish } from "../models";
 import { Types } from "mongoose";
+import { ErrorHandler, HttpStatusCode, HttpErrorMessage } from "../exceptions";
+
 
 export default class DishHandler {
   static async getAllDishes() {

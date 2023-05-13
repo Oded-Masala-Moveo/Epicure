@@ -1,6 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 
-export interface IOrderItem {
+export interface IOrderItem  extends Document {
   dish: Schema.Types.ObjectId | string;
   quantity: number;
 }
@@ -16,7 +16,7 @@ export interface IOrder extends Document {
   updatedAt: Date;
 }
 
-const OrderItemSchema: Schema = new Schema(
+const OrderItemSchema: Schema = new Schema<IOrderItem>(
   {
     dish: { type: Schema.Types.ObjectId, required: true, ref: "dishes" },
     quantity: { type: Number, required: true, min: 1 },
@@ -24,7 +24,7 @@ const OrderItemSchema: Schema = new Schema(
   { _id: false }
 );
 
-const OrderSchema: Schema = new Schema(
+const OrderSchema: Schema = new Schema<IOrder>(
   {
     user: { type: Schema.Types.ObjectId, required: true, ref: "users" },
     restaurant: { type: Schema.Types.ObjectId, required: true, ref: "restaurants" },

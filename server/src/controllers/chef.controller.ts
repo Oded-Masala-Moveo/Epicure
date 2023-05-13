@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { ChefHandler } from "../handlers";
-import { ErrorHandler, HttpErrorMessage, HttpStatusCode } from "../exceptions";
+import { HttpErrorMessage, HttpStatusCode } from "../exceptions";
 
 export default class ChefController {
   static async getAllChefs(req: Request, res: Response, next: NextFunction) {
