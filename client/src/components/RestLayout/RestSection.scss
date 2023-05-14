@@ -12,14 +12,23 @@
   }
   .popular-container {
     margin: 48px 0px 16px 0px;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    @include desktop() {
+      margin-top: 80px;
+      margin-bottom: 40px;
+    }
   }
-  .popular-container {
-  }
+
   .link-to-restaurants {
     margin-top: 16px;
     display: flex;
     align-items: center;
     gap: 16px;
+    h3 {
+      font-size: 16px;
+      line-height: 35px;
+    }
     @include desktop() {
       margin-right: 127px;
       margin-top: 41px;

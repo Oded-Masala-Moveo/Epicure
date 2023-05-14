@@ -8,6 +8,7 @@
     align-items: center;
     .chef-title {
       margin-bottom: 16px;
+      padding-left: 20px;
       width: 100%;
       @include desktop() {
         margin-bottom: 40px;
@@ -41,6 +42,8 @@
   }
   .chef-week-title {
     margin-top: 32px;
+    width: 100%;
+    padding-left: 20px;
     margin-bottom: 16px;
     grid-column: 1 auto;
     @include desktop() {
@@ -81,6 +84,10 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    h3 {
+      font-size: 16px;
+      line-height: 35px;
+    }
     @include desktop() {
       display: none;
     }

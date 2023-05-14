@@ -26,16 +26,13 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
   const [sideChanges, setSideChanges] = useState<string[]>([]);
   const [quantity, setQuantity] = useState<number>(1);
   const dispatch = useAppDispatch();
-  const handleClose = () => {
-    onClose();
-  };
+  const handleClose = () => onClose();
   const sendDishToCart = ()=> () => {
     dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:sideChanges,sides:ChosenSide}));
     onClose();
   }
-  const increase = () => () => setQuantity(quantity + 1);
-  const decrease = () => () =>
-    quantity >= 0 ? setQuantity(quantity - 1) : setQuantity(0);
+  const increase = () => setQuantity(quantity + 1);
+  const decrease =  () => quantity >= 0 ? setQuantity(quantity - 1) : setQuantity(0);
 
   const handleSide = (side: string) => {
     if (!ChosenSide.includes(side)) {
@@ -88,8 +85,7 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
             </div>
             {width > desktop - 1 && (
               <div className="dish-category-container">
-                {dishData.category?.map(
-                  (categoryDish, index) =>
+                {dishData.category?.map( (categoryDish) =>
                     (categoryDish == DishCategory.Spicy && (
                       <div className="dish-icon">
                         <SpicyBig />
@@ -160,11 +156,11 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
             <div className="quantity-container">
               <p className="quantity-title">Quantity</p>
               <div className="quantity">
-                <div className="handler-button" onClick={decrease()}>
+                <div className="handler-button" onClick={decrease}>
                   <Minus />
                 </div>
                 <p>{quantity}</p>
-                <div className="handler-button" onClick={increase()}>
+                <div className="handler-button" onClick={increase}>
                   <Plus />
                 </div>
               </div>
@@ -177,7 +173,6 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
                 primaryBlack={true}
               />
             </div>
-            {width < desktop && <Footer />}
           </div>
         </div>
         <div className="right-popup-container"></div>

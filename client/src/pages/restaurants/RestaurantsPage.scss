@@ -1,8 +1,9 @@
 @import "../../assets/styles/mixin/media-queries",
-  "../../assets/styles/variable", "../../assets/styles/mixin/typography-mixin";
+  "../../assets/styles/variable", "../../assets/styles/mixin/typography-mixin","../../assets/styles/mixin/display-mixin";
 .restaurants-section {
   padding-top: 47px;
   padding-left: 18px;
+  @include flex-container(column, flex-start);
   @include desktop() {
     padding-left: 0px;
   }
@@ -62,21 +63,21 @@
     margin-top: 40px;
     list-style: none;
     display: none;
-    justify-content: center;  
-    
+    justify-content: center;
+
     @include desktop() {
       display: flex;
     }
   }
   .range-filter-restaurant {
     cursor: pointer;
-    .selected{
+    .selected {
       background-color: $range-bottom;
     }
-    .disable{
+    .disable {
       cursor: not-allowed;
     }
-  } 
+  }
   .restaurants-list {
     margin-top: 37px;
     margin-bottom: 56px;
@@ -94,7 +95,7 @@
       gap: 24px;
     }
   }
-  .no-restaurants{
+  .loader {
     height: 60vh;
     padding: 0px 127px 0px 127px;
     display: flex;
@@ -102,11 +103,39 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-    h1{
+    h1 {
       font-size: 70px;
     }
-    p{
+    p {
       font-size: 50px;
+    }
+  }
+  .no-restaurants {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    gap: 50px;
+    @include desktop() {
+      padding: 0px 127px 0px 127px;
+      font-size: 70px;
+      align-items: center;
+    }
+    h1 {
+      text-align: center;
+      @include desktop() {
+        font-size: 70px;
+        align-items: center;
+      }
+    }
+    p {
+       text-align: center;
+      @include desktop() {
+
+        font-size: 50px;
+        align-items: center;
+      }
     }
   }
 }

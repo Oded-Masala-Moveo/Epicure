@@ -28,7 +28,6 @@ const DishSection: React.FC = () => {
           {dishes.slice(0, 3).map((dish, index) => (
             <Card
               key={dish._id}
-              hidePrice={index == 1 ? false : true}
               card={dish}
             />
           ))}

@@ -14,6 +14,7 @@
   width: -webkit-fill-available;
   background-color: #ffffff;
   list-style: none;
+  box-shadow: $box-shadow-setting;
   a {
     text-decoration: none;
   }
@@ -117,13 +118,13 @@
 }
 
 .search-nav {
-  height: 367px;
   display: flex;
   flex-direction: column;
   position: absolute;
-  height: 367px;
+  padding-bottom: 150px;
   left: -1px;
   top: 46px;
+  box-shadow: $box-shadow-setting;
 
   @include Appeared();
   width: -webkit-fill-available;
