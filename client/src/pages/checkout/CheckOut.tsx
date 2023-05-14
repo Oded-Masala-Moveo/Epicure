@@ -42,7 +42,7 @@ const CheckOut: React.FC = () => {
         </div>
         <div>
           <div className="order-details-container">
-            <h2>My order</h2>
+           <div className="order-details-title"><h2>My order</h2></div> 
             {currentBagDishes.length > 0 && currentBagDishes.map((dish) => ( <BagDishCard key={dish.dish._id} item={dish} /> ))}
             {width > desktop && (
               <>

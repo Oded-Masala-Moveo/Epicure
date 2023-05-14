@@ -25,8 +25,9 @@ const BASE_URL = import.meta.env.PROD
         },
         withCredentials: true
       });
+  console.log(response);
   
-      if (response.data.res_message === 200) {
+      if (response.status === 200) {
         Cookies.remove('token');
       }
   

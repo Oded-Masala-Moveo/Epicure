@@ -2,17 +2,30 @@
   "../../../assets/styles/mixin/media-queries",
   "../../../assets/styles/variable";
 
-
-  .checkout-form-container{
-    .checkout-form-inputs-top{
-        @include flex-container(column, start, flex-start,20px);
-        margin-bottom: 20px;
+.checkout-form-container {
+  .checkout-form-inputs-top {
+    @include flex-container(column, start, flex-start, 60px);
+    @include desktop(){
+      @include flex-container(column, start, flex-start, 55px);
+      margin-top: 40px;
     }
-    .checkout-form-inputs-bottom{
-        @include flex-container(column, start, flex-start,23px);
-        // margin-bottom: 40px;
-        h2{
-            font-size: 14px; 
-        }
+    
+  }
+  .payment-title {
+    margin-bottom: 48px;
+    margin-top: 40px;
+    @include desktop(){
+      margin-bottom: 40px;
+      margin-top: 40px;
     }
+    h2 {
+      font-size: 14px;
+    }
+  }
+  .checkout-form-inputs-bottom {
+    @include flex-container(column, start, flex-start, 60px);
+    @include desktop(){
+      @include flex-container(column, start, flex-start, 55px);
+    }
+  }
 }

@@ -32,7 +32,7 @@ export interface CheckoutFelid {
     labelName: string;
     placeholder: string;
   };
-  cvc: {
+  cvv: {
     name: string;
     labelName: string;
     placeholder: string;
@@ -69,7 +69,7 @@ export const fieldFill : CheckoutFelid = {
     labelName: "Card Number",
     placeholder: "Card Number",
   },
-  cvc: { name: "cvc", labelName: "CVC", placeholder: "CVV" },
+  cvv: { name: "cvv", labelName: "CVV", placeholder: "CVV" },
   expiryDate: {
     name: "expiryDate",
     labelName: "Expiry Date",
@@ -99,7 +99,7 @@ export const checkoutSchema: Yup.Schema<MyFormValues> = Yup.object().shape({
   cardNumber: Yup.string()
     .matches(/^\d{16}$/, "Must be a 16-digit number")
     .required("Required"),
-  cvc: Yup.string()
+  cvv: Yup.string()
     .matches(cvcRegex, "Must be a 3- or 4-digit number")
     .required("Required"),
   expiryDate: Yup.string()
@@ -113,7 +113,7 @@ export const initialValues: MyFormValues = {
   phone: "",
   nameOnCard: "",
   cardNumber: "",
-  cvc: "",
+  cvv: "",
   expiryDate: "",
 };
 export const validateFunction = (values: MyFormValues) => {

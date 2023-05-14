@@ -55,21 +55,18 @@ const CheckOutForm: React.FC<CheckOutFormProps> = ({ formRef, setIsFormReady }) 
                       labelName={ fieldFill[key as keyof CheckoutFelid].labelName }
                       inputName={ fieldFill[key as keyof CheckoutFelid] .name as keyof MyFormValues }
                       inputType="text"
-                      inputPlaceholder={ fieldFill[key as keyof CheckoutFelid].placeholder }
                     />
                   ))}
               </div>
+             <div className="payment-title"><h2>payment details</h2></div> 
               <div className="checkout-form-inputs-bottom">
-                <h2>payment details</h2>
                 {Object.keys(fieldFill) .slice(3, 7) .map((key) => (
                     <InputFieldComponent
                       key={useId()}
                       formikProps={{ touched, errors, ...Formik }}
                       labelName={ fieldFill[key as keyof CheckoutFelid].labelName }
                       inputName={ fieldFill[key as keyof CheckoutFelid] .name as keyof MyFormValues }
-                      inputType="text"
-                      inputPlaceholder={ fieldFill[key as keyof CheckoutFelid].placeholder }
-                    />
+                      inputType="text"                    />
                   ))}
               </div>
             </Form>

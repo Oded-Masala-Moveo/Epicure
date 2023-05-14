@@ -4,7 +4,7 @@ export interface MyFormValues {
   phone?: string;
   nameOnCard?: string;
   cardNumber?: string;
-  cvc?: string;
+  cvv?: string;
   expiryDate?: string;
   userName?: string;
   email?:string;
