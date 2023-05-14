@@ -2,13 +2,20 @@
   "../../../assets/styles/mixin/media-queries",
   "../../../assets/styles/variable";
 
-
-  .auth-form-inputs-container{
-    @include flex-container(column, center, center,40px);
-
-    .forget-password-container{
-      p{
-        font-size: 14px;
-      }
+.auth-form-container {
+  @include flex-container(column, center, center, 40px);
+  .input-form-container {
+    @include flex-container(column, center, center,32px);
+    .auth-request-error-message {
+      height: 0px;
+      color: rgb(106, 38, 38);
+     
     }
   }
+
+  .forget-password-container {
+    p {
+      font-size: 14px;
+    }
+  }
+}

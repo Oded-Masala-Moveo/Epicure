@@ -2,8 +2,21 @@
   "../../../assets/styles/mixin/media-queries",
   "../../../assets/styles/variable";
 .input-checkout-container {
+  position: relative;
   @include flex-container(column, start, flex-start,8px);
   .label-checkout {
+    position: absolute;
+    top: 50%;
+    bottom:-15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.3s;
+    color: gray;
+    
+    &.active {
+      top: 0px;
+      font-size: 12px;
+    }
   }
   .input-checkout {
     width: 336px;
@@ -20,6 +33,8 @@
    
   }
   .error-message{
+    position: relative;
+    top: -10px;
     color: #a30606;
     font-size: 11px;
     height: 0px;

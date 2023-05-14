@@ -82,6 +82,9 @@
       align-items: center;
       gap: 5px;
       justify-content: flex-start;
+      .price-number {
+        font-weight: 400;
+      }
       @include desktop() {
         margin-bottom: 7px;
         align-items: center;
@@ -99,8 +102,8 @@
         }
       }
       .shekel-logo {
-        height: 10px;
         width: 10px;
+        height: 11px;
         @include desktop() {
           width: 12px;
           height: 21px;
@@ -184,21 +187,18 @@
           letter-spacing: 1.97px;
         }
       }
-      .shekel-logo {
-        margin-top: 5px;
-      }
       .price-card-line-1 {
         display: none;
         @include desktop() {
           display: block;
-          border: 0.5px solid $primary-light;
+          border: 0.5px solid rgb(227 227 227);
           height: 0px;
           width: 82.5px;
         }
       }
       .price-card-line-2 {
         margin-left: 4px;
-        border: 0.5px solid $primary-light;
+        border: 0.5px solid rgb(227 227 227);
         width: 256px;
         height: 0px;
         @include desktop() {

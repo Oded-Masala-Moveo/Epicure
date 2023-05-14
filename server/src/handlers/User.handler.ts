@@ -49,8 +49,8 @@ export default class UserHandler {
       const user = await Users.findOne({ email: email });
       if (!user) {
         throw ErrorHandler.createHttpError(
-          HttpStatusCode.UNAUTHORIZED,
-          HttpErrorMessage.UNAUTHORIZED
+          HttpStatusCode.NOT_FOUND,
+          HttpErrorMessage.NOT_FOUND
         );
       }
 

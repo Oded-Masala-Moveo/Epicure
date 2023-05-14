@@ -13,7 +13,7 @@ const BASE_URL = import.meta.env.PROD
       Cookies.set('token', token);
       return response.data.userData as userModel;
     } catch (e) {
-      console.log(e);
+      throw e;
     }
   };
   export const logoutUser = async () => {
@@ -32,7 +32,7 @@ const BASE_URL = import.meta.env.PROD
   
       return (response.status);
     } catch (e) {
-      console.log(e);
+      throw e;
     }
   };
   
