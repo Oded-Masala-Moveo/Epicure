@@ -71,9 +71,9 @@ const DesktopNavbar: React.FC = () => {
             </div>
           </div>
           <div className="right-navbar">
-            <div className="Search-container">
+            {location.pathname !== "/" && <div className="Search-container">
               <Search className="logo" />
-            </div>
+            </div>}
             <div className="User-container" onClick={toggleUser}>
               <User className="logo" />
             </div>

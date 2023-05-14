@@ -7,17 +7,20 @@ import useWindowSize, { tablet } from "../../hooks/useWindowSize";
 import Dropdown from "../../components/DropdownButton/Dropdown";
 import LiElement from "../../components/li/LiElement";
 import { closeAllNavbar, useAppDispatch } from "../../store";
+import Loading from "../../components/loading/Loading";
 
 const RestaurantsPage: React.FC = () => {
   const { width } = useWindowSize();
   const dispatch = useAppDispatch();
-  const sendCloseNavbar = () => () => dispatch(closeAllNavbar(false));
+  const sendCloseNavbar = () => dispatch(closeAllNavbar(false));
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>( RestaurantCategory.ALL );
-  const [displayRestaurants, setDisplayRestaurants] = useState<Restaurant[]>( [] );
+  const [displayRestaurants, setDisplayRestaurants] = useState<Restaurant[]>();
   const [currentRange, setCurrentRange] = useState<string>("");
   const [rating, seRrating] = useState<number[]>([]);
   const [values, setValues] = useState<[number, number]>([12, 357]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [pageLoaded, setPageLoaded] = useState<boolean>(false);
   const handleChange = (newValues: [number, number]): void => setValues(newValues);
   const handelClickCategory = (category: string) => () => setSelectedCategory(category);
   const handelClickRange = (rangeType: string) => () => rangeType == currentRange ? setCurrentRange("") : setCurrentRange(rangeType);
@@ -30,7 +33,8 @@ const RestaurantsPage: React.FC = () => {
   useEffect(() => {
     fetchAllRestaurants()
       .then((restaurants) => {
-        restaurants && setRestaurants(restaurants);
+        setLoading(true)
+       if (restaurants) setRestaurants(restaurants), setLoading(false),setPageLoaded(true);
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +42,7 @@ const RestaurantsPage: React.FC = () => {
   }, []);
   useEffect(() => setRestaurantsData(), [restaurants,selectedCategory, rating, values]);
   return (
-      <section onClick={sendCloseNavbar()} className="restaurants-section">
+      <section onClick={sendCloseNavbar} className="restaurants-section">
         <h2 className="restaurants-title">Restaurants</h2>
         <ul className="filter-restaurant">
           <li
@@ -76,21 +80,29 @@ const RestaurantsPage: React.FC = () => {
             <Dropdown key={RestaurantRange.RATING} onClick={handelClickRange(RestaurantRange.RATING)} isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={ <RatingComponent rateArr={rating} changeRate={seRrating} /> } />
           </div>
         </ul>
-        {displayRestaurants.length > 0 && (
-          <div className="restaurants-list" onClick={handelClickRange("")}>
-            {displayRestaurants.map((restaurant) => (
-              <Card key={restaurant.chef + restaurant.image} restPage={width < tablet} card={restaurant} />
-            ))}
-          </div>
-        )}
-        {displayRestaurants.length <= 0 && (
-          <div className="no-restaurants">
-            <h1>No restaurants within the range</h1>
-            <p>
-              Try different <span>&#128522;</span>
-            </p>
-          </div>
-        )}
+        {pageLoaded && (
+        <>
+          {displayRestaurants && displayRestaurants.length > 0 ? (
+            <div className="restaurants-list" onClick={handelClickRange("")}>
+              {displayRestaurants.map((restaurant) => (
+                <Card key={restaurant.chef + restaurant.image} restPage={width < tablet} card={restaurant} />
+              ))}
+            </div>
+          ) : !loading && (
+            <div className="no-restaurants">
+              <h1>No restaurants within the range</h1>
+              <p>
+                Try different <span>&#128522;</span>
+              </p>
+            </div>
+          )}
+        </>
+      )}
+      {loading && (
+        <div className="loader">
+          <Loading />
+        </div>
+      )}
       </section>
   );
 };
