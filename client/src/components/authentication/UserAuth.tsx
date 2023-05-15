@@ -94,7 +94,7 @@ const LoginAndRegisterComponent: React.FC = () => {
         <div className="line"></div>
       </div>
       <div className="switch-form-btn">
-        <ClickButton secondary={true}>sing up</ClickButton>
+        <ClickButton secondary={true}>sign up</ClickButton>
       </div>
     </div>
   );

@@ -29,24 +29,20 @@ export const validateFunction = (values: MyFormValues) => {
       });
   };
   export interface AuthFelid {
-    email: {
-        name: string,
-        labelName: string
-        placeholder: string
-        type: string
-    };
-    password: {
-        name: string,
-        labelName: string
-        placeholder: string
-        type: string
+    name: string,
+    labelName: string
+    placeholder: string
+    type: string
     }
+  export interface AuthFormFelid {
+    email: AuthFelid
+    password: AuthFelid
 }
   export  const initialValues: MyFormValues = {
     email: "",
     password: "",
   };
-  export const authFieldFill : AuthFelid = {
+  export const authFieldFill : AuthFormFelid = {
     email: {
       name: "email",
       labelName: "Email",

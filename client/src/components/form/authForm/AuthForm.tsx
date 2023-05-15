@@ -8,6 +8,7 @@ import { loginUser } from "../../../services";
 import { useAppDispatch, closeAllNavbar, login } from "../../../store";
 import {
   AuthFelid,
+  AuthFormFelid,
   authFieldFill,
   initialValues,
   validateFunction,
@@ -17,7 +18,9 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
   const dispatch = useAppDispatch();
   const [requestError, setRequestError] = useState<number>(0);
   const restError = () => setRequestError(0);
-
+  const giveField =
+    (key: string) => (field: AuthFormFelid) => (objectField: string) =>
+      field[key as keyof AuthFormFelid][objectField as keyof AuthFelid];
   let sendLoginRequest = (values: MyFormValues) => {
     setRequestError(0);
     if (values.email && values.password)
@@ -41,12 +44,12 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
         });
   };
   const FormStatusEffect: React.FC = () => {
-    const { errors  } = useFormikContext<MyFormValues>();
+    const { errors } = useFormikContext<MyFormValues>();
     useEffect(() => {
-    if(errors.email || errors.password){
-      restError()
-    }
-    }, [ errors.email, errors.password]);
+      if (errors.email || errors.password) {
+        restError();
+      }
+    }, [errors.email, errors.password]);
 
     return null;
   };
@@ -58,19 +61,16 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
           validate={validateFunction}
           onSubmit={sendLoginRequest}
         >
-          {({ touched, errors, handleSubmit, dirty, isValid, ...Formik }) => 
-            (
-              <>
-              <FormStatusEffect/>
+          {({ touched, errors, handleSubmit, dirty, isValid, ...Formik }) => (
+            <>
+              <FormStatusEffect />
               <Form>
                 <div className="auth-form-container">
                   <div className="input-form-container">
                     {Object.keys(authFieldFill).map((key) => (
                       <InputFieldComponent
                         key={useId()}
-                        labelName={
-                          authFieldFill[key as keyof AuthFelid].placeholder
-                        }
+                        labelName={giveField(key)(authFieldFill)("placeholder")}
                         authPage={true}
                         formikProps={{
                           touched,
@@ -81,21 +81,24 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
                           ...Formik,
                         }}
                         inputName={
-                          authFieldFill[key as keyof AuthFelid]
-                            .name as keyof MyFormValues
+                          giveField(key)(authFieldFill)(
+                            "name"
+                          ) as keyof MyFormValues
                         }
-                        inputType={authFieldFill[key as keyof AuthFelid].type}
+                        inputType={giveField(key)(authFieldFill)("type")}
                       />
                     ))}
                   </div>
-                  {requestError == 401 && (
+                  {requestError == 404 && (
                     <p className="auth-request-error-message">
-                      Password is incorrect
+                      {" "}
+                      Email not found{" "}
                     </p>
                   )}
-                  {requestError == 404 &&  (
+                  {requestError == 401 && (
                     <p className="auth-request-error-message">
-                      Email not found
+                      {" "}
+                      Password is incorrect{" "}
                     </p>
                   )}
                   <div className="submit-login-button">
@@ -113,10 +116,9 @@ const AuthForm: React.FC<{ register: boolean }> = ({ register }) => {
                     </div>
                   )}
                 </div>
-              </Form>{" "}
+              </Form>
             </>
-            )
-          }
+          )}
         </Formik>
       </div>
     </>
