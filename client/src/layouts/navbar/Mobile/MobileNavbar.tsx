@@ -122,7 +122,7 @@ const MobileNavbar: React.FC = () => {
           <>
             {isSearchOpen && closeNow && (
               <div className="search-title">
-                <p>search</p>
+                <p>Search</p>
               </div>
             )}
           </>

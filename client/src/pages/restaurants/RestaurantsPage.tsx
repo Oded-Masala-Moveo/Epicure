@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./RestaurantsPage.scss";
 import { filterRestaurants, fetchAllRestaurants } from "../../services";
 import { Restaurant, RestaurantCategory, RestaurantRange } from "../../models";
@@ -40,6 +40,8 @@ const RestaurantsPage: React.FC = () => {
         console.log(error);
       });
   }, []);
+  const sortedRestaurants = useMemo(()=> displayRestaurants?.slice().sort((a, b) => a.name.localeCompare(b.name)),[displayRestaurants]);
+
   useEffect(() => setRestaurantsData(), [restaurants,selectedCategory, rating, values]);
   return (
       <section onClick={sendCloseNavbar} className="restaurants-section">
@@ -65,9 +67,7 @@ const RestaurantsPage: React.FC = () => {
             className={ selectedCategory == RestaurantCategory.OPEN ? "selected" : "category" } >
             <p>Open Now</p>
           </li>
-          <li className="map-view">
-            <p>Map View</p>
-          </li>
+          <li className="map-view"> <p>Map View</p> </li>
         </ul>
         <ul className="range-filter-restaurant">
           <div className={currentRange == RestaurantRange.PRICE ? "selected" : ""} >
@@ -80,16 +80,14 @@ const RestaurantsPage: React.FC = () => {
             <Dropdown key={RestaurantRange.RATING} onClick={handelClickRange(RestaurantRange.RATING)} isOpen={dropdownOpenOrClose(RestaurantRange.RATING)(currentRange)} dropdownLook={<LiElement title={RestaurantRange.RATING} />} children={ <RatingComponent rateArr={rating} changeRate={seRrating} /> } />
           </div>
         </ul>
-        {pageLoaded && (
-        <>
-          {displayRestaurants && displayRestaurants.length > 0 ? (
+        {pageLoaded && ( <>
+          {sortedRestaurants && sortedRestaurants.length > 0 ? (
             <div className="restaurants-list" onClick={handelClickRange("")}>
-              {displayRestaurants.map((restaurant) => (
-                <Card key={restaurant.chef + restaurant.image} restPage={width < tablet} card={restaurant} />
+              {sortedRestaurants.map((restaurant) => (
+                <Card key={restaurant._id} restPage={width < tablet} card={restaurant} />
               ))}
             </div>
-          ) : !loading && (
-            <div className="no-restaurants">
+          ) : !loading && ( <div className="no-restaurants">
               <h1>No restaurants within the range</h1>
               <p>
                 Try different <span>&#128522;</span>

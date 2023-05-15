@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./RestaurantPage.scss";
 import { useParams } from "react-router-dom";
 import { filterDishes, fetchDishesByRestId, fetchRestaurantById, } from "../../services";
@@ -38,6 +38,7 @@ const RestaurantPage: React.FC = () => {
         });
     }
   }, []);
+  const sortedDishes = useMemo(()=> displayDishes.slice().sort((a, b) => a.name.localeCompare(b.name)),[displayDishes]);
   useEffect(() => {
     setDisplayDishes(filterDishes(dishes, dishCategory));
   }, [dishes, dishCategory]);
@@ -73,7 +74,7 @@ const RestaurantPage: React.FC = () => {
             </li>
           </ul>
           <div className="dish-list">
-            {displayDishes.map((dish) => ( <Card key={dish._id} dishPage={true} card={dish} /> ))}
+            {sortedDishes.map((dish) => ( <Card key={dish._id} dishPage={true} card={dish} /> ))}
           </div>
         </section>
       </div>

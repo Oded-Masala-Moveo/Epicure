@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./dish.scss";
-import {
-  Minus,
-  Plus,
-  Shekel,
-  SpicyBig,
-  VeganBig,
-  VegetarianBig,
-  X_dark,
-  X_white,
-} from "../../assets/icons";
+import { Minus, Plus, Shekel, SpicyBig, VeganBig, VegetarianBig, X_dark, X_white, } from "../../assets/icons";
 import { Dish, DishCategory } from "../../models";
 import CheckButton from "../buttons/checkButton/CheckButton";
-import { Footer } from "../../layouts";
 import ClickButton from "../buttons/clickButton/ClickButton";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
 import { addDishToBag, useAppDispatch } from "../../store";
-interface DishComponentProps {
-  onClose: () => void;
-  dishData: Dish;
-}
+interface DishComponentProps { onClose: () => void; dishData: Dish; }
 const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
   const { width } = useWindowSize();
   const [ChosenSide, setIsChosenSide] = useState<string[]>([]);
@@ -27,13 +14,12 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const dispatch = useAppDispatch();
   const handleClose = () => onClose();
-  const sendDishToCart = ()=> () => {
-    dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:sideChanges,sides:ChosenSide}));
+  const sendDishToCart = () => {
+    dispatch(addDishToBag({dish:dishData, quantity:quantity,changes:sideChanges,sides:ChosenSide}))
     onClose();
   }
   const increase = () => setQuantity(quantity + 1);
   const decrease =  () => quantity >= 0 ? setQuantity(quantity - 1) : setQuantity(0);
-
   const handleSide = (side: string) => {
     if (!ChosenSide.includes(side)) {
       setIsChosenSide([...ChosenSide, side]);
@@ -46,7 +32,6 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
       }
     }
   };
-
   const handleChangeDish = (side: string) => {
     if (!sideChanges.includes(side)) {
       setSideChanges([...sideChanges, side]);
@@ -59,8 +44,6 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
       }
     }
   };
-  useEffect(() => {}, []);
-
   return (
     <>
       <div className="dish-card-popup-container">
@@ -86,20 +69,11 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
             {width > desktop - 1 && (
               <div className="dish-category-container">
                 {dishData.category?.map( (categoryDish) =>
-                    (categoryDish == DishCategory.Spicy && (
-                      <div className="dish-icon">
-                        <SpicyBig />
-                      </div>
+                    (categoryDish == DishCategory.Spicy && ( <div className="dish-icon"> <SpicyBig /> </div>
                     )) ||
-                    (categoryDish == DishCategory.Vegan && (
-                      <div className="dish-icon">
-                        <VeganBig />
-                      </div>
+                    (categoryDish == DishCategory.Vegan && ( <div className="dish-icon"> <VeganBig /> </div>
                     )) ||
-                    (categoryDish == DishCategory.Vegetarian && (
-                      <div className="dish-icon">
-                        <VegetarianBig />
-                      </div>
+                    (categoryDish == DishCategory.Vegetarian && ( <div className="dish-icon"> <VegetarianBig /> </div>
                     ))
                 )}
               </div>
@@ -120,13 +94,8 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
               <div className="side-title-container">
                 <p>Choose a side</p>
               </div>
-              {dishData.side.map((side) => (
-                <div className="side">
-                  <div onClick={() => handleSide(side)}>
-                    <CheckButton
-                      checked={ChosenSide.includes(side)}
-                      Circle={true}
-                    />
+              {dishData.side.map((side) => ( <div className="side"> <div onClick={() => handleSide(side)}>
+                    <CheckButton checked={ChosenSide.includes(side)} Circle={true} />
                   </div>
                   <div>
                     <p>{side}</p>
@@ -141,37 +110,22 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
               {dishData.changesOptions.map((side) => (
                 <div className="side">
                   <div onClick={() => handleChangeDish(side)}>
-                    <CheckButton
-                      checked={sideChanges.includes(side)}
-                      Circle={false}
-                    />
+                    <CheckButton checked={sideChanges.includes(side)} Circle={false} />
                   </div>
-                  <div>
-                    {" "}
-                    <p>{side}</p>{" "}
-                  </div>
+                  <div> <p>{side}</p> </div>
                 </div>
               ))}
             </div>
             <div className="quantity-container">
               <p className="quantity-title">Quantity</p>
               <div className="quantity">
-                <div className="handler-button" onClick={decrease}>
-                  <Minus />
-                </div>
+                <div className="handler-button" onClick={decrease}> <Minus /> </div>
                 <p>{quantity}</p>
-                <div className="handler-button" onClick={increase}>
-                  <Plus />
-                </div>
+                <div className="handler-button" onClick={increase}> <Plus /> </div>
               </div>
             </div>
             <div className="add-to-bag-container">
-              <ClickButton
-                onClick={sendDishToCart()}
-                disabled= {quantity == 0}
-                children={"add to bag"}
-                primaryBlack={true}
-              />
+              <ClickButton onClick={sendDishToCart} disabled= {quantity == 0} children={"add to bag"} primaryBlack={true} />
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ const DishSection: React.FC = () => {
       )}
       <Link to={"/restaurants"}>
         <div className="link-to-restaurants">
-          <h3>All restaurants</h3>
+          <h3>All Restaurants</h3>
           <Arrow className="arrow-icon" />
         </div>
       </Link>
