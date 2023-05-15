@@ -1,26 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-  Logo,
-  Hamburger,
-  Search,
-  User,
-  Bag,
-  X_dark,
-  ActiveBag,
-} from "../../../assets/icons";
+import { Logo, Hamburger, Search, User, Bag, X_dark, ActiveBag, } from "../../../assets/icons";
 import "./MobileNavbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { BagShop, OrderSuccess, UserAuth } from "../../../components/";
 import { InputSearch } from "../../../components";
-import {
-  selectCloseNow,
-  useAppSelector,
-  selectBagDishes,
-  selectBagTotalQuantity,
-  useAppDispatch,
-  closeAllNavbar,
-  selectIsOrderPlaced,
-} from "../../../store";
+import { selectCloseNow, useAppSelector, selectBagDishes, selectBagTotalQuantity, useAppDispatch, closeAllNavbar, selectIsOrderPlaced, } from "../../../store";
 const MobileNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -83,9 +67,7 @@ const MobileNavbar: React.FC = () => {
         }
       >
         <div className="right-navbar">
-          {(isMenuOpen && closeNow) ||
-          (isSearchOpen && closeNow) ||
-          (isUserOpen && closeNow) ? (
+          {(isMenuOpen && closeNow) || (isSearchOpen && closeNow) || (isUserOpen && closeNow) ? (
             <div onClick={isMenuOpen ? toggleMenu : toggleSearch}>
               <X_dark className="hamburger-icon" />
             </div>
@@ -98,9 +80,7 @@ const MobileNavbar: React.FC = () => {
         {(!isMenuOpen && !isSearchOpen && !isUserOpen) || !closeNow ? (
           <div className={"left-navbar"}>
             <div>
-              <Link to={"/"}>
-                <Logo className="navbar-logo" />
-              </Link>
+              <Link to={"/"}> <Logo className="navbar-logo" /> </Link>
             </div>
             <div className="icons-container">
               <div onClick={toggleSearch}>
@@ -145,23 +125,13 @@ const MenuNav: React.FC<{ setMenu: () => void }> = ({ setMenu }) => {
   return (
     <div className="menu-nav">
       <div className="top-menu">
-        <Link to="/restaurants">
-          <p onClick={setMenu}>Restaurants</p>
-        </Link>
-        <Link to="/chef">
-          <p onClick={setMenu}>Chef</p>
-        </Link>
+        <Link to="/restaurants"> <p onClick={setMenu}>Restaurants</p> </Link>
+        <Link to="/chef"> <p onClick={setMenu}>Chef</p> </Link>
       </div>
       <div className="bottom-menu">
-        <Link to="/contact">
-          <p onClick={setMenu}>Contact Us</p>
-        </Link>
-        <Link to="/term">
-          <p onClick={setMenu}>Term of use</p>
-        </Link>
-        <Link to="/policy">
-          <p onClick={setMenu}> Privacy Policy</p>
-        </Link>
+        <Link to="/contact"> <p onClick={setMenu}>Contact Us</p> </Link>
+        <Link to="/term"> <p onClick={setMenu}>Term of use</p> </Link>
+        <Link to="/policy"> <p onClick={setMenu}> Privacy Policy</p> </Link>
       </div>
     </div>
   );
