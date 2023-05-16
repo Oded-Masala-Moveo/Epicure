@@ -1,7 +1,7 @@
 import React from "react";
 import { selectIsOrderPlaced, useAppSelector } from "../../store";
 
-export const ActiveBag: React.FC<{ quantity: number,className?:string}> = ({ quantity ,className}) => {
+ const ActiveBag: React.FC<{ quantity: number,className?:string}> = ({ quantity ,className}) => {
   const IsOrderPlaced = useAppSelector(selectIsOrderPlaced);
   return (
     <>
@@ -52,3 +52,4 @@ export const ActiveBag: React.FC<{ quantity: number,className?:string}> = ({ qua
     </>
   );
 };
+export default ActiveBag

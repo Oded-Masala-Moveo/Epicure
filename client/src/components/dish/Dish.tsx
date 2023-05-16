@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./dish.scss";
-import { Minus, Plus, Shekel, SpicyBig, VeganBig, VegetarianBig, X_dark, X_white, } from "../../assets/icons";
+import { Minus, Plus, Shekel, SpicyBig, VeganBig, VegetarianBig, XDark, XWhite, } from "../../assets/icons";
 import { Dish, DishCategory } from "../../models";
 import CheckButton from "../buttons/checkButton/CheckButton";
 import ClickButton from "../buttons/clickButton/ClickButton";
@@ -51,7 +51,7 @@ const DishComponent: React.FC<DishComponentProps> = ({ onClose, dishData }) => {
         <div className="dish-card-popup">
           <div className="nav-dish-container">
             <div className="close-btn" onClick={handleClose}>
-              {width > desktop - 1 ? <X_white /> : <X_dark />}
+              {width > desktop - 1 ? <XWhite /> : <XDark />}
             </div>
           </div>
           <div className="dish-component">

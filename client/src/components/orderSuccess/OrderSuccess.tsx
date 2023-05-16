@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./orderSuccess.scss";
-import { Shekel, Vector, X_white } from "../../assets/icons";
+import { Shekel, Vector, XWhite } from "../../assets/icons";
 import {
   selectBagDishes,
   selectBagTotal,
@@ -31,7 +31,7 @@ const OrderSuccess: React.FC<{ isPopUp?: boolean }> = ({ isPopUp }) => {
         {isPopUp && (
           <div className="close-container" onClick={closePopup}>
             <div className="x-icon">
-              <X_white />
+              <XWhite />
             </div>
           </div>
         )}

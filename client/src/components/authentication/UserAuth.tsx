@@ -13,7 +13,7 @@ import {
 import { logoutUser } from "../../services";
 import useWindowSize, { desktop, tablet } from "../../hooks/useWindowSize";
 import { PopUp } from "..";
-import { X_white } from "../../assets/icons";
+import { XWhite } from "../../assets/icons";
 import userImage from "../../assets/images/user.png";
 const UserAuth: React.FC = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -41,7 +41,7 @@ const UserAuth: React.FC = () => {
             <div className="popup-auth-container">
               <div className="popup-auth-close-container">
                 <div className="close-icon" onClick={onCloseUserAuth}>
-                  <X_white />
+                  <XWhite />
                 </div>
               </div>
               <LoginAndRegisterComponent />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Logo, Hamburger, Search, User, Bag, X_dark, ActiveBag, } from "../../../assets/icons";
+import { Logo, Hamburger, Search, User, Bag, XDark, ActiveBag, } from "../../../assets/icons";
 import "./MobileNavbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { BagShop, OrderSuccess, UserAuth } from "../../../components/";
@@ -69,7 +69,7 @@ const MobileNavbar: React.FC = () => {
         <div className="right-navbar">
           {(isMenuOpen && closeNow) || (isSearchOpen && closeNow) || (isUserOpen && closeNow) ? (
             <div onClick={isMenuOpen ? toggleMenu : toggleSearch}>
-              <X_dark className="hamburger-icon" />
+              <XDark className="hamburger-icon" />
             </div>
           ) : (
             <div onClick={toggleMenu}>
@@ -84,7 +84,7 @@ const MobileNavbar: React.FC = () => {
             </div>
             <div className="icons-container">
               <div onClick={toggleSearch}>
-                <Search className="icon" />
+                <div className="icon"><Search  /></div>
               </div>
               <div onClick={toggleUser}>
                 <User className="icon" />

@@ -1,6 +1,6 @@
 import React, {useRef, useState } from "react";
 import "./checkout.scss";
-import { Logo, Shekel, X_dark } from "../../assets/icons";
+import { Logo, Shekel, XDark } from "../../assets/icons";
 import { CheckOutForm, ClickButton,BagDishCard } from "../../components";
 import { selectBagDishes, selectBagTotal, useAppSelector, } from "../../store";
 import useWindowSize, { desktop } from "../../hooks/useWindowSize";
@@ -27,7 +27,7 @@ const CheckOut: React.FC = () => {
     <>
       <div className="checkout-mobile-navbar-container">
         <div onClick={backToHome} className="close-checkout-nav">
-          <X_dark className="logo" />
+          <XDark className="logo" />
         </div>
         <div className="close-mobile-logo">
           <Logo className="logo" />

@@ -8,7 +8,7 @@ const InputSearch: React.FC<{ mobileNav?: boolean }> = ({ mobileNav }) => {
           mobileNav ? "input-container input-nav-container" : "input-container"
         }
       >
-        <Search className="search-button" />
+       <div className="search-button"><Search /></div>
         <input
           placeholder="Search for restaurant cuisine, chef"
           type="text"
