@@ -16,7 +16,7 @@
 			"ref": "origin/dev",
 			"repo": "git@github.com:Oded-Masala-Moveo/Epicure-app.git",
 			"path": " /home/ubuntu/Epicure/Server",
-			"ssh_options": "StrictHostKeyChecking=no",
+			"ssh_options": "~/.ssh/epicure-app-key.pem",
 			"post-deploy": "mkdir -p logs && npm i && pm2 reload ecosystem.json --env staging",
 			"pre-deploy-local": "echo 'Deploying code to servers'",
 			"env": {
