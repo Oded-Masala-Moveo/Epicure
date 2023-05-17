@@ -1,7 +1,7 @@
 {
 	"apps": [
 		{
-			"name": "Epicure app",
+			"name": "Epicure-app",
 			"script": "./dist/server.js",
 			"env": {
 			 "NODE_ENV": "development"
@@ -10,12 +10,12 @@
 	],
 	"deploy": {
 		"staging": {
-			"key": "~/Downloads/epicure-alex.pem",
+			"key": "~/Downloads/epicure-app-key.pem",
 			"user": "ubuntu",
-			"host": ["ec2-3-250-41-142.eu-west-1.compute.amazonaws.com"],
-			"ref": "origin/develop",
-			"repo": "git@github.com:MoveoTech/BlankProject.git",
-			"path": "THE DESIRED LOCATION IN YOUR INSTANCE TO CLONE THE PROJECT (for ex., /home/ubuntu/Epicure/Server)",
+			"host": ["ec2-18-197-19-24.eu-central-1.compute.amazonaws.com"],
+			"ref": "origin/dev",
+			"repo": "git@github.com:Oded-Masala-Moveo/Epicure-app.git",
+			"path": " /home/ubuntu/Epicure/Server",
 			"ssh_options": "StrictHostKeyChecking=no",
 			"post-deploy": "mkdir -p logs && npm i && pm2 reload ecosystem.json --env staging",
 			"pre-deploy-local": "echo 'Deploying code to servers'",
