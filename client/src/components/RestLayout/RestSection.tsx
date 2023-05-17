@@ -9,11 +9,14 @@ import { Restaurant } from "../../models";
 const RestSection: React.FC = () => {
   const { width } = useWindowSize();
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-  const sortedRestaurants = useMemo(() => restaurants.sort((a, b) => a.name.localeCompare(b.name)),[restaurants]);
+  const sortedRestaurants = useMemo(() => restaurants?.sort((a, b) => a.name.localeCompare(b.name)),[restaurants]);
+  const sortList = (arr: Restaurant[]) => {
+    return arr.sort((a, b) => a.name.localeCompare(b.name));
+  };
   useEffect(() => {
     fetchAllRestaurants()
       .then((res) => {
-        if(res)setRestaurants(res);
+        if(res) setRestaurants(sortList(res));
       })
       .catch((error) => console.log(error));
   }, []);
@@ -22,7 +25,7 @@ const RestSection: React.FC = () => {
       <div className="popular-container">
         <h2>popular restaurant in epicure:</h2>
       </div>
-      {width && width < desktop && <Carousel cards={sortedRestaurants} />}
+      {width && width < desktop && <Carousel cards={restaurants} />}
       {width && width >= desktop && (
         <div className="desktop-card">
           {restaurants.slice(0, 3).map((rest) => (

@@ -38,7 +38,7 @@ const RestaurantPage: React.FC = () => {
         });
     }
   }, []);
-  const sortedDishes = useMemo(()=> displayDishes.slice().sort((a, b) => a.name.localeCompare(b.name)),[displayDishes]);
+  const sortedDishes = useMemo(()=> displayDishes.slice()?.sort((a, b) => a.name.localeCompare(b.name)),[displayDishes]);
   useEffect(() => {
     setDisplayDishes(filterDishes(dishes, dishCategory));
   }, [dishes, dishCategory]);

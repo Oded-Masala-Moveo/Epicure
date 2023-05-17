@@ -14,7 +14,7 @@ const ChefPage: React.FC = () => {
   useEffect(() => {
     getChefs().then((chefs) =>chefs && setChefs(chefs)).catch((err) => console.log(err))
   }, []);
-  const sortedChefs = useMemo(()=> displayChefs.slice().sort((a, b) => a.fullName.localeCompare(b.fullName)),[displayChefs]);
+  const sortedChefs = useMemo(()=> displayChefs.slice()?.sort((a, b) => a.fullName.localeCompare(b.fullName)),[displayChefs]);
   useEffect(() => setDisplayChefs(filterChefs(chefs, chefsCategory)) ,[chefs, chefsCategory]);
  
   return (

@@ -40,7 +40,7 @@ const RestaurantsPage: React.FC = () => {
         console.log(error);
       });
   }, []);
-  const sortedRestaurants = useMemo(()=> displayRestaurants?.slice().sort((a, b) => a.name.localeCompare(b.name)),[displayRestaurants]);
+  const sortedRestaurants = useMemo(()=> displayRestaurants?.slice()?.sort((a, b) => a.name.localeCompare(b.name)),[displayRestaurants]);
 
   useEffect(() => setRestaurantsData(), [restaurants,selectedCategory, rating, values]);
   return (
